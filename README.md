@@ -1,6 +1,5 @@
-# topmed_workshop_2018
-Course materials for SISG Module 12: Computational Pipeline for WGS Data, July 18-20, 2018
-
+# WISG_2019
+Course materials for WISG Module 4: Computational Pipeline for WGS Data, January 23-24, 2019
 
 See the rendered website at
-[https://uw-gac.github.io/topmed_workshop_2018](https://uw-gac.github.io/topmed_workshop_2018)
+[https://uw-gac.github.io/WISG_2019](https://uw-gac.github.io/WISG_2019)

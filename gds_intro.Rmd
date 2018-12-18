@@ -4,15 +4,12 @@ GDS is Genomic Data Structure, a storage format that can efficiently store genom
 
 ## Exploring a GDS file
 
-To use the R packages developed at the DCC for sequence data, we first need to convert a VCF file to GDS. (If the file is BCF, use [https://samtools.github.io/bcftools/bcftools.html](bcftools) to convert to VCF.)
+To use the R packages developed at the University of Washington for sequence data, we first need to convert a VCF file to GDS. (If the file is BCF, use [https://samtools.github.io/bcftools/bcftools.html](bcftools) to convert to VCF.)
 
 ```{r vcf2gds}
 library(SeqArray)
-data.path <- "https://github.com/UW-GAC/analysis_pipeline/raw/master/testdata"
 vcffile <- "data/1KG_phase3_subset_chr1.vcf.gz"
-if (!dir.exists("data")) dir.create("data")
-if (!file.exists(vcffile)) download.file(file.path(data.path, basename(vcffile)), vcffile)
-gdsfile <- "data/1KG_phase3_subset_chr1.gds"
+gdsfile <- "1KG_phase3_subset_chr1.gds"
 seqVCF2GDS(vcffile, gdsfile, fmt.import="GT", storage.option="LZMA_RA", verbose=FALSE)
 ```
 

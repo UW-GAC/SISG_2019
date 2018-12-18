@@ -1,12 +1,12 @@
 ---
-title: "SISG Module 12: Computational Pipeline for WGS Data"
+title: "WISG Module 4: Computational Pipeline for WGS Data"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 link-citations: yes
-github-repo: UW-GAC/topmed_workshop_2018
-description: "Course materials for SISG Module 12"
+github-repo: UW-GAC/WISG_2019
+description: "Course materials for WISG Module 4"
 ---
 
 ```{r setup, include=FALSE}
@@ -15,57 +15,13 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE)
 
 # Introduction
 
-This site contains course materials for SISG Module 12: Computational Pipeline for WGS Data, July 18-20, 2018.
-Data used is located in the [github repository](https://github.com/UW-GAC/topmed_workshop_2018) from which the site is built, as well as in the [TOPMed analysis pipeline](https://github.com/UW-GAC/analysis_pipeline).
-
-To work through the exercises, log into RStudio Server at http://34.208.147.133:8787 with your username and password.
-
-Slides for lectures are posted here below in the schedule. 
-A detailed description of the course and instructor biographies can be found at https://www.biostat.washington.edu/suminst/SISG2018/modules/SM1812
-
-Join the Slack channel here:\
-https://sisg2018module12.slack.com
-
-
-## Schedule
-
-**Wednesday, July 18**
-
-- [Introduction](https://www.biostat.washington.edu/sites/default/files/modules/SISGmod12Intro_v3.pdf)
-- Data formats
-    - [Sequencing data formats](https://www.biostat.washington.edu/sites/default/files/modules/Sequencing_data_formats_0.pdf)
-    - [Intro to Genomic Data Storage](https://www.biostat.washington.edu/sites/default/files/modules/GDS_intro.pdf)
-- Population structure and relatedness
-    - [Population structure inference](https://www.biostat.washington.edu/sites/default/files/modules/TOPMED_POPULATION_STRUCTURE_INFERENCE_Module12_2018.pdf)
-    - [Relatedness inference](https://www.biostat.washington.edu/sites/default/files/modules/TOPMED_RELATEDNESS_INFERENCE_Module12_2018.pdf)
-    - [R packages: GENESIS, SNPRelate](https://www.biostat.washington.edu/sites/default/files/modules/R_kinship_pca.pdf)
-
-**Thursday, July 19**
-
-- [Phenotype harmonization](https://www.biostat.washington.edu/sites/default/files/modules/pheno_harmonization_guidelines.pdf)
-- Association tests
-    - [Methods and motivation](https://www.biostat.washington.edu/sites/default/files/modules/TOPMedAssocTests18.pdf)
-    - [GENESIS for association tests](https://www.biostat.washington.edu/sites/default/files/modules/R_assoc_tests.pdf)
-- [Variant annotation](https://www.biostat.washington.edu/sites/default/files/modules/variant_annotation_v1.pdf)
-
-**Friday, July 20**
-
-- Variant annotation
-- Pipeline design and examples
-    - [Cloud computing introduction](https://www.biostat.washington.edu/sites/default/files/modules/CloudComputingIntroduction.pdf)
-    - [Analysis pipeline design](https://www.biostat.washington.edu/sites/default/files/modules/DCC_analysis_pipeline.pdf)
-    - [Analysis pipeline on the cloud](https://www.biostat.washington.edu/sites/default/files/modules/Analysis_Pipeline_on_the_Cloud.pdf)
-- Cloud platforms
-    - [Seven Bridges Genomics](https://www.biostat.washington.edu/sites/default/files/modules/Seven%20Bridges%20-%20Cancer%20Genomics%20Cloud.pdf)
-    - [Analysis Commons](https://www.biostat.washington.edu/sites/default/files/modules/AnalysisCommons_Brody.pdf)
-- Hands-on cloud computing
-    - [Seven Bridges exercises](https://www.biostat.washington.edu/sites/default/files/modules/CGC%20Workshop%20-%20Practice.pdf)
+This site contains course materials for WISG Module 4: Computational Pipeline for WGS Data, January 23-24, 2019.
+Data used is located in the [github repository](https://github.com/UW-GAC/WISG_2019) from which the site is built, as well as in the [TOPMed analysis pipeline](https://github.com/UW-GAC/analysis_pipeline).
 
 
 ## Resources
 
 If you are new to R, you might find the following material helpful:
 
-- [Introduction to R](http://faculty.washington.edu/kenrice/rintro/indexSEA15.shtml) materials from SISG Module 3
 - [Graphics with ggplot2](http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html) tutorial
 - Data manipulation with [dplyr](http://dplyr.tidyverse.org/)

@@ -1,13 +1,10 @@
 # Computing a GRM
 
-We can use the [SNPRelate package](https://github.com/zhengxwen/SNPRelate) to compute a Genetic Relationship matrix (GRM).
+We can use the [SNPRelate package](https://github.com/zhengxwen/SNPRelate) to compute a Genetic Relationship matrix (GRM). This method combines relatedness due to more distant ancestry and recent kinship into a single matrix.
 
 ```{r grm}
 library(SeqArray)
-data.path <- "https://github.com/UW-GAC/analysis_pipeline/raw/master/testdata"
 gdsfile <- "data/1KG_phase3_subset_chr1.gds"
-if (!dir.exists("data")) dir.create("data")
-if (!file.exists(gdsfile)) download.file(file.path(data.path, basename(gdsfile)), gdsfile)
 gds <- seqOpen(gdsfile)
 
 library(SNPRelate)
@@ -25,21 +22,16 @@ To disentangle ancestry from recent familial relatedness, we use the [PC-Relate]
 
 ## KING
 
-Step 1 is to get initial estimates of kinship using [KING](http://www.ncbi.nlm.nih.gov/pubmed/20926424), which is robust to population structure but not admixture. The KING algorithm is available in SNPRelate. Typically we select a subset of variants for this calculation with LD pruning.
+Step 1 is to get initial estimates of kinship using [KING](http://www.ncbi.nlm.nih.gov/pubmed/20926424), which is robust to population structure but not admixture. The KING algorithm is available in SNPRelate. We select a subset of variants for this calculation with LD pruning.
 
 ```{r king}
 # use a GDS file with all chromosomes
 library(SeqArray)
-data.path <- "https://github.com/UW-GAC/analysis_pipeline/raw/master/testdata"
 gdsfile <- "data/1KG_phase3_subset.gds"
-if (!dir.exists("data")) dir.create("data")
-if (!file.exists(gdsfile)) download.file(file.path(data.path, basename(gdsfile)), gdsfile)
 gds <- seqOpen(gdsfile)
 
 # use a subset of 100 samples to make things run faster
-workshop.path <- "https://github.com/UW-GAC/topmed_workshop_2018/raw/master"
 sampfile <- "data/samples_subset100.RData"
-if (!file.exists(sampfile)) download.file(file.path(workshop.path, sampfile), sampfile)
 sample.id <- TopmedPipeline::getobj(sampfile)
 
 # LD pruning to get variant set
@@ -80,13 +72,13 @@ First, we partition the samples into a related and unrelated set. We use a kinsh
 
 ```{r pcair_partition}
 library(GENESIS)
-sampset <- pcairPartition(kinMat=kingMat, kin.thresh=2^(-9/2),
-                          divMat=kingMat, div.thresh=-2^(-9/2))
+sampset <- pcairPartition(kinobj=kingMat, kin.thresh=2^(-9/2),
+                          divobj=kingMat, div.thresh=-2^(-9/2))
 names(sampset)
 sapply(sampset, length)
 ```
 
-Typically we would repeat the LD pruning step on the set of unrelated samples we just identified, but for this example we will re-use the pruned set of variants from step 1. Using the SNPRelate package, we run PCA on the unrelated set and project values for the related set.
+Using the SNPRelate package, we run PCA on the unrelated set and project values for the related set. We use the same LD pruned set of variants again.
 
 ```{r pcair_1}
 # run PCA on unrelated set
@@ -108,7 +100,6 @@ We need to determine which PCs are ancestry informative. To do this we need popu
 ```{r annot}
 library(Biobase)
 sampfile <- "data/sample_annotation.RData"
-if (!file.exists(sampfile)) download.file(file.path(workshop.path, sampfile), sampfile)
 annot <- TopmedPipeline::getobj(sampfile)
 annot
 head(pData(annot))
@@ -124,7 +115,7 @@ pc.df$sample.id <- row.names(pcs)
 
 library(dplyr)
 annot <- pData(annot) %>%
-        select(sample.id, Population)
+        dplyr::select(sample.id, Population)
 pc.df <- left_join(pc.df, annot, by="sample.id")
 
 library(GGally)
@@ -145,21 +136,25 @@ The first 2 PCs separate populations, so we use them to compute kinship estimate
 seqResetFilter(gds, verbose=FALSE)
 library(SeqVarTools)
 seqData <- SeqVarData(gds)
+seqSetFilter(seqData, variant.id=pruned)
+iterator <- SeqVarBlockIterator(seqData, verbose=FALSE)
 
-pcrel <- pcrelate(seqData, pcMat=pcs[,1:2], training.set=sampset$unrels, 
-                  scan.include=sample.id, snp.include=pruned)
+pcrel <- pcrelate(iterator, pcs=pcs[,1:2], training.set=sampset$unrels, 
+                  sample.include=sample.id)
 names(pcrel)
 ```
 
 PC-Relate is an iterative method. Now that we have ancestry-adjusted kinship estimates, we can use them to better adjust for ancestry in the PCs. This time we use the `pcair` function, which combines partitioning the sample set and running PCA in one step. First we need to make a kinship matrix from the PC-Relate results. The KING matrix is still used for ancestry divergence.
 
 ```{r pcair_2}
-pcrelMat <- pcrelateMakeGRM(pcrel, scaleKin=1)
+pcrelMat <- pcrelateToMatrix(pcrel, scaleKin=1, verbose=FALSE)
 
-pca <- pcair(seqData, v=32, 
-             kinMat=pcrelMat, kin.thresh=2^(-9/2),
-             divMat=kingMat, div.thresh=-2^(-9/2),
-             scan.include=sample.id, snp.include=pruned)
+seqResetFilter(seqData, verbose=FALSE)
+pca <- pcair(seqData,
+             kinobj=pcrelMat, kin.thresh=2^(-9/2),
+             divobj=kingMat, div.thresh=-2^(-9/2),
+             sample.include=sample.id, snp.include=pruned,
+             verbose=FALSE)
 names(pca)
 
 pcs <- pca$vectors
@@ -175,14 +170,17 @@ ggplot(pc.df, aes(PC1, PC2, color=Population)) + geom_point() +
 Now we use the revised PCs to compute new kinship estimates. One can run the iteration multiple times and check for conversion, but usually two rounds are sufficient.
 
 ```{r pcrelate_2}
-pcrel <- pcrelate(seqData, pcMat=pcs[,1:2], training.set=pca$unrels, 
-                  scan.include=sample.id, snp.include=pruned)
+seqSetFilter(seqData, variant.id=pruned)
+iterator <- SeqVarBlockIterator(seqData, verbose=FALSE)
+pcrel <- pcrelate(iterator, pcs=pcs[,1:2], training.set=pca$unrels, 
+                  sample.include=sample.id)
+save(pcrel, file="data/pcrelate_kinship.RData")
 ```
 
 We plot the kinship estimates from PC-Relate, and notice that the values for less related pairs are much better behaved.
 
 ```{r pcrelate_plot}
-kinship <- pcrelateReadKinship(pcrel)
+kinship <- pcrel$kinBtwn
 
 ggplot(kinship, aes(k0, kin)) +
     geom_hline(yintercept=2^(-seq(3,9,2)/2), linetype="dashed", color="grey") +

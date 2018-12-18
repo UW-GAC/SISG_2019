@@ -5,36 +5,37 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SISG Module 12: Computational Pipeline for WGS Data</title>
-  <meta name="description" content="Course materials for SISG Module 12">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <title>3 Association tests | WISG Module 4: Computational Pipeline for WGS Data</title>
+  <meta name="description" content="Course materials for WISG Module 4">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="SISG Module 12: Computational Pipeline for WGS Data" />
+  <meta property="og:title" content="3 Association tests | WISG Module 4: Computational Pipeline for WGS Data />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Course materials for SISG Module 12" />
-  <meta name="github-repo" content="UW-GAC/topmed_workshop_2018" />
+  <meta property="og:description" content="Course materials for WISG Module 4" />
+  <meta name="github-repo" content="UW-GAC/WISG_2019" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="SISG Module 12: Computational Pipeline for WGS Data" />
+  <meta name="twitter:title" content="3 Association tests | WISG Module 4: Computational Pipeline for WGS Data />
   
-  <meta name="twitter:description" content="Course materials for SISG Module 12" />
+  <meta name="twitter:description" content="Course materials for WISG Module 4" />
   
 
 
 
-<meta name="date" content="2018-07-22">
+<meta name="date" content="2018-12-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="phenotype-harmonization.html">
-<link rel="next" href="analysis-pipeline.html">
+<link rel="prev" href="gds-format.html">
+<link rel="next" href="computing-a-grm.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -99,89 +100,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>1.1</b> Schedule</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.2</b> Resources</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.1</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="gds-format.html"><a href="gds-format.html"><i class="fa fa-check"></i><b>2</b> GDS format</a><ul>
 <li class="chapter" data-level="2.1" data-path="gds-format.html"><a href="gds-format.html#exploring-a-gds-file"><i class="fa fa-check"></i><b>2.1</b> Exploring a GDS file</a></li>
 <li class="chapter" data-level="2.2" data-path="gds-format.html"><a href="gds-format.html#exercises"><i class="fa fa-check"></i><b>2.2</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="computing-a-grm.html"><a href="computing-a-grm.html"><i class="fa fa-check"></i><b>3</b> Computing a GRM</a></li>
-<li class="chapter" data-level="4" data-path="pc-relate.html"><a href="pc-relate.html"><i class="fa fa-check"></i><b>4</b> PC-Relate</a><ul>
-<li class="chapter" data-level="4.1" data-path="pc-relate.html"><a href="pc-relate.html#king"><i class="fa fa-check"></i><b>4.1</b> KING</a></li>
-<li class="chapter" data-level="4.2" data-path="pc-relate.html"><a href="pc-relate.html#pc-air"><i class="fa fa-check"></i><b>4.2</b> PC-AiR</a></li>
-<li class="chapter" data-level="4.3" data-path="pc-relate.html"><a href="pc-relate.html#pc-relate-1"><i class="fa fa-check"></i><b>4.3</b> PC-Relate</a></li>
-<li class="chapter" data-level="4.4" data-path="pc-relate.html"><a href="pc-relate.html#comparison-with-pedigree"><i class="fa fa-check"></i><b>4.4</b> Comparison with pedigree</a></li>
-<li class="chapter" data-level="4.5" data-path="pc-relate.html"><a href="pc-relate.html#exercise"><i class="fa fa-check"></i><b>4.5</b> Exercise</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html"><i class="fa fa-check"></i><b>5</b> Phenotype Harmonization</a><ul>
-<li class="chapter" data-level="5.1" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#inspect-individual-study-data-in-r"><i class="fa fa-check"></i><b>5.1</b> Inspect individual study data in R</a></li>
-<li class="chapter" data-level="5.2" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#compare-study-values"><i class="fa fa-check"></i><b>5.2</b> Compare study values</a></li>
-<li class="chapter" data-level="5.3" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#using-mixed-models-to-compare-studies"><i class="fa fa-check"></i><b>5.3</b> Using mixed models to compare studies</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#create-an-annotated-data-frame"><i class="fa fa-check"></i><b>5.3.1</b> Create an Annotated Data Frame</a></li>
-<li class="chapter" data-level="5.3.2" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#obtain-the-genetic-relatedness-matrix"><i class="fa fa-check"></i><b>5.3.2</b> Obtain the genetic relatedness matrix</a></li>
-<li class="chapter" data-level="5.3.3" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#fit-a-mixed-model-without-study"><i class="fa fa-check"></i><b>5.3.3</b> Fit a mixed model without study</a></li>
-<li class="chapter" data-level="5.3.4" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#fit-a-model-with-study"><i class="fa fa-check"></i><b>5.3.4</b> Fit a model with study</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="phenotype-harmonization.html"><a href="phenotype-harmonization.html#final-considerations"><i class="fa fa-check"></i><b>5.4</b> Final considerations</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="association-tests.html"><a href="association-tests.html"><i class="fa fa-check"></i><b>6</b> Association tests</a><ul>
-<li class="chapter" data-level="6.1" data-path="association-tests.html"><a href="association-tests.html#null-model"><i class="fa fa-check"></i><b>6.1</b> Null model</a></li>
-<li class="chapter" data-level="6.2" data-path="association-tests.html"><a href="association-tests.html#single-variant-tests"><i class="fa fa-check"></i><b>6.2</b> Single-variant tests</a></li>
-<li class="chapter" data-level="6.3" data-path="association-tests.html"><a href="association-tests.html#exercises-1"><i class="fa fa-check"></i><b>6.3</b> Exercises</a></li>
-<li class="chapter" data-level="6.4" data-path="association-tests.html"><a href="association-tests.html#sliding-window-tests"><i class="fa fa-check"></i><b>6.4</b> Sliding window tests</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="association-tests.html"><a href="association-tests.html#exercise-1"><i class="fa fa-check"></i><b>6.4.1</b> Exercise</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="association-tests.html"><a href="association-tests.html#annotation-based-aggregate-tests"><i class="fa fa-check"></i><b>6.5</b> Annotation-based aggregate tests</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="association-tests.html"><a href="association-tests.html#working-with-variant-annotation"><i class="fa fa-check"></i><b>6.5.1</b> Working with variant annotation</a></li>
-<li class="chapter" data-level="6.5.2" data-path="association-tests.html"><a href="association-tests.html#aggregating-and-filtering-variants-using-annotation"><i class="fa fa-check"></i><b>6.5.2</b> Aggregating and filtering variants using annotation</a></li>
-<li class="chapter" data-level="6.5.3" data-path="association-tests.html"><a href="association-tests.html#aggregate-unit-for-association-testing-exercise"><i class="fa fa-check"></i><b>6.5.3</b> Aggregate unit for association testing exercise</a></li>
-<li class="chapter" data-level="6.5.4" data-path="association-tests.html"><a href="association-tests.html#association-testing-with-aggregate-units"><i class="fa fa-check"></i><b>6.5.4</b> Association testing with aggregate units</a></li>
-<li class="chapter" data-level="6.5.5" data-path="association-tests.html"><a href="association-tests.html#exercise-2"><i class="fa fa-check"></i><b>6.5.5</b> Exercise</a></li>
+<li class="chapter" data-level="3" data-path="association-tests.html"><a href="association-tests.html"><i class="fa fa-check"></i><b>3</b> Association tests</a><ul>
+<li class="chapter" data-level="3.1" data-path="association-tests.html"><a href="association-tests.html#null-model"><i class="fa fa-check"></i><b>3.1</b> Null model</a></li>
+<li class="chapter" data-level="3.2" data-path="association-tests.html"><a href="association-tests.html#single-variant-tests"><i class="fa fa-check"></i><b>3.2</b> Single-variant tests</a></li>
+<li class="chapter" data-level="3.3" data-path="association-tests.html"><a href="association-tests.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+<li class="chapter" data-level="3.4" data-path="association-tests.html"><a href="association-tests.html#sliding-window-tests"><i class="fa fa-check"></i><b>3.4</b> Sliding window tests</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="association-tests.html"><a href="association-tests.html#exercise"><i class="fa fa-check"></i><b>3.4.1</b> Exercise</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html"><i class="fa fa-check"></i><b>7</b> Analysis Pipeline</a><ul>
-<li class="chapter" data-level="7.1" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#running-on-a-local-cluster"><i class="fa fa-check"></i><b>7.1</b> Running on a local cluster</a></li>
-<li class="chapter" data-level="7.2" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#running-on-aws-batch"><i class="fa fa-check"></i><b>7.2</b> Running on AWS Batch</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#log-into-aws-docker-image"><i class="fa fa-check"></i><b>7.2.1</b> Log into AWS docker image</a></li>
-<li class="chapter" data-level="7.2.2" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#download-the-docker-helper-functions"><i class="fa fa-check"></i><b>7.2.2</b> Download the docker helper functions</a></li>
-<li class="chapter" data-level="7.2.3" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#cd-to-working-directory-and-create-config-file"><i class="fa fa-check"></i><b>7.2.3</b> cd to working directory and create config file</a></li>
-<li class="chapter" data-level="7.2.4" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#execute-the-python-helper-function-to-run-the-docker-image"><i class="fa fa-check"></i><b>7.2.4</b> Execute the python helper function to run the docker image</a></li>
-<li class="chapter" data-level="7.2.5" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#print-out-aws-commands-if-executing-the-pipeline"><i class="fa fa-check"></i><b>7.2.5</b> Print out AWS commands if executing the pipeline</a></li>
-<li class="chapter" data-level="7.2.6" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#execute-the-pipeline"><i class="fa fa-check"></i><b>7.2.6</b> Execute the pipeline</a></li>
-<li class="chapter" data-level="7.2.7" data-path="analysis-pipeline.html"><a href="analysis-pipeline.html#monitor-the-jobs"><i class="fa fa-check"></i><b>7.2.7</b> Monitor the jobs</a></li>
+<li class="chapter" data-level="4" data-path="computing-a-grm.html"><a href="computing-a-grm.html"><i class="fa fa-check"></i><b>4</b> Computing a GRM</a></li>
+<li class="chapter" data-level="5" data-path="pc-relate.html"><a href="pc-relate.html"><i class="fa fa-check"></i><b>5</b> PC-Relate</a><ul>
+<li class="chapter" data-level="5.1" data-path="pc-relate.html"><a href="pc-relate.html#king"><i class="fa fa-check"></i><b>5.1</b> KING</a></li>
+<li class="chapter" data-level="5.2" data-path="pc-relate.html"><a href="pc-relate.html#pc-air"><i class="fa fa-check"></i><b>5.2</b> PC-AiR</a></li>
+<li class="chapter" data-level="5.3" data-path="pc-relate.html"><a href="pc-relate.html#pc-relate-1"><i class="fa fa-check"></i><b>5.3</b> PC-Relate</a></li>
+<li class="chapter" data-level="5.4" data-path="pc-relate.html"><a href="pc-relate.html#comparison-with-pedigree"><i class="fa fa-check"></i><b>5.4</b> Comparison with pedigree</a></li>
+<li class="chapter" data-level="5.5" data-path="pc-relate.html"><a href="pc-relate.html#exercise-1"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="using-docker.html"><a href="using-docker.html"><i class="fa fa-check"></i><b>8</b> Using Docker</a><ul>
-<li class="chapter" data-level="8.1" data-path="using-docker.html"><a href="using-docker.html#prerequisites"><i class="fa fa-check"></i><b>8.1</b> Prerequisites</a></li>
-<li class="chapter" data-level="8.2" data-path="using-docker.html"><a href="using-docker.html#general-steps"><i class="fa fa-check"></i><b>8.2</b> General Steps</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="using-docker.html"><a href="using-docker.html#download-the-docker-image"><i class="fa fa-check"></i><b>8.2.1</b> Download the Docker Image</a></li>
-<li class="chapter" data-level="8.2.2" data-path="using-docker.html"><a href="using-docker.html#create-working-directory"><i class="fa fa-check"></i><b>8.2.2</b> Create Working Directory</a></li>
-<li class="chapter" data-level="8.2.3" data-path="using-docker.html"><a href="using-docker.html#download-the-docker-helper-functions-1"><i class="fa fa-check"></i><b>8.2.3</b> Download the docker helper functions</a></li>
-<li class="chapter" data-level="8.2.4" data-path="using-docker.html"><a href="using-docker.html#running-rstudio"><i class="fa fa-check"></i><b>8.2.4</b> Running RStudio</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="using-docker.html"><a href="using-docker.html#examples"><i class="fa fa-check"></i><b>8.3</b> Examples</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="using-docker.html"><a href="using-docker.html#example-1"><i class="fa fa-check"></i><b>8.3.1</b> Example 1</a></li>
-<li class="chapter" data-level="8.3.2" data-path="using-docker.html"><a href="using-docker.html#example-2"><i class="fa fa-check"></i><b>8.3.2</b> Example 2</a></li>
-<li class="chapter" data-level="8.3.3" data-path="using-docker.html"><a href="using-docker.html#example-3"><i class="fa fa-check"></i><b>8.3.3</b> Example 3</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="analysis-commons.html"><a href="analysis-commons.html"><i class="fa fa-check"></i><b>9</b> Analysis Commons</a><ul>
-<li class="chapter" data-level="9.1" data-path="analysis-commons.html"><a href="analysis-commons.html#outline"><i class="fa fa-check"></i><b>9.1</b> Outline</a></li>
-<li class="chapter" data-level="9.2" data-path="analysis-commons.html"><a href="analysis-commons.html#web-interface-and-running-an-analysis-application"><i class="fa fa-check"></i><b>9.2</b> Web Interface and Running an Analysis Application</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="analysis-commons.html"><a href="analysis-commons.html#exercise-1-run-a-single-variant-analysis."><i class="fa fa-check"></i><b>9.2.1</b> Exercise 1) Run a single variant analysis.</a></li>
-<li class="chapter" data-level="9.2.2" data-path="analysis-commons.html"><a href="analysis-commons.html#exercise-2-run-skat-test-grouping-variants-into-gene-transcript-regions-and-limit-the-variants-to-those-with-a-cadd-phred-score-2-and-maf-5."><i class="fa fa-check"></i><b>9.2.2</b> Exercise 2) Run SKAT test grouping variants into gene transcript regions and limit the variants to those with a CADD phred score &gt; 2 and MAF &lt;= 5%.</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="analysis-commons.html"><a href="analysis-commons.html#command-line-interface"><i class="fa fa-check"></i><b>9.3</b> Command line interface</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="analysis-commons.html"><a href="analysis-commons.html#log-in-to-awi"><i class="fa fa-check"></i><b>9.3.1</b> Log in to AWI</a></li>
-<li class="chapter" data-level="9.3.2" data-path="analysis-commons.html"><a href="analysis-commons.html#exercise-3-navigate-directories-make-output-directory-examine-files"><i class="fa fa-check"></i><b>9.3.2</b> Exercise 3) Navigate directories, make output directory, examine files</a></li>
-<li class="chapter" data-level="9.3.3" data-path="analysis-commons.html"><a href="analysis-commons.html#exercise-4-run-single-variant-analysis-from-command-line-using-bash-script"><i class="fa fa-check"></i><b>9.3.3</b> Exercise 4) Run single variant analysis from command line using bash script</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="analysis-commons.html"><a href="analysis-commons.html#writing-your-own-apps"><i class="fa fa-check"></i><b>9.4</b> Writing your own Apps</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="analysis-commons.html"><a href="analysis-commons.html#exercise-5-write-an-app-that-creates-phenotype-residuals-and-performs-an-inverse-normal-transform"><i class="fa fa-check"></i><b>9.4.1</b> Exercise 5) Write an App that creates phenotype residuals and performs an inverse normal transform</a></li>
-<li class="chapter" data-level="9.4.2" data-path="analysis-commons.html"><a href="analysis-commons.html#optional-exercise-6-make-qq-plot"><i class="fa fa-check"></i><b>9.4.2</b> Optional Exercise 6) Make QQ plot</a></li>
-<li class="chapter" data-level="9.4.3" data-path="analysis-commons.html"><a href="analysis-commons.html#optional-exercise-8-create-a-regional-association-plot-using-ld-extracted-from-your-data-set"><i class="fa fa-check"></i><b>9.4.3</b> Optional Exercise 8) Create a regional association plot using LD extracted from your data set</a></li>
-</ul></li>
+<li class="chapter" data-level="6" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html"><i class="fa fa-check"></i><b>6</b> Association tests with related subjects</a><ul>
+<li class="chapter" data-level="6.1" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html#null-model-1"><i class="fa fa-check"></i><b>6.1</b> Null model</a></li>
+<li class="chapter" data-level="6.2" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html#single-variant-tests-1"><i class="fa fa-check"></i><b>6.2</b> Single-variant tests</a></li>
+<li class="chapter" data-level="6.3" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html#exercise-2"><i class="fa fa-check"></i><b>6.3</b> Exercise</a></li>
 </ul></li>
 </ul>
 
@@ -192,7 +136,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SISG Module 12: Computational Pipeline for WGS Data</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">WISG Module 4: Computational Pipeline for WGS Data</a>
           </h1>
         </div>
 
@@ -201,18 +145,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="association-tests" class="section level1">
-<h1><span class="header-section-number">6</span> Association tests</h1>
-<p>Since TOPMed has many studies with related participants, we focus on linear mixed models. Logistic mixed models are also possible using GENESIS, see the <a href="https://www.ncbi.nlm.nih.gov/pubmed/27018471">GMMAT paper</a>.</p>
+<h1><span class="header-section-number">3</span> Association tests</h1>
+<p>These exercises introduce association testing: how to find which genetic variants are associated with a phenotype.</p>
 <div id="null-model" class="section level2">
-<h2><span class="header-section-number">6.1</span> Null model</h2>
-<p>The first step in an association test is to fit the null model. We will need an <code>AnnotatedDataFrame</code> with phenotypes, and a GRM. We have a sample annotation with a <code>sample.id</code> column matched to the GDS file, and a phenotype file with <code>subject_id</code>. (In this example, we use the 1000 Genomes IDs for both sample and subject ID.) For TOPMed data, it is also important to match by study, as subject IDs are not unique across studies.</p>
+<h2><span class="header-section-number">3.1</span> Null model</h2>
+<p>The first step in an association test is to fit the null model. We will need an <code>AnnotatedDataFrame</code> with phenotypes. This data structure is provided by the Bioconductor <code>Biobase</code> package, and it contains both the data and metadata (descriptions of each column in the data).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample annotation</span>
-workshop.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/topmed_workshop_2018/raw/master&quot;</span>
-sampfile &lt;-<span class="st"> &quot;data/sample_annotation.RData&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(sampfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, sampfile), sampfile)
+sampfile &lt;-<span class="st"> &quot;data/sample_phenotype_annotation.RData&quot;</span>
 annot &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(sampfile)
 <span class="kw">library</span>(Biobase)
+<span class="co"># access the data with the pData() function</span>
 <span class="kw">head</span>(<span class="kw">pData</span>(annot))</code></pre></div>
 <pre><code>##   sample.id subject.id Population          Population.Description sex
 ## 1   HG00096    HG00096        GBR British in England and Scotland   M
@@ -221,81 +163,104 @@ annot &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><spa
 ## 4   HG00100    HG00100        GBR British in England and Scotland   F
 ## 5   HG00101    HG00101        GBR British in England and Scotland   M
 ## 6   HG00102    HG00102        GBR British in England and Scotland   F
-##   status
-## 1      0
-## 2      1
-## 3      0
-## 4      1
-## 5      0
-## 6      0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># phenotypes by subject ID</span>
-phenfile &lt;-<span class="st"> &quot;data/phenotype_annotation.RData&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(phenfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, phenfile), phenfile)
-phen &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(phenfile)
-<span class="kw">head</span>(<span class="kw">pData</span>(phen))</code></pre></div>
-<pre><code>##   subject_id sex age height   study
-## 1    HG00096   M  47  165.3 study_1
-## 2    HG00102   F  49  169.1 study_1
-## 3    HG00112   M  46  167.9 study_1
-## 4    HG00114   M  49  169.5 study_1
-## 5    HG00115   M  35  161.1 study_1
-## 6    HG00116   M  37  182.2 study_1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">varMetadata</span>(phen)</code></pre></div>
-<pre><code>##                        labelDescription
-## subject_id           subject identifier
-## sex                       subject&#39;s sex
-## age        age at measurement of height
-## height           subject&#39;s height in cm
-## study                  study identifier</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># merge sample annotation with phenotypes</span>
-<span class="kw">library</span>(dplyr)
-dat &lt;-<span class="st"> </span><span class="kw">pData</span>(annot) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">left_join</span>(<span class="kw">pData</span>(phen), <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;subject.id&quot;</span>=<span class="st">&quot;subject_id&quot;</span>, <span class="st">&quot;sex&quot;</span>=<span class="st">&quot;sex&quot;</span>))
-meta &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">varMetadata</span>(annot), <span class="kw">varMetadata</span>(phen)[<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>,,<span class="dt">drop=</span><span class="ot">FALSE</span>])
-annot &lt;-<span class="st"> </span><span class="kw">AnnotatedDataFrame</span>(dat, meta)
-<span class="kw">save</span>(annot, <span class="dt">file=</span><span class="st">&quot;data/sample_phenotype_annotation.RData&quot;</span>)
-
-<span class="co"># load the GRM</span>
-data.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/analysis_pipeline/raw/master/testdata&quot;</span>
-grmfile &lt;-<span class="st"> &quot;data/grm.RData&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(grmfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(data.path, <span class="kw">basename</span>(grmfile)), grmfile)
-grm &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(grmfile)
-<span class="co"># the row and column names of the covariance matrix must be set to sample.id</span>
-<span class="kw">rownames</span>(grm<span class="op">$</span>grm) &lt;-<span class="st"> </span><span class="kw">colnames</span>(grm<span class="op">$</span>grm) &lt;-<span class="st"> </span>grm<span class="op">$</span>sample.id</code></pre></div>
-<p>We will test for an association between genotype and height, adjusting for sex, age, and study as covariates. If the sample set involves multiple distinct groups with different variances for the phenotype, we recommend allowing the model to use heterogeneous variance among groups with the parameter <code>group.var</code>. We saw in a previous exercise that the variance differs by study.</p>
+##   status age  height   study
+## 1      0  47 165.300 study_1
+## 2      1  47 144.780 study_3
+## 3      0  40 185.500 study_2
+## 4      1  45 150.622 study_3
+## 5      0  40 177.800 study_3
+## 6      0  49 169.100 study_1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># access the metadata with the varMetadata() function</span>
+<span class="kw">varMetadata</span>(annot)</code></pre></div>
+<pre><code>##                                     labelDescription
+## sample.id                          sample identifier
+## subject.id                        subject identifier
+## Population                   population abbreviation
+## Population.Description        population description
+## sex                                              sex
+## status                 simulated case/control status
+## age                     age at measurement of height
+## height                        subject&#39;s height in cm
+## study                               study identifier</code></pre>
+<p>We will test for an association between genotype and height, adjusting for sex, age, and study as covariates. First, examine the data to see if the height distribution varies by study.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">ggplot</span>(<span class="kw">pData</span>(annot), <span class="kw">aes</span>(study, height)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="_main_files/figure-html/height_variance-1.png" width="672" /></p>
+<p>From the boxplot, it is clear that the different studies have different mean and variance for height. However, it is possible that this could be the result of different sex and age distributions in each study. To check this, we run a model that adjusts height for age and sex.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GENESIS)
-nullmod &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot, <span class="dt">outcome=</span><span class="st">&quot;height&quot;</span>, <span class="dt">covars=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;study&quot;</span>), 
-                        <span class="dt">cov.mat=</span>grm<span class="op">$</span>grm, <span class="dt">group.var=</span><span class="st">&quot;study&quot;</span>, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-<span class="kw">save</span>(nullmod, <span class="dt">file=</span><span class="st">&quot;data/null_model.RData&quot;</span>)</code></pre></div>
+mod_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot, <span class="dt">outcome=</span><span class="st">&quot;height&quot;</span>, <span class="dt">covars=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>), 
+                      <span class="dt">verbose=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p>The output of <code>fitNullModel</code> is a list with a number of named elements</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(mod_<span class="dv">1</span>)</code></pre></div>
+<pre><code>##  [1] &quot;family&quot;         &quot;hetResid&quot;       &quot;varComp&quot;        &quot;varCompCov&quot;    
+##  [5] &quot;fixef&quot;          &quot;betaCov&quot;        &quot;fitted.values&quot;  &quot;resid.marginal&quot;
+##  [9] &quot;logLik&quot;         &quot;AIC&quot;            &quot;workingY&quot;       &quot;outcome&quot;       
+## [13] &quot;model.matrix&quot;   &quot;group.idx&quot;      &quot;cholSigmaInv&quot;   &quot;converged&quot;     
+## [17] &quot;zeroFLAG&quot;       &quot;RSS&quot;            &quot;Ytilde&quot;         &quot;resid&quot;         
+## [21] &quot;CX&quot;             &quot;CXCXI&quot;          &quot;sample.id&quot;</code></pre>
+<p>The elements that we will work with in this exercise are:</p>
+<ul>
+<li><code>converged</code>: an indicator of whether the model successfully converged</li>
+<li><code>model.matrix</code>: The matrix of subject-covariate values used to fit the model</li>
+<li><code>fixef</code>: The fitted fixed effects</li>
+<li><code>betaCov</code>: The covariance of the fitted fixed effects</li>
+<li><code>resid.marginal</code>: The (marginal) residuals from the model, which have been adjusted for the fixed effects but not for the covariance structure</li>
+<li><code>varComp</code>: The fitted variance component for each input covariance matrix</li>
+</ul>
+<p>Make sure the model converged.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span><span class="op">$</span>converged</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Now, add the residuals to the phenotype data frame for plotting.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">annot<span class="op">$</span>residuals &lt;-<span class="st"> </span>mod_<span class="dv">1</span><span class="op">$</span>resid.marginal</code></pre></div>
+<p>We want to check if the different studies have the same mean height after adjustment for other covariates (here, age and sex). We will first do this qualitatively by making a boxplot of the residuals by study.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">pData</span>(annot), <span class="kw">aes</span>(study, residuals)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="_main_files/figure-html/resid_1-1.png" width="672" /></p>
+<p>Height still has different variances in each study, even after adjusting for age and sex Therefore, we allow the model to use heterogeneous variance among studies with the parameter <code>group.var</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot, <span class="dt">outcome=</span><span class="st">&quot;height&quot;</span>, <span class="dt">covars=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;study&quot;</span>), 
+                        <span class="dt">group.var=</span><span class="st">&quot;study&quot;</span>, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+<span class="kw">save</span>(nullmod, <span class="dt">file=</span><span class="st">&quot;null_model.RData&quot;</span>)</code></pre></div>
+<p>The <code>fixef</code> element now includes effects for study:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod<span class="op">$</span>fixef</code></pre></div>
+<pre><code>##                       Est         SE        Stat         pval
+## (Intercept)  163.67175933 3.18936046 2633.542254 0.000000e+00
+## sexM           6.28764510 0.68812251   83.491933 6.397652e-20
+## age            0.07519782 0.06921691    1.180283 2.772984e-01
+## studystudy_2  10.63152325 0.82176939  167.375183 2.769991e-38
+## studystudy_3  -8.96183691 0.84479021  112.537257 2.724960e-26</code></pre>
+<p>We can also check the variance components (<code>varComp</code>) in the model, which are different for each study:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod<span class="op">$</span>varComp</code></pre></div>
+<pre><code>##   study_1   study_3   study_2 
+##  98.20192 168.82045 155.70722</code></pre>
+<p>The fitted values of the variance components are different for the different studies, indicating that the distributions of height in the three studies have different variance even after accounting for the other covariates.</p>
 <p>We also recommend taking an inverse normal transform of the residuals and refitting the model. This is done separately for each group, and the transformed residuals are rescaled. See the full procedure in the<br />
 <a href="https://github.com/UW-GAC/analysis_pipeline#association-testing">pipeline documenation</a>.</p>
 </div>
 <div id="single-variant-tests" class="section level2">
-<h2><span class="header-section-number">6.2</span> Single-variant tests</h2>
+<h2><span class="header-section-number">3.2</span> Single-variant tests</h2>
+<p>Now that we have a null model adjusting height for covariates, we can run an association test to look for genetic effects on height.</p>
 <p>Single-variant tests are the same as in GWAS. We use the <code>assocTestSingle</code> function in GENESIS. First, we have to create a <code>SeqVarData</code> object including both the GDS file and the sample annotation containing phenotypes. We then create a <code>SeqVarBlockIterator</code> object to iterate over blocks of variants.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SeqVarTools)
 gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(gdsfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(data.path, <span class="kw">basename</span>(gdsfile)), gdsfile)
 gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
 seqData &lt;-<span class="st"> </span><span class="kw">SeqVarData</span>(gds, <span class="dt">sampleData=</span>annot)
 iterator &lt;-<span class="st"> </span><span class="kw">SeqVarBlockIterator</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 assoc &lt;-<span class="st"> </span><span class="kw">assocTestSingle</span>(iterator, nullmod)</code></pre></div>
 <pre><code>## # of selected samples: 1,126</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc)</code></pre></div>
-<pre><code>##   variant.id chr     pos allele.index n.obs         freq       Score
-## 1          1   1  970546            1  1126 0.0039964476 -0.10912333
-## 2          2   1  985900            1  1126 0.0492895204 -1.23670370
-## 3          3   1 1025045            1  1126 0.0004440497 -0.20904504
-## 4          4   1 1265550            1  1126 0.0008880995 -0.09936591
-## 5          5   1 1472676            1  1126 0.0071047957  0.25263905
-## 6          6   1 1735725            1  1126 0.0022202487 -0.10530409
-##     Score.SE Score.Stat Score.pval
-## 1 0.26797312 -0.4072174 0.68384830
-## 2 0.74178862 -1.6671915 0.09547633
-## 3 0.09041046 -2.3121776 0.02076790
-## 4 0.09771658 -1.0168786 0.30921116
-## 5 0.37957076  0.6655915 0.50567227
-## 6 0.17644277 -0.5968173 0.55062937</code></pre>
+<pre><code>##   variant.id chr     pos allele.index n.obs         freq      Score
+## 1          1   1  970546            1  1126 0.0039964476 -0.1191236
+## 2          2   1  985900            1  1126 0.0492895204 -1.6707553
+## 3          3   1 1025045            1  1126 0.0004440497 -0.2795838
+## 4          4   1 1265550            1  1126 0.0008880995 -0.1105487
+## 5          5   1 1472676            1  1126 0.0071047957  0.3630992
+## 6          6   1 1735725            1  1126 0.0022202487 -0.1300405
+##    Score.SE Score.Stat  Score.pval
+## 1 0.2577712 -0.4621292 0.643988703
+## 2 0.8841849 -1.8895995 0.058811539
+## 3 0.1007173 -2.7759261 0.005504472
+## 4 0.1085480 -1.0184319 0.308472754
+## 5 0.3456555  1.0504657 0.293504072
+## 6 0.1973175 -0.6590420 0.509868791</code></pre>
 <p>We make a QQ plot to examine the results.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 qqPlot &lt;-<span class="st"> </span><span class="cf">function</span>(pval) {
@@ -321,93 +286,60 @@ qqPlot &lt;-<span class="st"> </span><span class="cf">function</span>(pval) {
 <p><img src="_main_files/figure-html/assoc_single_qq-1.png" width="672" /></p>
 </div>
 <div id="exercises-1" class="section level2">
-<h2><span class="header-section-number">6.3</span> Exercises</h2>
+<h2><span class="header-section-number">3.3</span> Exercises</h2>
 <ol style="list-style-type: decimal">
-<li>Logistic regression: <code>fitNullModel</code> can use a binary phenotype as the outcome variable by specifying the argument <code>family=binomial</code>. Use the <code>status</code> column in the sample annotation to fit a null model for simulated case/control status, with <code>sex</code> and <code>Population</code> as covariates. Refer to the documentation for <code>fitNullModel</code> to see what other parameters need to be changed for a binary outcome. Then run a single-variant test using this model.</li>
+<li>Logistic regression: <code>fitNullModel</code> can use a binary phenotype as the outcome variable by specifying the argument <code>family=binomial</code>. Use the <code>status</code> column in the sample annotation to fit a null model for simulated case/control status, with <code>sex</code> and <code>Population</code> as covariates. Then run a single-variant test using this model.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod.status &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot, <span class="dt">outcome=</span><span class="st">&quot;status&quot;</span>, <span class="dt">covars=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;Population&quot;</span>), 
-                               <span class="dt">cov.mat=</span>grm<span class="op">$</span>grm, <span class="dt">family=</span>binomial, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-<span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-iterator &lt;-<span class="st"> </span><span class="kw">SeqVarBlockIterator</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+                               <span class="dt">family=</span>binomial, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+<span class="kw">resetIterator</span>(iterator, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 assoc &lt;-<span class="st"> </span><span class="kw">assocTestSingle</span>(iterator, nullmod.status, <span class="dt">test=</span><span class="st">&quot;Score&quot;</span>)</code></pre></div>
 <pre><code>## # of selected samples: 1,126</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc)</code></pre></div>
 <pre><code>##   variant.id chr     pos allele.index n.obs         freq       Score
-## 1          1   1  970546            1  1126 0.0039964476  0.20297260
-## 2          2   1  985900            1  1126 0.0492895204 -2.63528215
-## 3          3   1 1025045            1  1126 0.0004440497 -0.09788685
-## 4          4   1 1265550            1  1126 0.0008880995  0.81055788
-## 5          5   1 1472676            1  1126 0.0071047957  0.63907684
-## 6          6   1 1735725            1  1126 0.0022202487 -0.45986600
+## 1          1   1  970546            1  1126 0.0039964476  0.20256722
+## 2          2   1  985900            1  1126 0.0492895204 -2.64169956
+## 3          3   1 1025045            1  1126 0.0004440497 -0.09916904
+## 4          4   1 1265550            1  1126 0.0008880995  0.81717324
+## 5          5   1 1472676            1  1126 0.0071047957  0.64418361
+## 6          6   1 1735725            1  1126 0.0022202487 -0.46319177
 ##    Score.SE Score.Stat Score.pval
-## 1 0.8333773  0.2435543 0.80757604
-## 2 2.6406893 -0.9979524 0.31830245
-## 3 0.2944788 -0.3324071 0.73958188
-## 4 0.4079077  1.9871110 0.04691009
-## 5 1.0775580  0.5930788 0.55312840
-## 6 0.6352752 -0.7238847 0.46913653</code></pre>
+## 1 0.8351783  0.2425437 0.80835892
+## 2 2.6522412 -0.9960254 0.31923781
+## 3 0.2972472 -0.3336248 0.73866267
+## 4 0.4033577  2.0259271 0.04277226
+## 5 1.0778277  0.5976685 0.55006117
+## 6 0.6396675 -0.7241134 0.46899613</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Inverse normal transform: use the function <code>nullModelInvNorm</code> to perform an inverse normal transform on the <code>height</code> variable. For each study separately, compute a null model and do the inverse normal transform using just the values for that study. Compare these residuals with the initial residuals you obtained for that study by transforming all studies together.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod.norm.all &lt;-<span class="st"> </span><span class="kw">nullModelInvNorm</span>(nullmod, <span class="dt">cov.mat=</span>grm<span class="op">$</span>grm, <span class="dt">norm.option=</span><span class="st">&quot;all&quot;</span>)</code></pre></div>
-<pre><code>## [1]  5.425789e+01  4.280994e+01  1.165208e+02  9.809390e+01 -1.603275e+03
-## [6]  7.550630e-03
-## [1]    34.1059393    35.8537374    89.5518525    76.2493606 -1603.1688799
-## [6]     0.0103567
-## [1]    23.9399324    26.5871040    41.8672926    38.6233809 -1589.5064053
-## [6]     0.0168785
-## [1]  1.323004e+01  1.695408e+01  2.026933e+01  1.897179e+01 -1.586899e+03
-## [6]  3.117756e-02
-## [1]  6.047367e-02  1.475300e+00  4.170380e-01  4.414852e-01 -1.668329e+03
-## [6]  1.555905e+00
-## [1]     0.1469553     0.4514150     0.5780888     0.5971697 -1591.8627680
-## [6]     1.4307711
-## [1]     0.2732667     0.5510270     0.6562528     0.6464594 -1587.9388068
-## [6]     1.1052135
-## [1]     0.3774293     0.5665061     0.6365457     0.6039886 -1586.8231113
-## [6]     1.0119805
-## [1]     0.4002069     0.5625065     0.6274501     0.5901307 -1586.7901480
-## [6]     1.0002535
-## [1]     0.4007555     0.5619102     0.6276794     0.5898303 -1586.7900939
-## [6]     1.0000002
-## [1]     0.4007924     0.5618621     0.6276632     0.5898012 -1586.7900937
-## [6]     1.0000000
-## [1]     0.4007940     0.5618596     0.6276631     0.5897998 -1586.7900937
-## [6]     1.0000000
-## [1]     0.4007941     0.5618594     0.6276630     0.5897997 -1586.7900937
-## [6]     1.0000000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod.norm.all &lt;-<span class="st"> </span><span class="kw">nullModelInvNorm</span>(nullmod, <span class="dt">norm.option=</span><span class="st">&quot;all&quot;</span>)</code></pre></div>
+<pre><code>## [1]  9.820192e+01  1.688205e+02  1.557072e+02 -1.625119e+03  7.522449e-03
+## [1]  6.599572e+01  1.133072e+02  1.041243e+02 -1.624934e+03  1.121317e-02
+## [1]  3.256661e+01  1.404193e+01  2.035900e+01 -1.640616e+03  5.041184e-02
+## [1]     0.4827084     8.3327542     8.0689110 -2114.3471115     0.7725792
+## [1]     0.5140578     0.7039764     0.9389426 -1625.4237578     1.4788832
+## [1]     0.7644879     0.9131510     0.9975131 -1611.9395485     1.1370448
+## [1]     0.9457491     0.9938303     1.0016039 -1608.6378674     1.0224502
+## [1]     0.998731     1.001647     1.001767 -1608.455879     1.001069
+## [1]     1.001807     1.001730     1.001805 -1608.455310     1.000003
+## [1]     1.001813     1.001731     1.001807 -1608.455310     1.000000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat.all &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sample.id=</span>nullmod.norm.all<span class="op">$</span>sample.id, 
                       <span class="dt">resid.norm=</span>nullmod.norm.all<span class="op">$</span>resid.marginal,
                       <span class="dt">study=</span>annot<span class="op">$</span>study,
                       <span class="dt">run=</span><span class="st">&quot;combined&quot;</span>)
 
-nullmod.norm.group &lt;-<span class="st"> </span><span class="kw">nullModelInvNorm</span>(nullmod, <span class="dt">cov.mat=</span>grm<span class="op">$</span>grm, <span class="dt">norm.option=</span><span class="st">&quot;by.group&quot;</span>)</code></pre></div>
-<pre><code>## [1]  5.425789e+01  4.280994e+01  1.165208e+02  9.809390e+01 -1.603261e+03
-## [6]  7.550447e-03
-## [1]  3.410585e+01  3.585414e+01  8.955164e+01  7.624878e+01 -1.603073e+03
-## [6]  1.035495e-02
-## [1]  2.381355e+01  2.675865e+01  4.187048e+01  3.854132e+01 -1.589079e+03
-## [6]  1.688542e-02
-## [1]  1.314472e+01  1.711287e+01  2.026706e+01  1.891569e+01 -1.586384e+03
-## [6]  3.118594e-02
-## [1]  8.589106e-02  1.481859e+00  3.914272e-01  4.184609e-01 -1.667958e+03
-## [6]  1.544430e+00
-## [1]     0.1813120     0.3672249     0.5455505     0.5663653 -1592.4099600
-## [6]     1.4796328
-## [1]     0.2977573     0.4898427     0.6356443     0.6241021 -1587.7049688
-## [6]     1.1238804
-## [1]     0.3827790     0.5519849     0.6322866     0.5968108 -1586.3216456
-## [6]     1.0156781
-## [1]     0.3994230     0.5656881     0.6262186     0.5869734 -1586.2714835
-## [6]     1.0004091
-## [1]     0.3992844     0.5665599     0.6266094     0.5871986 -1586.2714479
-## [6]     1.0000003
-## [1]     0.3992672     0.5665839     0.6266101     0.5872179 -1586.2714479
-## [6]     1.0000000
-## [1]     0.3992662     0.5665853     0.6266105     0.5872188 -1586.2714479
-## [6]     1.0000000
-## [1]     0.3992662     0.5665853     0.6266105     0.5872188 -1586.2714479
-## [6]     1.0000000</code></pre>
+nullmod.norm.group &lt;-<span class="st"> </span><span class="kw">nullModelInvNorm</span>(nullmod, <span class="dt">norm.option=</span><span class="st">&quot;by.group&quot;</span>)</code></pre></div>
+<pre><code>## [1]  9.820192e+01  1.688205e+02  1.557072e+02 -1.624686e+03  7.516645e-03
+## [1]  6.599547e+01  1.133069e+02  1.041241e+02 -1.624502e+03  1.120455e-02
+## [1]  3.254107e+01  1.394878e+01  2.030342e+01 -1.640619e+03  5.058311e-02
+## [1]     0.4823649     8.3127679     8.0728042 -2113.8412464     0.7725567
+## [1]     0.5136907     0.7135928     0.9316405 -1624.7322739     1.4746195
+## [1]     0.7639307     0.9183081     0.9959743 -1611.5285780     1.1349499
+## [1]     0.9450453     0.9939501     1.0009186 -1608.2035095     1.0221048
+## [1]     0.9979798     1.0007589     1.0010808 -1608.0188191     1.0010636
+## [1]     1.001052     1.000829     1.001116 -1608.018248     1.000003
+## [1]     1.001058     1.000831     1.001118 -1608.018248     1.000000</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat.group &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sample.id=</span>nullmod.norm.group<span class="op">$</span>sample.id, 
                         <span class="dt">resid.norm=</span>nullmod.norm.group<span class="op">$</span>resid.marginal,
                         <span class="dt">study=</span>annot<span class="op">$</span>study,
@@ -417,22 +349,9 @@ dat &lt;-<span class="st"> </span><span class="kw">rbind</span>(dat.all, dat.gro
 
 <span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(study, resid.norm, <span class="dt">fill=</span>run)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
 <p><img src="_main_files/figure-html/exercise_invnorm-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(study, run) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">mean=</span><span class="kw">mean</span>(resid.norm), <span class="dt">var=</span><span class="kw">var</span>(resid.norm))</code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-## # Groups:   study [?]
-##   study   run           mean   var
-##   &lt;fct&gt;   &lt;fct&gt;        &lt;dbl&gt; &lt;dbl&gt;
-## 1 study_1 combined  0.000396 1.00 
-## 2 study_1 separate  0.00119  0.999
-## 3 study_2 combined  0.000915 1.00 
-## 4 study_2 separate  0.000783 0.999
-## 5 study_3 combined -0.00132  1.000
-## 6 study_3 separate -0.00198  0.999</code></pre>
 </div>
 <div id="sliding-window-tests" class="section level2">
-<h2><span class="header-section-number">6.4</span> Sliding window tests</h2>
+<h2><span class="header-section-number">3.4</span> Sliding window tests</h2>
 <p>For rare variants, we can do burden tests or SKAT using the GENESIS function <code>assocTestAggregate</code>. We restrict the test to variants with alternate allele frequency &lt; 0.1. (For real data, this threshold would be lower.) We use a flat weighting scheme. We define a sliding window across the genome using a <code>SeqVarWindowIterator</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 iterator &lt;-<span class="st"> </span><span class="kw">SeqVarWindowIterator</span>(seqData, <span class="dt">windowSize=</span><span class="dv">5000</span>, <span class="dt">windowShift=</span><span class="dv">2000</span>, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
@@ -441,20 +360,20 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(i
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(assoc)</code></pre></div>
 <pre><code>## [1] &quot;results&quot;     &quot;variantInfo&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##   chr   start     end n.site n.alt n.sample.alt       Score   Score.SE
-## 1   1  966001  971000      1     9            9 -0.10912333 0.26797312
-## 2   1  982001  987000      1   111          107 -1.23670370 0.74178862
-## 3   1 1022001 1027000      1     1            1 -0.20904504 0.09041046
-## 4   1 1262001 1267000      1     2            2 -0.09936591 0.09771658
-## 5   1 1468001 1473000      1    16           16  0.25263905 0.37957076
-## 6   1 1732001 1737000      1     5            5 -0.10530409 0.17644277
-##   Score.Stat Score.pval
-## 1 -0.4072174 0.68384830
-## 2 -1.6671915 0.09547633
-## 3 -2.3121776 0.02076790
-## 4 -1.0168786 0.30921116
-## 5  0.6655915 0.50567227
-## 6 -0.5968173 0.55062937</code></pre>
+<pre><code>##   chr   start     end n.site n.alt n.sample.alt      Score  Score.SE
+## 1   1  966001  971000      1     9            9 -0.1191236 0.2577712
+## 2   1  982001  987000      1   111          107 -1.6707553 0.8841849
+## 3   1 1022001 1027000      1     1            1 -0.2795838 0.1007173
+## 4   1 1262001 1267000      1     2            2 -0.1105487 0.1085480
+## 5   1 1468001 1473000      1    16           16  0.3630992 0.3456555
+## 6   1 1732001 1737000      1     5            5 -0.1300405 0.1973175
+##   Score.Stat  Score.pval
+## 1 -0.4621292 0.643988703
+## 2 -1.8895995 0.058811539
+## 3 -2.7759261 0.005504472
+## 4 -1.0184319 0.308472754
+## 5  1.0504657 0.293504072
+## 6 -0.6590420 0.509868791</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>variantInfo)</code></pre></div>
 <pre><code>## [[1]]
 ##   variant.id chr    pos allele.index n.obs        freq weight
@@ -487,13 +406,20 @@ iterator &lt;-<span class="st"> </span><span class="kw">SeqVarWindowIterator</sp
 assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
 <pre><code>## # of selected samples: 1,126</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##   chr   start     end n.site n.alt n.sample.alt       Q_0     pval_0 err_0
-## 1   1  966001  971000      1     9            9  6.140982 0.68384830     0
-## 2   1  982001  987000      1   111          107 84.475122 0.09547633     0
-## 3   1 1022001 1027000      1     1            1 26.736279 0.02076790     0
-## 4   1 1262001 1267000      1     2            2  5.913344 0.30921116     0
-## 5   1 1468001 1473000      1    16           16 28.329885 0.50567227     0
-## 6   1 1732001 1737000      1     5            5  6.229246 0.55062937     0</code></pre>
+<pre><code>##   chr   start     end n.site n.alt n.sample.alt        Q_0      pval_0
+## 1   1  966001  971000      1     9            9   7.318094 0.643988703
+## 2   1  982001  987000      1   111          107 154.178280 0.058811539
+## 3   1 1022001 1027000      1     1            1  47.823916 0.005504472
+## 4   1 1262001 1267000      1     2            2   7.319239 0.308472754
+## 5   1 1468001 1473000      1    16           16  58.518662 0.293504072
+## 6   1 1732001 1737000      1     5            5   9.499539 0.509868791
+##   err_0
+## 1     0
+## 2     0
+## 3     0
+## 4     0
+## 5     0
+## 6     0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>variantInfo)</code></pre></div>
 <pre><code>## [[1]]
 ##   variant.id chr    pos allele.index n.obs        freq   weight
@@ -520,864 +446,30 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(i
 ## 1          6   1 1735725            1  1126 0.002220249 23.70132</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqPlot</span>(assoc<span class="op">$</span>results<span class="op">$</span>pval_<span class="dv">0</span>)</code></pre></div>
 <p><img src="_main_files/figure-html/assoc_window_skat-1.png" width="672" /></p>
-<div id="exercise-1" class="section level3">
-<h3><span class="header-section-number">6.4.1</span> Exercise</h3>
+<div id="exercise" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Exercise</h3>
 <p>Repeat the previous exercise on logistic regression, this time running a sliding-window test.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod.status &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot, <span class="dt">outcome=</span><span class="st">&quot;status&quot;</span>, <span class="dt">covars=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;Population&quot;</span>), 
-                               <span class="dt">cov.mat=</span>grm<span class="op">$</span>grm, <span class="dt">family=</span>binomial, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+                               <span class="dt">family=</span>binomial, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 <span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 iterator &lt;-<span class="st"> </span><span class="kw">SeqVarWindowIterator</span>(seqData, <span class="dt">windowSize=</span><span class="dv">5000</span>, <span class="dt">windowShift=</span><span class="dv">2000</span>, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
 <pre><code>## # of selected samples: 1,126</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##   chr   start     end n.site n.alt n.sample.alt       Q_0     pval_0 err_0
-## 1   1  966001  971000      1     9            9  6.140982 0.68384830     0
-## 2   1  982001  987000      1   111          107 84.475122 0.09547633     0
-## 3   1 1022001 1027000      1     1            1 26.736279 0.02076790     0
-## 4   1 1262001 1267000      1     2            2  5.913344 0.30921116     0
-## 5   1 1468001 1473000      1    16           16 28.329885 0.50567227     0
-## 6   1 1732001 1737000      1     5            5  6.229246 0.55062937     0</code></pre>
-</div>
-</div>
-<div id="annotation-based-aggregate-tests" class="section level2">
-<h2><span class="header-section-number">6.5</span> Annotation-based aggregate tests</h2>
-<p><strong>Note:</strong> the code and libraries in this section are under active development. This section uses <a href="https://github.com/UW-GAC/wgsaparsr/tree/5.0.8">WGSAParsr v 5.0.8</a> to parse output from <a href="https://sites.google.com/site/jpopgen/wgsa">WGSA version 0.7</a>. Use this code at your own risk, and be warned that it may break in unexpected ways or be incompatible across different versions of the software. <a href="https://github.com/UW-GAC/wgsaparsr">Github issues and contribution</a> are welcome!</p>
-<p>This module is provided to give workshop participants an example of some of the kinds of analysis tasks that might be performed with TOPMed annotation data.</p>
-<p>Analysts generally aggregate rare variants for association testing to decrease multiple testing burden and increase statistical power. They can group variants that fall within arbitrary ranges (such as sliding windows), or they can group variants with intent. For example, an analyst could aggregate variants that that fall between transcription start sites and stop sites, within coding regions, within regulatory regions, or other genomic features selected from sources like published gene models or position- or transcript-based variant annotation. An analyst could also choose to filter the variants prior or subsequent to aggregation using annotation-based criteria such as functional impact or quality scores.</p>
-<p>In this workshop, you will aggregate and filter genomic variants using genomic annotation for subsequent association testing. Starting with an annotation file describing 1,922 genomic variants on chromosome 22 from TOPMed’s Freeze 5 data release that are also in the 1000 Genomes Project, you will define a configuration file to use the <em>WGSAParsr</em> package to select relevant annotation fields, then aggregate the selected variants into genic units and apply filters to restrict the variants in aggreagation units by predicted functional consequence.</p>
-<div id="working-with-variant-annotation" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Working with variant annotation</h3>
-<p>Variants called from the TOPMed data set are annotated using the <a href="https://sites.google.com/site/jpopgen/wgsa">Whole Genome Sequence Annotator (WGSA)</a>. Output files from WGSA version 0.7 include 366 annotation fields annotating indel variants, and 438 annotation fields annotating snv variants. In each case, some annotation fields are themselves lists of annotation values. Thus, individual variants may be annotated with more than 1000 individual fields. Not all of these fields will be useful for a particular analysis, and some may be incompatible, so analysts need to parse the WGSA output prior to filtering and aggregation.</p>
-<p>The WGSA-annotated variant annotation files we will use for this exercise are available via github:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">workshop.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/topmed_workshop_2018/raw/master/&quot;</span>
-
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
-
-snvfile &lt;-<span class="st"> &quot;data/snv.tsv.gz&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(snvfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, snvfile), snvfile)
-
-indelfile &lt;-<span class="st"> &quot;data/indel.tsv.gz&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(indelfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, indelfile), indelfile)</code></pre></div>
-<p>Also, you’ll be using functions from the <code>tidyverse</code> package, so load that library as well:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
-<p>WGSA output files are tab-separated text files, with one line per annotated variant. Since there are many annotation fields, these files can be unwieldy to work with directly. As an example, the first two lines of the SNP variant annotation file can be previewed within R:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(snvfile, <span class="dt">n=</span><span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] &quot;CHROM\tPOS\tREF\tALT\tchr_hg19\tpos_hg19\tref_hg19\talt_hg19\tref_hg19_equals_ref_hg38\tFILTER\tSnpEff_ensembl_Effect\tSnpEff_ensembl_Effect_impact\tSnpEff_ensembl_Sequence_feature\tSnpEff_ensembl_Sequence_feature_impact\tSnpEff_ensembl_Transcript_ID\tSnpEff_ensembl_Transcript_biotype\tSnpEff_ensembl_Gene_name\tSnpEff_ensembl_Gene_ID\tSnpEff_ensembl_HGVSc\tSnpEff_ensembl_HGVSp\tSnpEff_ensembl_Protein_position_or_Protein_len\tSnpEff_ensembl_CDS_position_or_CDS_len\tSnpEff_ensembl_cDNA_position_or_cDNA_len\tSnpEff_ensembl_Exon_or_intron_rank_or_total\tSnpEff_ensembl_Distance_to_feature\tSnpEff_ensembl_Warnings\tSnpEff_ensembl_LOF_or_NMD\tSnpEff_ensembl_LOF_or_NMD_gene_name\tSnpEff_ensembl_LOF_or_NMD_gene_ID\tSnpEff_ensembl_LOF_or_NMD_num_transcripts_affected\tSnpEff_ensembl_LOF_or_NMD_percent_transcripts_affected\tSnpEff_ensembl_TF_binding_effect\tSnpEff_ensembl_TF_name\tSnpEff_ensembl_TF_ID\tSnpEff_ensembl_summary\tVEP_ensembl_Consequence\tVEP_ensembl_Transcript_ID\tVEP_ensembl_Gene_Name\tVEP_ensembl_Gene_ID\tVEP_ensembl_Protein_ID\tVEP_ensembl_CCDS\tVEP_ensembl_SWISSPROT\tVEP_ensembl_Codon_Change_or_Distance\tVEP_ensembl_Amino_Acid_Change\tVEP_ensembl_HGVSc\tVEP_ensembl_HGVSp\tVEP_ensembl_cDNA_position\tVEP_ensembl_CDS_position\tVEP_ensembl_Protein_position\tVEP_ensembl_Exon_or_Intron_Rank\tVEP_ensembl_STRAND\tVEP_ensembl_CANONICAL\tVEP_ensembl_LoF\tVEP_ensembl_LoF_filter\tVEP_ensembl_LoF_flags\tVEP_ensembl_LoF_info\tVEP_ensembl_summary\tANNOVAR_refseq_Effect\tANNOVAR_refseq_Transcript_ID\tANNOVAR_refseq_Gene_ID\tANNOVAR_refseq_Closest_gene\tANNOVAR_refseq_HGVSc\tANNOVAR_refseq_HGVSp\tANNOVAR_refseq_Exon_Rank\tANNOVAR_refseq_summary\tSnpEff_refseq_Effect\tSnpEff_refseq_Effect_impact\tSnpEff_refseq_Sequence_feature\tSnpEff_refseq_Sequence_feature_impact\tSnpEff_refseq_Transcript_ID\tSnpEff_refseq_Transcript_biotype\tSnpEff_refseq_Gene_name\tSnpEff_refseq_Gene_ID\tSnpEff_refseq_HGVSc\tSnpEff_refseq_HGVSp\tSnpEff_refseq_Protein_position_or_Protein_len\tSnpEff_refseq_CDS_position_or_CDS_len\tSnpEff_refseq_cDNA_position_or_cDNA_len\tSnpEff_refseq_Exon_or_intron_rank_or_total\tSnpEff_refseq_Distance_to_feature\tSnpEff_refseq_Warnings\tSnpEff_refseq_LOF_or_NMD\tSnpEff_refseq_LOF_or_NMD_gene_name\tSnpEff_refseq_LOF_or_NMD_gene_ID\tSnpEff_refseq_LOF_or_NMD_num_transcripts_affected\tSnpEff_refseq_LOF_or_NMD_percent_transcripts_affected\tSnpEff_refseq_TF_binding_effect\tSnpEff_refseq_TF_name\tSnpEff_refseq_TF_ID\tSnpEff_refseq_summary\tVEP_refseq_Consequence\tVEP_refseq_Transcript_ID\tVEP_refseq_Gene_Name\tVEP_refseq_Gene_ID\tVEP_refseq_Protein_ID(ENSP)\tVEP_refseq_Codon_Change_or_Distance\tVEP_refseq_Amino_Acid_Change\tVEP_refseq_HGVSc\tVEP_refseq_HGVSp\tVEP_refseq_cDNA_position\tVEP_refseq_CDS_position\tVEP_refseq_Protein_position\tVEP_refseq_Exon_or_Intron_Rank\tVEP_refseq_STRAND\tVEP_refseq_CANONICAL\tVEP_refseq_LoF\tVEP_refseq_LoF_filter\tVEP_refseq_LoF_flags\tVEP_refseq_LoF_info\tVEP_refseq_summary\tANNOVAR_ucsc_Effect\tANNOVAR_ucsc_Transcript_ID\tANNOVAR_ucsc_Gene_ID\tANNOVAR_ucsc_Closest_gene\tANNOVAR_ucsc_HGVSc\tANNOVAR_ucsc_HGVSp\tANNOVAR_ucsc_Exon_Rank\tANNOVAR_ucsc_summary\trs_dbSNP150\tsno_miRNA_name\tsno_miRNA_type\tUTR3_miRNA_target\tTargetScan_context_pp_score_percentile\tsplicing_consensus_ada_score\tsplicing_consensus_rf_score\tGWAS_catalog_rs\tGWAS_catalog_trait\tGWAS_catalog_pubmedid\tGRASP_rs\tGRASP_PMID\tGRASP_p_value\tGRASP_phenotype\tGRASP_ancestry\tGRASP_platform\tclinvar_rs\tclinvar_clnsig\tclinvar_trait\tclinvar_golden_stars\tGTEx_V6p_gene\tGTEx_V6p_tissue\tMAP20\tMAP35\tMAP20_149bp\tMAP35_149\tGMS_single_end\tGMS_paired_end\tKGP_strict_masked\tRepeatMasker_masked\tAncestral_allele\tAltaiNeandertal_genotypes\tDenisova_genotypes\tVindijiaNeandertal_genotypes\tphyloP46way_primate\tphyloP46way_primate_rankscore\tphyloP20way_mammalian\tphyloP20way_mammalian_rankscore\tphyloP100way_vertebrate\tphyloP100way_vertebrate_rankscore\tphastCons46way_primate\tphastCons46way_primate_rankscore\tphastCons20way_mammalian\tphastCons20way_mammalian_rankscore\tphastCons100way_vertebrate\tphastCons100way_vertebrate_rankscore\tGERP_NR\tGERP_RS\tGERP_RS_rankscore\tSiPhy_29way_logOdds\tSiPhy_29way_logOdds_rankscore\tintegrated_fitCons_score\tintegrated_fitCons_rankscore\tintegrated_confidence_value\tGM12878_fitCons_score\tGM12878_fitCons_rankscore\tGM12878_confidence_value\tH1_hESC_fitCons_score\tH1_hESC_fitCons_rankscore\tH1_hESC_confidence_value\tHUVEC_fitCons_score\tHUVEC_fitCons_rankscore\tHUVEC_confidence_value\tGenoCanyon_score\tGenoCanyon_rankscore\tKGP3_AC\tKGP3_AF\tKGP3_AFR_AC\tKGP3_AFR_AF\tKGP3_EUR_AC\tKGP3_EUR_AF\tKGP3_AMR_AC\tKGP3_AMR_AF\tKGP3_EAS_AC\tKGP3_EAS_AF\tKGP3_SAS_AC\tKGP3_SAS_AF\tUK10K_AC\tUK10K_AN\tUK10K_AF\tTWINSUK_AC\tTWINSUK_AN\tTWINSUK_AF\tALSPAC_AC\tALSPAC_AN\tALSPAC_AF\tESP6500_AC\tESP6500_AF\tESP6500_AA_AC\tESP6500_AA_AF\tESP6500_EA_AC\tESP6500_EA_AF\tExAC_AC\tExAC_AF\tExAC_Adj_AC\tExAC_Adj_AF\tExAC_AFR_AC\tExAC_AFR_AF\tExAC_AMR_AC\tExAC_AMR_AF\tExAC_EAS_AC\tExAC_EAS_AF\tExAC_FIN_AC\tExAC_FIN_AF\tExAC_NFE_AC\tExAC_NFE_AF\tExAC_SAS_AC\tExAC_SAS_AF\tExAC_nonTCGA_AC\tExAC_nonTCGA_AF\tExAC_nonTCGA_Adj_AC\tExAC_nonTCGA_Adj_AF\tExAC_nonTCGA_AFR_AC\tExAC_nonTCGA_AFR_AF\tExAC_nonTCGA_AMR_AC\tExAC_nonTCGA_AMR_AF\tExAC_nonTCGA_EAS_AC\tExAC_nonTCGA_EAS_AF\tExAC_nonTCGA_FIN_AC\tExAC_nonTCGA_FIN_AF\tExAC_nonTCGA_NFE_AC\tExAC_nonTCGA_NFE_AF\tExAC_nonTCGA_SAS_AC\tExAC_nonTCGA_SAS_AF\tExAC_nonpsych_AC\tExAC_nonpsych_AF\tExAC_nonpsych_Adj_AC\tExAC_nonpsych_Adj_AF\tExAC_nonpsych_AFR_AC\tExAC_nonpsych_AFR_AF\tExAC_nonpsych_AMR_AC\tExAC_nonpsych_AMR_AF\tExAC_nonpsych_EAS_AC\tExAC_nonpsych_EAS_AF\tExAC_nonpsych_FIN_AC\tExAC_nonpsych_FIN_AF\tExAC_nonpsych_NFE_AC\tExAC_nonpsych_NFE_AF\tExAC_nonpsych_SAS_AC\tExAC_nonpsych_SAS_AF\tgnomAD_exomes_AC\tgnomAD_exomes_AN\tgnomAD_exomes_AF\tgnomAD_exomes_AFR_AC\tgnomAD_exomes_AFR_AN\tgnomAD_exomes_AFR_AF\tgnomAD_exomes_AMR_AC\tgnomAD_exomes_AMR_AN\tgnomAD_exomes_AMR_AF\tgnomAD_exomes_ASJ_AC\tgnomAD_exomes_ASJ_AN\tgnomAD_exomes_ASJ_AF\tgnomAD_exomes_EAS_AC\tgnomAD_exomes_EAS_AN\tgnomAD_exomes_EAS_AF\tgnomAD_exomes_FIN_AC\tgnomAD_exomes_FIN_AN\tgnomAD_exomes_FIN_AF\tgnomAD_exomes_NFE_AC\tgnomAD_exomes_NFE_AN\tgnomAD_exomes_NFE_AF\tgnomAD_exomes_SAS_AC\tgnomAD_exomes_SAS_AN\tgnomAD_exomes_SAS_AF\tgnomAD_exomes_OTH_AC\tgnomAD_exomes_OTH_AN\tgnomAD_exomes_OTH_AF\tgnomAD_genomes_AC\tgnomAD_genomes_AN\tgnomAD_genomes_AF\tgnomAD_genomes_AFR_AC\tgnomAD_genomes_AFR_AN\tgnomAD_genomes_AFR_AF\tgnomAD_genomes_AMR_AC\tgnomAD_genomes_AMR_AN\tgnomAD_genomes_AMR_AF\tgnomAD_genomes_ASJ_AC\tgnomAD_genomes_ASJ_AN\tgnomAD_genomes_ASJ_AF\tgnomAD_genomes_EAS_AC\tgnomAD_genomes_EAS_AN\tgnomAD_genomes_EAS_AF\tgnomAD_genomes_FIN_AC\tgnomAD_genomes_FIN_AN\tgnomAD_genomes_FIN_AF\tgnomAD_genomes_NFE_AC\tgnomAD_genomes_NFE_AN\tgnomAD_genomes_NFE_AF\tgnomAD_genomes_OTH_AC\tgnomAD_genomes_OTH_AN\tgnomAD_genomes_OTH_AF\tRegulomeDB_motif\tRegulomeDB_score\tMotif_breaking\tnetwork_hub\tENCODE_annotated\tsensitive\tultra_sensitive\ttarget_gene\tfunseq_noncoding_score\tfunseq2_noncoding_score\tfunseq2_noncoding_rankscore\tCADD_raw\tCADD_phred\tCADD_raw_rankscore\tDANN_score\tDANN_rank_score\tfathmm_MKL_non_coding_score\tfathmm_MKL_non_coding_rankscore\tfathmm_MKL_non_coding_pred\tfathmm_MKL_non_coding_group\tfathmm_MKL_coding_score\tfathmm_MKL_coding_rankscore\tfathmm_MKL_coding_pred\tfathmm_MKL_coding_group\tEigen_coding_or_noncoding\tEigen_raw\tEigen_phred\tEigen_PC_raw\tEigen_PC_phred\tORegAnno_type\tORegAnno_PMID\thESC_Topological_Domain\tIMR90_Topological_Domain\tENCODE_TFBS\tENCODE_TFBS_score\tENCODE_TFBS_cells\tENCODE_Dnase_score\tENCODE_Dnase_cells\tEnhancerFinder_general_developmental_enhancer\tEnhancerFinder_brain_enhancer\tEnhancerFinder_heart_enhancer\tEnhancerFinder_limb_enhancer\tSuperEnhancer_tissue_cell\tSuperEnhancer_RefSeq_id\tSuperEnhancer_Gene_symbol\tFANTOM5_enhancer_permissive\tFANTOM5_enhancer_robust\tFANTOM5_enhancer_target\tFANTOM5_enhancer_expressed_tissue_cell\tFANTOM5_enhancer_differentially_expressed_tissue_cell\tFANTOM5_CAGE_peak_permissive\tFANTOM5_CAGE_peak_robust\tEnsembl_Regulatory_Build_feature_type\tEnsembl_Regulatory_Build_ID\tEnsembl_Regulatory_Build_TFBS\tEnsembl_Regulatory_Build_TFBS_matrix\taaref\taaalt\tgenename\tcds_strand\trefcodon\tcodonpos\tcodon_degeneracy\tEnsembl_geneid\tEnsembl_transcriptid\tEnsembl_proteinid\taapos\tSIFT_score\tSIFT_converted_rankscore\tSIFT_pred\tUniprot_acc_Polyphen2\tUniprot_id_Polyphen2\tUniprot_aapos_Polyphen2\tPolyphen2_HDIV_score\tPolyphen2_HDIV_rankscore\tPolyphen2_HDIV_pred\tPolyphen2_HVAR_score\tPolyphen2_HVAR_rankscore\tPolyphen2_HVAR_pred\tLRT_score\tLRT_converted_rankscore\tLRT_pred\tLRT_Omega\tMutationTaster_score\tMutationTaster_converted_rankscore\tMutationTaster_pred\tMutationTaster_model\tMutationTaster_AAE\tMutationAssessor_UniprotID\tMutationAssessor_variant\tMutationAssessor_score\tMutationAssessor_score_rankscore\tMutationAssessor_pred\tFATHMM_score\tFATHMM_converted_rankscore\tFATHMM_pred\tPROVEAN_score\tPROVEAN_converted_rankscore\tPROVEAN_pred\tTranscript_id_VEST3\tTranscript_var_VEST3\tVEST3_score\tVEST3_rankscore\tMetaSVM_score\tMetaSVM_rankscore\tMetaSVM_pred\tMetaLR_score\tMetaLR_rankscore\tMetaLR_pred\tReliability_index\tM_CAP_score\tM_CAP_rankscore\tM_CAP_pred\tREVEL_score\tREVEL_rankscore\tMutPred_score\tMutPred_rankscore\tMutPred_protID\tMutPred_AAchange\tMutPred_Top5features\tSIFT4G_AAref\tSIFT4G_AAalt\tSIFT4G_AApos\tSIFT4G_score\tSIFT4G_pred\tVEP_ensembl_precedent_transcript_consequence\tVEP_ensembl_precedent_consequence\tVEP_ensembl_precedent_gene\tunique_variant&quot;
-## [2] &quot;22\t15319214\tC\tG\t14\t19164877\tC\tG\tY\tSVM\tintergenic_region\tMODIFIER\t.\t.\t.\t.\tLA16c-60D12.2-ZNF72P\tENSG00000279442-ENSG00000184624\tn.15319214C&gt;G\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\tLA16c-60D12.2-ZNF72P(1):intergenic_region(1)\tintergenic_variant\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.(0):intergenic_variant(1)\tintergenic\t.\t.\tNONE:NONE(dist=NONE),OR11H1:NM_001005239(dist=208945)\t.\t.\t.\t.(0):intergenic(1)\tintergenic_region\tMODIFIER\t.\t.\t.\t.\tLOC102723769-OR11H1\tLOC102723769-OR11H1\tn.15319214C&gt;G\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\tLOC102723769-OR11H1(1):intergenic_region(1)\tintergenic_variant\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.(0):intergenic_variant(1)\tintergenic\t.\t.\tLA16c-60D12.2:uc062beg.1(dist=14658),OR11H1:uc011agd.3(dist=208944)\t.\t.\t.\t.(0):intergenic(1)\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t0.4875\t0.5\t0.117857136\t0.24025154\t0.0\t2.9325\tN\tY\tc\t./.\t./.\t./.\t0.121\t0.35824\t0.145\t0.48140\t-0.437\t0.21305\t0.022\t0.42945\t0.003\t0.27678\t0.029\t0.71313\t.\t.\t.\t.\t.\t0.061011\t0.46846\t0\t0.063388\t0.47335\t0\t0.063197\t0.58247\t0\t0.057018\t0.25711\t0\t1.09986088870014E-6\t0.12103\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\tMotifs|PWM|Foxl1, Motifs|PWM|FOXP1\t6\t.\t.\t.\t.\t.\t.\t.\t0\t0.19668\t-0.178153\t1.218\t0.24498\t0.13693365151803163\t0.00553\t0.05598\t0.07755\tN\tA\t0.00207\t0.10909\tN\tAEFI\tn\t-0.401239710146973\t0.460042\t-0.231206471968918\t0.361134\t.\t.\t.\t.\t.\t.\t.\t.\t.\tN\tN\tN\tN\t.\t.\t.\tN\tN\t.\t.\t.\tN\tN\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\t.\tintergenic_variant\tintergenic_variant\t.\tY&quot;</code></pre>
-<p>The TOPMed DCC uses an R package we developed, <em>WGSAParsr</em>, to work with WGSA output files. Briefly, WGSAParsr simplifies the WGSA output files by: 1) selecting a subset of fields; 2) renaming some fields; and 3) simplifying fields that have compound list-entries. The <em>WGSAParsr</em> package is under development, and is available on github at <a href="https://github.com/UW-GAC/wgsaparsr" class="uri">https://github.com/UW-GAC/wgsaparsr</a>. It can be installed using the <em>devtools</em> package, like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Commented out because you don&#39;t need to do this in the workshop - it&#39;s already installed on the AMI you&#39;re using:</span>
-
-<span class="co"># devtools::install_github(&quot;UW-GAC/wgsaparsr&quot;, ref = &quot;5.0.8&quot;, upgrade_dependencies = FALSE)</span></code></pre></div>
-<p><em>note</em>: if you get an error <code>Installation failed: error in running command</code> when you’re trying to use <code>install_github()</code>, that may be related to some assumptions devtools makes in downloading packages from github. The error can be resolved if you set the unzip option in your R session before running <code>devtools::install_github()</code>. Here’s how: <code>options(unzip = &quot;internal&quot;)</code></p>
-<p>Once the package is installed locally, it can be loaded to the workspace in the usual manner:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(wgsaparsr)</code></pre></div>
-<p>Then we can begin using tools in the package. <code>wgsaparsr::get_fields()</code> lists all of the annotation field headers in a WGSA output file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all fields in an annotation file (transpose to make pretty): </span>
-<span class="kw">t</span>(<span class="kw">get_fields</span>(snvfile))</code></pre></div>
-<pre><code>##        [,1]                                                    
-##   [1,] &quot;CHROM&quot;                                                 
-##   [2,] &quot;POS&quot;                                                   
-##   [3,] &quot;REF&quot;                                                   
-##   [4,] &quot;ALT&quot;                                                   
-##   [5,] &quot;chr_hg19&quot;                                              
-##   [6,] &quot;pos_hg19&quot;                                              
-##   [7,] &quot;ref_hg19&quot;                                              
-##   [8,] &quot;alt_hg19&quot;                                              
-##   [9,] &quot;ref_hg19_equals_ref_hg38&quot;                              
-##  [10,] &quot;FILTER&quot;                                                
-##  [11,] &quot;SnpEff_ensembl_Effect&quot;                                 
-##  [12,] &quot;SnpEff_ensembl_Effect_impact&quot;                          
-##  [13,] &quot;SnpEff_ensembl_Sequence_feature&quot;                       
-##  [14,] &quot;SnpEff_ensembl_Sequence_feature_impact&quot;                
-##  [15,] &quot;SnpEff_ensembl_Transcript_ID&quot;                          
-##  [16,] &quot;SnpEff_ensembl_Transcript_biotype&quot;                     
-##  [17,] &quot;SnpEff_ensembl_Gene_name&quot;                              
-##  [18,] &quot;SnpEff_ensembl_Gene_ID&quot;                                
-##  [19,] &quot;SnpEff_ensembl_HGVSc&quot;                                  
-##  [20,] &quot;SnpEff_ensembl_HGVSp&quot;                                  
-##  [21,] &quot;SnpEff_ensembl_Protein_position_or_Protein_len&quot;        
-##  [22,] &quot;SnpEff_ensembl_CDS_position_or_CDS_len&quot;                
-##  [23,] &quot;SnpEff_ensembl_cDNA_position_or_cDNA_len&quot;              
-##  [24,] &quot;SnpEff_ensembl_Exon_or_intron_rank_or_total&quot;           
-##  [25,] &quot;SnpEff_ensembl_Distance_to_feature&quot;                    
-##  [26,] &quot;SnpEff_ensembl_Warnings&quot;                               
-##  [27,] &quot;SnpEff_ensembl_LOF_or_NMD&quot;                             
-##  [28,] &quot;SnpEff_ensembl_LOF_or_NMD_gene_name&quot;                   
-##  [29,] &quot;SnpEff_ensembl_LOF_or_NMD_gene_ID&quot;                     
-##  [30,] &quot;SnpEff_ensembl_LOF_or_NMD_num_transcripts_affected&quot;    
-##  [31,] &quot;SnpEff_ensembl_LOF_or_NMD_percent_transcripts_affected&quot;
-##  [32,] &quot;SnpEff_ensembl_TF_binding_effect&quot;                      
-##  [33,] &quot;SnpEff_ensembl_TF_name&quot;                                
-##  [34,] &quot;SnpEff_ensembl_TF_ID&quot;                                  
-##  [35,] &quot;SnpEff_ensembl_summary&quot;                                
-##  [36,] &quot;VEP_ensembl_Consequence&quot;                               
-##  [37,] &quot;VEP_ensembl_Transcript_ID&quot;                             
-##  [38,] &quot;VEP_ensembl_Gene_Name&quot;                                 
-##  [39,] &quot;VEP_ensembl_Gene_ID&quot;                                   
-##  [40,] &quot;VEP_ensembl_Protein_ID&quot;                                
-##  [41,] &quot;VEP_ensembl_CCDS&quot;                                      
-##  [42,] &quot;VEP_ensembl_SWISSPROT&quot;                                 
-##  [43,] &quot;VEP_ensembl_Codon_Change_or_Distance&quot;                  
-##  [44,] &quot;VEP_ensembl_Amino_Acid_Change&quot;                         
-##  [45,] &quot;VEP_ensembl_HGVSc&quot;                                     
-##  [46,] &quot;VEP_ensembl_HGVSp&quot;                                     
-##  [47,] &quot;VEP_ensembl_cDNA_position&quot;                             
-##  [48,] &quot;VEP_ensembl_CDS_position&quot;                              
-##  [49,] &quot;VEP_ensembl_Protein_position&quot;                          
-##  [50,] &quot;VEP_ensembl_Exon_or_Intron_Rank&quot;                       
-##  [51,] &quot;VEP_ensembl_STRAND&quot;                                    
-##  [52,] &quot;VEP_ensembl_CANONICAL&quot;                                 
-##  [53,] &quot;VEP_ensembl_LoF&quot;                                       
-##  [54,] &quot;VEP_ensembl_LoF_filter&quot;                                
-##  [55,] &quot;VEP_ensembl_LoF_flags&quot;                                 
-##  [56,] &quot;VEP_ensembl_LoF_info&quot;                                  
-##  [57,] &quot;VEP_ensembl_summary&quot;                                   
-##  [58,] &quot;ANNOVAR_refseq_Effect&quot;                                 
-##  [59,] &quot;ANNOVAR_refseq_Transcript_ID&quot;                          
-##  [60,] &quot;ANNOVAR_refseq_Gene_ID&quot;                                
-##  [61,] &quot;ANNOVAR_refseq_Closest_gene&quot;                           
-##  [62,] &quot;ANNOVAR_refseq_HGVSc&quot;                                  
-##  [63,] &quot;ANNOVAR_refseq_HGVSp&quot;                                  
-##  [64,] &quot;ANNOVAR_refseq_Exon_Rank&quot;                              
-##  [65,] &quot;ANNOVAR_refseq_summary&quot;                                
-##  [66,] &quot;SnpEff_refseq_Effect&quot;                                  
-##  [67,] &quot;SnpEff_refseq_Effect_impact&quot;                           
-##  [68,] &quot;SnpEff_refseq_Sequence_feature&quot;                        
-##  [69,] &quot;SnpEff_refseq_Sequence_feature_impact&quot;                 
-##  [70,] &quot;SnpEff_refseq_Transcript_ID&quot;                           
-##  [71,] &quot;SnpEff_refseq_Transcript_biotype&quot;                      
-##  [72,] &quot;SnpEff_refseq_Gene_name&quot;                               
-##  [73,] &quot;SnpEff_refseq_Gene_ID&quot;                                 
-##  [74,] &quot;SnpEff_refseq_HGVSc&quot;                                   
-##  [75,] &quot;SnpEff_refseq_HGVSp&quot;                                   
-##  [76,] &quot;SnpEff_refseq_Protein_position_or_Protein_len&quot;         
-##  [77,] &quot;SnpEff_refseq_CDS_position_or_CDS_len&quot;                 
-##  [78,] &quot;SnpEff_refseq_cDNA_position_or_cDNA_len&quot;               
-##  [79,] &quot;SnpEff_refseq_Exon_or_intron_rank_or_total&quot;            
-##  [80,] &quot;SnpEff_refseq_Distance_to_feature&quot;                     
-##  [81,] &quot;SnpEff_refseq_Warnings&quot;                                
-##  [82,] &quot;SnpEff_refseq_LOF_or_NMD&quot;                              
-##  [83,] &quot;SnpEff_refseq_LOF_or_NMD_gene_name&quot;                    
-##  [84,] &quot;SnpEff_refseq_LOF_or_NMD_gene_ID&quot;                      
-##  [85,] &quot;SnpEff_refseq_LOF_or_NMD_num_transcripts_affected&quot;     
-##  [86,] &quot;SnpEff_refseq_LOF_or_NMD_percent_transcripts_affected&quot; 
-##  [87,] &quot;SnpEff_refseq_TF_binding_effect&quot;                       
-##  [88,] &quot;SnpEff_refseq_TF_name&quot;                                 
-##  [89,] &quot;SnpEff_refseq_TF_ID&quot;                                   
-##  [90,] &quot;SnpEff_refseq_summary&quot;                                 
-##  [91,] &quot;VEP_refseq_Consequence&quot;                                
-##  [92,] &quot;VEP_refseq_Transcript_ID&quot;                              
-##  [93,] &quot;VEP_refseq_Gene_Name&quot;                                  
-##  [94,] &quot;VEP_refseq_Gene_ID&quot;                                    
-##  [95,] &quot;VEP_refseq_Protein_ID(ENSP)&quot;                           
-##  [96,] &quot;VEP_refseq_Codon_Change_or_Distance&quot;                   
-##  [97,] &quot;VEP_refseq_Amino_Acid_Change&quot;                          
-##  [98,] &quot;VEP_refseq_HGVSc&quot;                                      
-##  [99,] &quot;VEP_refseq_HGVSp&quot;                                      
-## [100,] &quot;VEP_refseq_cDNA_position&quot;                              
-## [101,] &quot;VEP_refseq_CDS_position&quot;                               
-## [102,] &quot;VEP_refseq_Protein_position&quot;                           
-## [103,] &quot;VEP_refseq_Exon_or_Intron_Rank&quot;                        
-## [104,] &quot;VEP_refseq_STRAND&quot;                                     
-## [105,] &quot;VEP_refseq_CANONICAL&quot;                                  
-## [106,] &quot;VEP_refseq_LoF&quot;                                        
-## [107,] &quot;VEP_refseq_LoF_filter&quot;                                 
-## [108,] &quot;VEP_refseq_LoF_flags&quot;                                  
-## [109,] &quot;VEP_refseq_LoF_info&quot;                                   
-## [110,] &quot;VEP_refseq_summary&quot;                                    
-## [111,] &quot;ANNOVAR_ucsc_Effect&quot;                                   
-## [112,] &quot;ANNOVAR_ucsc_Transcript_ID&quot;                            
-## [113,] &quot;ANNOVAR_ucsc_Gene_ID&quot;                                  
-## [114,] &quot;ANNOVAR_ucsc_Closest_gene&quot;                             
-## [115,] &quot;ANNOVAR_ucsc_HGVSc&quot;                                    
-## [116,] &quot;ANNOVAR_ucsc_HGVSp&quot;                                    
-## [117,] &quot;ANNOVAR_ucsc_Exon_Rank&quot;                                
-## [118,] &quot;ANNOVAR_ucsc_summary&quot;                                  
-## [119,] &quot;rs_dbSNP150&quot;                                           
-## [120,] &quot;sno_miRNA_name&quot;                                        
-## [121,] &quot;sno_miRNA_type&quot;                                        
-## [122,] &quot;UTR3_miRNA_target&quot;                                     
-## [123,] &quot;TargetScan_context_pp_score_percentile&quot;                
-## [124,] &quot;splicing_consensus_ada_score&quot;                          
-## [125,] &quot;splicing_consensus_rf_score&quot;                           
-## [126,] &quot;GWAS_catalog_rs&quot;                                       
-## [127,] &quot;GWAS_catalog_trait&quot;                                    
-## [128,] &quot;GWAS_catalog_pubmedid&quot;                                 
-## [129,] &quot;GRASP_rs&quot;                                              
-## [130,] &quot;GRASP_PMID&quot;                                            
-## [131,] &quot;GRASP_p_value&quot;                                         
-## [132,] &quot;GRASP_phenotype&quot;                                       
-## [133,] &quot;GRASP_ancestry&quot;                                        
-## [134,] &quot;GRASP_platform&quot;                                        
-## [135,] &quot;clinvar_rs&quot;                                            
-## [136,] &quot;clinvar_clnsig&quot;                                        
-## [137,] &quot;clinvar_trait&quot;                                         
-## [138,] &quot;clinvar_golden_stars&quot;                                  
-## [139,] &quot;GTEx_V6p_gene&quot;                                         
-## [140,] &quot;GTEx_V6p_tissue&quot;                                       
-## [141,] &quot;MAP20&quot;                                                 
-## [142,] &quot;MAP35&quot;                                                 
-## [143,] &quot;MAP20_149bp&quot;                                           
-## [144,] &quot;MAP35_149&quot;                                             
-## [145,] &quot;GMS_single_end&quot;                                        
-## [146,] &quot;GMS_paired_end&quot;                                        
-## [147,] &quot;KGP_strict_masked&quot;                                     
-## [148,] &quot;RepeatMasker_masked&quot;                                   
-## [149,] &quot;Ancestral_allele&quot;                                      
-## [150,] &quot;AltaiNeandertal_genotypes&quot;                             
-## [151,] &quot;Denisova_genotypes&quot;                                    
-## [152,] &quot;VindijiaNeandertal_genotypes&quot;                          
-## [153,] &quot;phyloP46way_primate&quot;                                   
-## [154,] &quot;phyloP46way_primate_rankscore&quot;                         
-## [155,] &quot;phyloP20way_mammalian&quot;                                 
-## [156,] &quot;phyloP20way_mammalian_rankscore&quot;                       
-## [157,] &quot;phyloP100way_vertebrate&quot;                               
-## [158,] &quot;phyloP100way_vertebrate_rankscore&quot;                     
-## [159,] &quot;phastCons46way_primate&quot;                                
-## [160,] &quot;phastCons46way_primate_rankscore&quot;                      
-## [161,] &quot;phastCons20way_mammalian&quot;                              
-## [162,] &quot;phastCons20way_mammalian_rankscore&quot;                    
-## [163,] &quot;phastCons100way_vertebrate&quot;                            
-## [164,] &quot;phastCons100way_vertebrate_rankscore&quot;                  
-## [165,] &quot;GERP_NR&quot;                                               
-## [166,] &quot;GERP_RS&quot;                                               
-## [167,] &quot;GERP_RS_rankscore&quot;                                     
-## [168,] &quot;SiPhy_29way_logOdds&quot;                                   
-## [169,] &quot;SiPhy_29way_logOdds_rankscore&quot;                         
-## [170,] &quot;integrated_fitCons_score&quot;                              
-## [171,] &quot;integrated_fitCons_rankscore&quot;                          
-## [172,] &quot;integrated_confidence_value&quot;                           
-## [173,] &quot;GM12878_fitCons_score&quot;                                 
-## [174,] &quot;GM12878_fitCons_rankscore&quot;                             
-## [175,] &quot;GM12878_confidence_value&quot;                              
-## [176,] &quot;H1_hESC_fitCons_score&quot;                                 
-## [177,] &quot;H1_hESC_fitCons_rankscore&quot;                             
-## [178,] &quot;H1_hESC_confidence_value&quot;                              
-## [179,] &quot;HUVEC_fitCons_score&quot;                                   
-## [180,] &quot;HUVEC_fitCons_rankscore&quot;                               
-## [181,] &quot;HUVEC_confidence_value&quot;                                
-## [182,] &quot;GenoCanyon_score&quot;                                      
-## [183,] &quot;GenoCanyon_rankscore&quot;                                  
-## [184,] &quot;KGP3_AC&quot;                                               
-## [185,] &quot;KGP3_AF&quot;                                               
-## [186,] &quot;KGP3_AFR_AC&quot;                                           
-## [187,] &quot;KGP3_AFR_AF&quot;                                           
-## [188,] &quot;KGP3_EUR_AC&quot;                                           
-## [189,] &quot;KGP3_EUR_AF&quot;                                           
-## [190,] &quot;KGP3_AMR_AC&quot;                                           
-## [191,] &quot;KGP3_AMR_AF&quot;                                           
-## [192,] &quot;KGP3_EAS_AC&quot;                                           
-## [193,] &quot;KGP3_EAS_AF&quot;                                           
-## [194,] &quot;KGP3_SAS_AC&quot;                                           
-## [195,] &quot;KGP3_SAS_AF&quot;                                           
-## [196,] &quot;UK10K_AC&quot;                                              
-## [197,] &quot;UK10K_AN&quot;                                              
-## [198,] &quot;UK10K_AF&quot;                                              
-## [199,] &quot;TWINSUK_AC&quot;                                            
-## [200,] &quot;TWINSUK_AN&quot;                                            
-## [201,] &quot;TWINSUK_AF&quot;                                            
-## [202,] &quot;ALSPAC_AC&quot;                                             
-## [203,] &quot;ALSPAC_AN&quot;                                             
-## [204,] &quot;ALSPAC_AF&quot;                                             
-## [205,] &quot;ESP6500_AC&quot;                                            
-## [206,] &quot;ESP6500_AF&quot;                                            
-## [207,] &quot;ESP6500_AA_AC&quot;                                         
-## [208,] &quot;ESP6500_AA_AF&quot;                                         
-## [209,] &quot;ESP6500_EA_AC&quot;                                         
-## [210,] &quot;ESP6500_EA_AF&quot;                                         
-## [211,] &quot;ExAC_AC&quot;                                               
-## [212,] &quot;ExAC_AF&quot;                                               
-## [213,] &quot;ExAC_Adj_AC&quot;                                           
-## [214,] &quot;ExAC_Adj_AF&quot;                                           
-## [215,] &quot;ExAC_AFR_AC&quot;                                           
-## [216,] &quot;ExAC_AFR_AF&quot;                                           
-## [217,] &quot;ExAC_AMR_AC&quot;                                           
-## [218,] &quot;ExAC_AMR_AF&quot;                                           
-## [219,] &quot;ExAC_EAS_AC&quot;                                           
-## [220,] &quot;ExAC_EAS_AF&quot;                                           
-## [221,] &quot;ExAC_FIN_AC&quot;                                           
-## [222,] &quot;ExAC_FIN_AF&quot;                                           
-## [223,] &quot;ExAC_NFE_AC&quot;                                           
-## [224,] &quot;ExAC_NFE_AF&quot;                                           
-## [225,] &quot;ExAC_SAS_AC&quot;                                           
-## [226,] &quot;ExAC_SAS_AF&quot;                                           
-## [227,] &quot;ExAC_nonTCGA_AC&quot;                                       
-## [228,] &quot;ExAC_nonTCGA_AF&quot;                                       
-## [229,] &quot;ExAC_nonTCGA_Adj_AC&quot;                                   
-## [230,] &quot;ExAC_nonTCGA_Adj_AF&quot;                                   
-## [231,] &quot;ExAC_nonTCGA_AFR_AC&quot;                                   
-## [232,] &quot;ExAC_nonTCGA_AFR_AF&quot;                                   
-## [233,] &quot;ExAC_nonTCGA_AMR_AC&quot;                                   
-## [234,] &quot;ExAC_nonTCGA_AMR_AF&quot;                                   
-## [235,] &quot;ExAC_nonTCGA_EAS_AC&quot;                                   
-## [236,] &quot;ExAC_nonTCGA_EAS_AF&quot;                                   
-## [237,] &quot;ExAC_nonTCGA_FIN_AC&quot;                                   
-## [238,] &quot;ExAC_nonTCGA_FIN_AF&quot;                                   
-## [239,] &quot;ExAC_nonTCGA_NFE_AC&quot;                                   
-## [240,] &quot;ExAC_nonTCGA_NFE_AF&quot;                                   
-## [241,] &quot;ExAC_nonTCGA_SAS_AC&quot;                                   
-## [242,] &quot;ExAC_nonTCGA_SAS_AF&quot;                                   
-## [243,] &quot;ExAC_nonpsych_AC&quot;                                      
-## [244,] &quot;ExAC_nonpsych_AF&quot;                                      
-## [245,] &quot;ExAC_nonpsych_Adj_AC&quot;                                  
-## [246,] &quot;ExAC_nonpsych_Adj_AF&quot;                                  
-## [247,] &quot;ExAC_nonpsych_AFR_AC&quot;                                  
-## [248,] &quot;ExAC_nonpsych_AFR_AF&quot;                                  
-## [249,] &quot;ExAC_nonpsych_AMR_AC&quot;                                  
-## [250,] &quot;ExAC_nonpsych_AMR_AF&quot;                                  
-## [251,] &quot;ExAC_nonpsych_EAS_AC&quot;                                  
-## [252,] &quot;ExAC_nonpsych_EAS_AF&quot;                                  
-## [253,] &quot;ExAC_nonpsych_FIN_AC&quot;                                  
-## [254,] &quot;ExAC_nonpsych_FIN_AF&quot;                                  
-## [255,] &quot;ExAC_nonpsych_NFE_AC&quot;                                  
-## [256,] &quot;ExAC_nonpsych_NFE_AF&quot;                                  
-## [257,] &quot;ExAC_nonpsych_SAS_AC&quot;                                  
-## [258,] &quot;ExAC_nonpsych_SAS_AF&quot;                                  
-## [259,] &quot;gnomAD_exomes_AC&quot;                                      
-## [260,] &quot;gnomAD_exomes_AN&quot;                                      
-## [261,] &quot;gnomAD_exomes_AF&quot;                                      
-## [262,] &quot;gnomAD_exomes_AFR_AC&quot;                                  
-## [263,] &quot;gnomAD_exomes_AFR_AN&quot;                                  
-## [264,] &quot;gnomAD_exomes_AFR_AF&quot;                                  
-## [265,] &quot;gnomAD_exomes_AMR_AC&quot;                                  
-## [266,] &quot;gnomAD_exomes_AMR_AN&quot;                                  
-## [267,] &quot;gnomAD_exomes_AMR_AF&quot;                                  
-## [268,] &quot;gnomAD_exomes_ASJ_AC&quot;                                  
-## [269,] &quot;gnomAD_exomes_ASJ_AN&quot;                                  
-## [270,] &quot;gnomAD_exomes_ASJ_AF&quot;                                  
-## [271,] &quot;gnomAD_exomes_EAS_AC&quot;                                  
-## [272,] &quot;gnomAD_exomes_EAS_AN&quot;                                  
-## [273,] &quot;gnomAD_exomes_EAS_AF&quot;                                  
-## [274,] &quot;gnomAD_exomes_FIN_AC&quot;                                  
-## [275,] &quot;gnomAD_exomes_FIN_AN&quot;                                  
-## [276,] &quot;gnomAD_exomes_FIN_AF&quot;                                  
-## [277,] &quot;gnomAD_exomes_NFE_AC&quot;                                  
-## [278,] &quot;gnomAD_exomes_NFE_AN&quot;                                  
-## [279,] &quot;gnomAD_exomes_NFE_AF&quot;                                  
-## [280,] &quot;gnomAD_exomes_SAS_AC&quot;                                  
-## [281,] &quot;gnomAD_exomes_SAS_AN&quot;                                  
-## [282,] &quot;gnomAD_exomes_SAS_AF&quot;                                  
-## [283,] &quot;gnomAD_exomes_OTH_AC&quot;                                  
-## [284,] &quot;gnomAD_exomes_OTH_AN&quot;                                  
-## [285,] &quot;gnomAD_exomes_OTH_AF&quot;                                  
-## [286,] &quot;gnomAD_genomes_AC&quot;                                     
-## [287,] &quot;gnomAD_genomes_AN&quot;                                     
-## [288,] &quot;gnomAD_genomes_AF&quot;                                     
-## [289,] &quot;gnomAD_genomes_AFR_AC&quot;                                 
-## [290,] &quot;gnomAD_genomes_AFR_AN&quot;                                 
-## [291,] &quot;gnomAD_genomes_AFR_AF&quot;                                 
-## [292,] &quot;gnomAD_genomes_AMR_AC&quot;                                 
-## [293,] &quot;gnomAD_genomes_AMR_AN&quot;                                 
-## [294,] &quot;gnomAD_genomes_AMR_AF&quot;                                 
-## [295,] &quot;gnomAD_genomes_ASJ_AC&quot;                                 
-## [296,] &quot;gnomAD_genomes_ASJ_AN&quot;                                 
-## [297,] &quot;gnomAD_genomes_ASJ_AF&quot;                                 
-## [298,] &quot;gnomAD_genomes_EAS_AC&quot;                                 
-## [299,] &quot;gnomAD_genomes_EAS_AN&quot;                                 
-## [300,] &quot;gnomAD_genomes_EAS_AF&quot;                                 
-## [301,] &quot;gnomAD_genomes_FIN_AC&quot;                                 
-## [302,] &quot;gnomAD_genomes_FIN_AN&quot;                                 
-## [303,] &quot;gnomAD_genomes_FIN_AF&quot;                                 
-## [304,] &quot;gnomAD_genomes_NFE_AC&quot;                                 
-## [305,] &quot;gnomAD_genomes_NFE_AN&quot;                                 
-## [306,] &quot;gnomAD_genomes_NFE_AF&quot;                                 
-## [307,] &quot;gnomAD_genomes_OTH_AC&quot;                                 
-## [308,] &quot;gnomAD_genomes_OTH_AN&quot;                                 
-## [309,] &quot;gnomAD_genomes_OTH_AF&quot;                                 
-## [310,] &quot;RegulomeDB_motif&quot;                                      
-## [311,] &quot;RegulomeDB_score&quot;                                      
-## [312,] &quot;Motif_breaking&quot;                                        
-## [313,] &quot;network_hub&quot;                                           
-## [314,] &quot;ENCODE_annotated&quot;                                      
-## [315,] &quot;sensitive&quot;                                             
-## [316,] &quot;ultra_sensitive&quot;                                       
-## [317,] &quot;target_gene&quot;                                           
-## [318,] &quot;funseq_noncoding_score&quot;                                
-## [319,] &quot;funseq2_noncoding_score&quot;                               
-## [320,] &quot;funseq2_noncoding_rankscore&quot;                           
-## [321,] &quot;CADD_raw&quot;                                              
-## [322,] &quot;CADD_phred&quot;                                            
-## [323,] &quot;CADD_raw_rankscore&quot;                                    
-## [324,] &quot;DANN_score&quot;                                            
-## [325,] &quot;DANN_rank_score&quot;                                       
-## [326,] &quot;fathmm_MKL_non_coding_score&quot;                           
-## [327,] &quot;fathmm_MKL_non_coding_rankscore&quot;                       
-## [328,] &quot;fathmm_MKL_non_coding_pred&quot;                            
-## [329,] &quot;fathmm_MKL_non_coding_group&quot;                           
-## [330,] &quot;fathmm_MKL_coding_score&quot;                               
-## [331,] &quot;fathmm_MKL_coding_rankscore&quot;                           
-## [332,] &quot;fathmm_MKL_coding_pred&quot;                                
-## [333,] &quot;fathmm_MKL_coding_group&quot;                               
-## [334,] &quot;Eigen_coding_or_noncoding&quot;                             
-## [335,] &quot;Eigen_raw&quot;                                             
-## [336,] &quot;Eigen_phred&quot;                                           
-## [337,] &quot;Eigen_PC_raw&quot;                                          
-## [338,] &quot;Eigen_PC_phred&quot;                                        
-## [339,] &quot;ORegAnno_type&quot;                                         
-## [340,] &quot;ORegAnno_PMID&quot;                                         
-## [341,] &quot;hESC_Topological_Domain&quot;                               
-## [342,] &quot;IMR90_Topological_Domain&quot;                              
-## [343,] &quot;ENCODE_TFBS&quot;                                           
-## [344,] &quot;ENCODE_TFBS_score&quot;                                     
-## [345,] &quot;ENCODE_TFBS_cells&quot;                                     
-## [346,] &quot;ENCODE_Dnase_score&quot;                                    
-## [347,] &quot;ENCODE_Dnase_cells&quot;                                    
-## [348,] &quot;EnhancerFinder_general_developmental_enhancer&quot;         
-## [349,] &quot;EnhancerFinder_brain_enhancer&quot;                         
-## [350,] &quot;EnhancerFinder_heart_enhancer&quot;                         
-## [351,] &quot;EnhancerFinder_limb_enhancer&quot;                          
-## [352,] &quot;SuperEnhancer_tissue_cell&quot;                             
-## [353,] &quot;SuperEnhancer_RefSeq_id&quot;                               
-## [354,] &quot;SuperEnhancer_Gene_symbol&quot;                             
-## [355,] &quot;FANTOM5_enhancer_permissive&quot;                           
-## [356,] &quot;FANTOM5_enhancer_robust&quot;                               
-## [357,] &quot;FANTOM5_enhancer_target&quot;                               
-## [358,] &quot;FANTOM5_enhancer_expressed_tissue_cell&quot;                
-## [359,] &quot;FANTOM5_enhancer_differentially_expressed_tissue_cell&quot; 
-## [360,] &quot;FANTOM5_CAGE_peak_permissive&quot;                          
-## [361,] &quot;FANTOM5_CAGE_peak_robust&quot;                              
-## [362,] &quot;Ensembl_Regulatory_Build_feature_type&quot;                 
-## [363,] &quot;Ensembl_Regulatory_Build_ID&quot;                           
-## [364,] &quot;Ensembl_Regulatory_Build_TFBS&quot;                         
-## [365,] &quot;Ensembl_Regulatory_Build_TFBS_matrix&quot;                  
-## [366,] &quot;aaref&quot;                                                 
-## [367,] &quot;aaalt&quot;                                                 
-## [368,] &quot;genename&quot;                                              
-## [369,] &quot;cds_strand&quot;                                            
-## [370,] &quot;refcodon&quot;                                              
-## [371,] &quot;codonpos&quot;                                              
-## [372,] &quot;codon_degeneracy&quot;                                      
-## [373,] &quot;Ensembl_geneid&quot;                                        
-## [374,] &quot;Ensembl_transcriptid&quot;                                  
-## [375,] &quot;Ensembl_proteinid&quot;                                     
-## [376,] &quot;aapos&quot;                                                 
-## [377,] &quot;SIFT_score&quot;                                            
-## [378,] &quot;SIFT_converted_rankscore&quot;                              
-## [379,] &quot;SIFT_pred&quot;                                             
-## [380,] &quot;Uniprot_acc_Polyphen2&quot;                                 
-## [381,] &quot;Uniprot_id_Polyphen2&quot;                                  
-## [382,] &quot;Uniprot_aapos_Polyphen2&quot;                               
-## [383,] &quot;Polyphen2_HDIV_score&quot;                                  
-## [384,] &quot;Polyphen2_HDIV_rankscore&quot;                              
-## [385,] &quot;Polyphen2_HDIV_pred&quot;                                   
-## [386,] &quot;Polyphen2_HVAR_score&quot;                                  
-## [387,] &quot;Polyphen2_HVAR_rankscore&quot;                              
-## [388,] &quot;Polyphen2_HVAR_pred&quot;                                   
-## [389,] &quot;LRT_score&quot;                                             
-## [390,] &quot;LRT_converted_rankscore&quot;                               
-## [391,] &quot;LRT_pred&quot;                                              
-## [392,] &quot;LRT_Omega&quot;                                             
-## [393,] &quot;MutationTaster_score&quot;                                  
-## [394,] &quot;MutationTaster_converted_rankscore&quot;                    
-## [395,] &quot;MutationTaster_pred&quot;                                   
-## [396,] &quot;MutationTaster_model&quot;                                  
-## [397,] &quot;MutationTaster_AAE&quot;                                    
-## [398,] &quot;MutationAssessor_UniprotID&quot;                            
-## [399,] &quot;MutationAssessor_variant&quot;                              
-## [400,] &quot;MutationAssessor_score&quot;                                
-## [401,] &quot;MutationAssessor_score_rankscore&quot;                      
-## [402,] &quot;MutationAssessor_pred&quot;                                 
-## [403,] &quot;FATHMM_score&quot;                                          
-## [404,] &quot;FATHMM_converted_rankscore&quot;                            
-## [405,] &quot;FATHMM_pred&quot;                                           
-## [406,] &quot;PROVEAN_score&quot;                                         
-## [407,] &quot;PROVEAN_converted_rankscore&quot;                           
-## [408,] &quot;PROVEAN_pred&quot;                                          
-## [409,] &quot;Transcript_id_VEST3&quot;                                   
-## [410,] &quot;Transcript_var_VEST3&quot;                                  
-## [411,] &quot;VEST3_score&quot;                                           
-## [412,] &quot;VEST3_rankscore&quot;                                       
-## [413,] &quot;MetaSVM_score&quot;                                         
-## [414,] &quot;MetaSVM_rankscore&quot;                                     
-## [415,] &quot;MetaSVM_pred&quot;                                          
-## [416,] &quot;MetaLR_score&quot;                                          
-## [417,] &quot;MetaLR_rankscore&quot;                                      
-## [418,] &quot;MetaLR_pred&quot;                                           
-## [419,] &quot;Reliability_index&quot;                                     
-## [420,] &quot;M_CAP_score&quot;                                           
-## [421,] &quot;M_CAP_rankscore&quot;                                       
-## [422,] &quot;M_CAP_pred&quot;                                            
-## [423,] &quot;REVEL_score&quot;                                           
-## [424,] &quot;REVEL_rankscore&quot;                                       
-## [425,] &quot;MutPred_score&quot;                                         
-## [426,] &quot;MutPred_rankscore&quot;                                     
-## [427,] &quot;MutPred_protID&quot;                                        
-## [428,] &quot;MutPred_AAchange&quot;                                      
-## [429,] &quot;MutPred_Top5features&quot;                                  
-## [430,] &quot;SIFT4G_AAref&quot;                                          
-## [431,] &quot;SIFT4G_AAalt&quot;                                          
-## [432,] &quot;SIFT4G_AApos&quot;                                          
-## [433,] &quot;SIFT4G_score&quot;                                          
-## [434,] &quot;SIFT4G_pred&quot;                                           
-## [435,] &quot;VEP_ensembl_precedent_transcript_consequence&quot;          
-## [436,] &quot;VEP_ensembl_precedent_consequence&quot;                     
-## [437,] &quot;VEP_ensembl_precedent_gene&quot;                            
-## [438,] &quot;unique_variant&quot;</code></pre>
-<p>Only a subset of these annotations will be necessary for a particular association test, and it is unweildy to work with all of them, so it is useful to process the WGSA output file to select fields of interest.</p>
-<p>An additional complication in working with the WGSA output files is that some of the annotation fields are transcript-based, rather than position-based. Thus, if a variant locus is within multiple transcripts, those fields will have multiple entries (often separated by a <code>|</code> character). For example, annotation fields such as <code>VEP_ensembl_Transcript_ID</code> may have many values within a single tab-separated field.</p>
-<p>WGSAParsr’s <code>parse_to_file()</code> addresses this by splitting such list-fields into multiple rows. Other annotation fields for that variant are duplicated, and associated columns are filled with the same value for each transcript that a particular variant falls within. A consequence of this approach is that the processed annotation file has more lines than the WGSA output file. In freeze 4, processing expanded the annotation by a factor of about 5 - the 220 million annotations result in a 1-billion row database for subsequent aggregation.</p>
-<p><code>parse_to_file()</code> function arguments include a path to a WGSA annotation file, a user-defined configuration file, and output destinations. It reads the input annotation file in chunks, processes them following the specification provided in the user-defined configuration file, and writes to the output destinations. It produces a tab-separated output file useful for subsequent analysis.</p>
-<p>The first task, then, is to build the configuration file for <code>parse_to_file()</code>.</p>
-<div id="wgsaparsr-configuration" class="section level4">
-<h4><span class="header-section-number">6.5.1.1</span> WGSAParsr Configuration</h4>
-<p>Details of the configuration file are documented in the <code>wgsaparsr::load_config()</code> function documentation,</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?load_config</code></pre></div>
-<p>From the documentation, you can see that the configuration file is a tab-separated text file that must have the following columns (in any order): <code>field</code>, <code>SNV</code>, <code>indel</code>, <code>dbnsfp</code>, <code>pivotGroup</code>, <code>pivotChar</code>, <code>parseGroup</code>, and <code>transformation</code>.</p>
-<p>You will look at each of these fields in turn as you build your configuration file. Additionally, the configuration file that the TOPMed DCC used to parse the freeze 5 data release is included as an example in the WGSAParsr package.</p>
-<p>The configuration file you’ll make in this workshop will not be as extensive or complicated as the example, but if you’d like, you can load it into your working session to examine:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">freeze_5_config &lt;-<span class="st"> </span><span class="kw">load_config</span>(<span class="kw">wgsaparsr_example</span>(<span class="st">&quot;fr_5_config.tsv&quot;</span>))</code></pre></div>
-<p>Recall that our objective is to aggregate the variants into genic units and to apply filters to restrict the variants in aggreagation units by predicted functional consequence. To achieve this, we will use the following annotation fields: <code>CHROM</code>, <code>POS</code>, <code>REF</code>, <code>ALT</code>, <code>VEP_ensembl_Gene_ID</code>, <code>VEP_ensembl_Consequence</code>, and <code>CADD_phred</code>. This list of fields is the first variable we’ll need for the configuration file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">field &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;CHROM&quot;</span>,
-            <span class="st">&quot;POS&quot;</span>,
-            <span class="st">&quot;REF&quot;</span>,
-            <span class="st">&quot;ALT&quot;</span>,
-            <span class="st">&quot;VEP_ensembl_Gene_ID&quot;</span>,
-            <span class="st">&quot;VEP_ensembl_Consequence&quot;</span>,
-            <span class="st">&quot;CADD_phred&quot;</span>)</code></pre></div>
-<p>The next required variable is <code>SNV</code>, a logical value indiciating whether these fields are present in the SNV annotation file. In this case, all of the fields are present in SNV annotation:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SNV &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="ot">TRUE</span>, <span class="dv">7</span>))</code></pre></div>
-<p>Then comes <code>indel</code>, a logical value indicating whether these fields are present in the indel annotation file. In this case, all of the fields are present in indel annotation:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">indel &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="ot">TRUE</span>, <span class="dv">7</span>))</code></pre></div>
-<p><a href="http://varianttools.sourceforge.net/Annotation/DbNSFP">dbNSFP</a> is an annotation resource included in WGSA. These annotation fields reference gene-oriented features rather than transcript-oriented features, so must be parsed separately if needed for analysis. We do not need to use any dbNSFP variables in this exercise, so the <code>dbnsfp</code> variable is FALSE in our configuration:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dbnsfp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="ot">FALSE</span>, <span class="dv">7</span>))</code></pre></div>
-<p>The next two variables are related to the pivoting of annotation list-fields to make them “tidy”. Recall that some annotation fields have many values within a single tab-separated field. For example, there is a variant on chromosome 22 at position 15699830 that is annotated with this VEP_ensembl_Gene_ID: <code>ENSG00000198062|ENSG00000236666|ENSG00000212216|ENSG00000198062|ENSG00000198062</code> and this VEP_ensembl_Consequence: <code>intron_variant,NMD_transcript_variant|non_coding_transcript_exon_variant,non_coding_transcript_variant|upstream_gene_variant|intron_variant|intron_variant</code>. Such list-fields are awkward to work with, so they should be split into 5 lines, with the corresponding fields on the same line (e.g. the first VEP_ensembl_Gene_ID entry and the first VEP_ensembl_Consequence should go together).</p>
-<p>This is specified in the configuration file using the <code>pivotGroup</code> variable and the <code>pivotChar</code> variable is used to specify the character that is the list delimiter - <code>|</code> in this case. Build the <code>pivotGroup</code> and <code>pivotChar</code> variables like this for your configuration:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pivotGroup &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">4</span>), <span class="kw">rep</span>(<span class="kw">as.integer</span>(<span class="dv">1</span>), <span class="dv">2</span>), <span class="ot">NA</span>)
-
-pivotChar &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">4</span>), <span class="kw">rep</span>(<span class="st">&quot;|&quot;</span>, <span class="dv">2</span>), <span class="ot">NA</span>)</code></pre></div>
-<p>The final required variables for the configuration are <code>parseGroup</code>, and <code>transformation</code>. <code>parseGroup</code> defines sets of annotation fields that should be modified together (this primarily applies to sets of dbnsfp annotation fields), and <code>transformation</code> defines the modification that should happen. Valid values for <code>transformation</code> include <code>max</code>, <code>min</code>, <code>pick_Y</code>, <code>pick_N</code>, <code>pick_A</code>, <code>clean</code>, and <code>distinct</code>.</p>
-<p><em>WGSAParsr</em> applies the specified transformation to the field specified in the configuration file, and selects the corresponding value from other fields in the same parseGroup. No transformation or parseGroup is needed for this exercise, but to give an example for completeness, position 21791443 of chromosome 22 has a variant from reference A, the alternative AACAT. This variant is annotated with this Eigen_PC_raw value: <code>.{2}-0.08822322727842{1}-0.0955006471597487{1}</code>. A <code>transformation</code> of <code>max</code> would select the maximum numeric value of this annotation field - the value likely to have the most functional impact - of -0.08822322727842. If there were another field with corresponding entries, such as that variant’s Eigen_raw value: <code>.{2}-0.27473415163451{1}-0.313313344373439{1}</code>, membership in the same parseGroup would pick the value in that field that corresponded to the maximum value in the Eigen_PC_raw annotation - in this case, -0.27473415163451. Note that the transformation would <em>not</em> return the maximum Eigen_raw value in this case.</p>
-<p>Other possible transformations include the following: <code>min</code> selects the minimum value, <code>pick_Y</code> picks the character <code>Y</code> if present,<code>pick_N</code> picks the character <code>N</code> if present, <code>pick_A</code> picks the character <code>A</code> (used for the MutationTaster_pred annotation), <code>clean</code> removes unneeded bracketed number strings (used for Ensembl_Regulatory_Build_feature_type, hESC_Topological_Domain, and IMR90_Topological_Domain fields), and <code>distinct</code> splits a field to disticnt values (used for Ensembl_Regulatory_Build_TFBS).</p>
-<p>None of these transformations are needed for our filtering and aggregation, so we can define the variables for the configuration this way:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">parseGroup &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="kw">as.integer</span>(<span class="ot">NA</span>), <span class="dv">7</span>))
-transformation &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="kw">as.character</span>(<span class="ot">NA</span>), <span class="dv">7</span>))</code></pre></div>
-<p>Finally, add an optional configuration variable: <code>order</code>. The <code>order</code> variable spcifies the column-order in the output file - this is particularly useful if you’re working with many annotations, but want to make sure that <code>CHROM</code>, <code>POS</code>, <code>REF</code>, and <code>ALT</code> are at the beginning. Note: when using <code>order</code> un-numbered fields will go after numbered fields.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">order &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">7</span>)</code></pre></div>
-<p>Put the configuration variables together in a tibble for validation and saving (a <a href="https://tibble.tidyverse.org/">tibble</a> is a particular kind of data frame):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_config &lt;-
-<span class="st">  </span><span class="kw">tibble</span>(
-    field,
-    SNV,
-    indel,
-    dbnsfp,
-    pivotGroup,
-    pivotChar,
-    parseGroup,
-    transformation,
-    order
-  )</code></pre></div>
-<p>Now inspect the configuration tibble:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_config</code></pre></div>
-<pre><code>## # A tibble: 7 x 9
-##   field  SNV   indel dbnsfp pivotGroup pivotChar parseGroup transformation
-##   &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;       &lt;int&gt; &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;         
-## 1 CHROM  TRUE  TRUE  FALSE          NA &lt;NA&gt;              NA &lt;NA&gt;          
-## 2 POS    TRUE  TRUE  FALSE          NA &lt;NA&gt;              NA &lt;NA&gt;          
-## 3 REF    TRUE  TRUE  FALSE          NA &lt;NA&gt;              NA &lt;NA&gt;          
-## 4 ALT    TRUE  TRUE  FALSE          NA &lt;NA&gt;              NA &lt;NA&gt;          
-## 5 VEP_e… TRUE  TRUE  FALSE           1 |                 NA &lt;NA&gt;          
-## 6 VEP_e… TRUE  TRUE  FALSE           1 |                 NA &lt;NA&gt;          
-## 7 CADD_… TRUE  TRUE  FALSE          NA &lt;NA&gt;              NA &lt;NA&gt;          
-## # ... with 1 more variable: order &lt;int&gt;</code></pre>
-<p><em>WGSAParsr</em> includes a configuration validation function, <code>validate_config()</code>. A valid configuration tibble or file should get no errors from the validation function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">validate_config</span>(my_config)</code></pre></div>
-<p>save my_config</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_tsv</span>(my_config, <span class="st">&quot;data/my_config.tsv&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a bit of cleanup needed for the workshop</span>
-<span class="cf">if</span> (<span class="kw">file.exists</span>(<span class="st">&quot;data/snv_parsed.tsv&quot;</span>))(<span class="kw">file.remove</span>(<span class="st">&quot;data/snv_parsed.tsv&quot;</span>))</code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="kw">file.exists</span>(<span class="st">&quot;data/indel_parsed.tsv&quot;</span>))(<span class="kw">file.remove</span>(<span class="st">&quot;data/indel_parsed.tsv&quot;</span>))</code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-</div>
-<div id="parsing-with-wgsaparsr" class="section level4">
-<h4><span class="header-section-number">6.5.1.2</span> Parsing with WGSAParsr</h4>
-<p>parse the example files</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_to_file</span>(<span class="dt">source_file =</span> snvfile, 
-              <span class="dt">config =</span> <span class="st">&quot;data/my_config.tsv&quot;</span>,
-              <span class="dt">destination =</span> <span class="st">&quot;data/snv_parsed.tsv&quot;</span>,
-              <span class="dt">chunk_size =</span> <span class="dv">100</span>,
-              <span class="dt">verbose =</span> <span class="ot">FALSE</span>)
-
-<span class="kw">parse_to_file</span>(<span class="dt">source_file =</span> indelfile, 
-              <span class="dt">config =</span> <span class="st">&quot;data/my_config.tsv&quot;</span>,
-              <span class="dt">destination =</span> <span class="st">&quot;data/indel_parsed.tsv&quot;</span>,
-              <span class="dt">chunk_size =</span> <span class="dv">100</span>,
-              <span class="dt">verbose =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p>Although the output file has fewer columns than the the raw WGSA output file, this .tsv file is still not particularly nice to work with directly:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">readLines</span>(<span class="st">&quot;data/snv_parsed.tsv&quot;</span>, <span class="dt">n=</span><span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] &quot;CHROM\tPOS\tREF\tALT\tVEP_ensembl_Gene_ID\tVEP_ensembl_Consequence\tCADD_phred&quot;
-## [2] &quot;22\t15319214\tC\tG\t.\tintergenic_variant\t1.218&quot;</code></pre>
-<p>But <code>get_fields()</code> works as expected on the parsed file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all fields in an annotation file: </span>
-<span class="kw">get_fields</span>(<span class="st">&quot;data/snv_parsed.tsv&quot;</span>)</code></pre></div>
-<pre><code>##      [,1]    [,2]  [,3]  [,4]  [,5]                 
-## [1,] &quot;CHROM&quot; &quot;POS&quot; &quot;REF&quot; &quot;ALT&quot; &quot;VEP_ensembl_Gene_ID&quot;
-##      [,6]                      [,7]        
-## [1,] &quot;VEP_ensembl_Consequence&quot; &quot;CADD_phred&quot;</code></pre>
-<p>And in this case, the parsed files are small enough that we can load them into the R session and work with the resulting dataframes for subsequent analysis. (At full scale, the TOPMed DCC imports the parsed files to a database, and uses the annotation data that way):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">snv_annotation &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;data/snv_parsed.tsv&quot;</span>,
-                           <span class="dt">col_types =</span> <span class="kw">cols</span>(
-                             <span class="dt">CHROM =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">POS =</span> <span class="kw">col_integer</span>(),
-                             <span class="dt">REF =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">ALT =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">VEP_ensembl_Gene_ID =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">VEP_ensembl_Consequence =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">CADD_phred =</span> <span class="kw">col_double</span>()
-                           ))</code></pre></div>
-<pre><code>## Warning in rbind(names(probs), probs_f): number of columns of result is not
-## a multiple of vector length (arg 1)</code></pre>
-<pre><code>## Warning: 14 parsing failures.
-## row # A tibble: 5 x 5 col     row col        expected actual file                  expected   &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 actual 1     2 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39; file 2     6 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39; row 3   365 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39; col 4   366 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39; expected 5   367 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-## ... ................. ... ........................................................ ........ ........................................................ ...... ........................................................ .... ........................................................ ... ........................................................ ... ........................................................ ........ ........................................................
-## See problems(...) for more details.</code></pre>
-<p>Since there are warnings on that loading, check them out:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">problems</span>(snv_annotation)</code></pre></div>
-<pre><code>## # A tibble: 14 x 5
-##      row col        expected actual file                 
-##    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                
-##  1     2 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  2     6 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  3   365 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  4   366 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  5   367 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  6   368 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  7   369 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  8   370 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-##  9   377 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-## 10   394 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-## 11   395 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-## 12  2243 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-## 13  2244 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;
-## 14  2253 CADD_phred a double .      &#39;data/snv_parsed.tsv&#39;</code></pre>
-<p>Ah, so not really anything to worry about - “.” values will be replaced with NA when casting to type double. Go ahead and read the indel file:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">indel_annotation &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;data/indel_parsed.tsv&quot;</span>,
-                             <span class="dt">col_types =</span> <span class="kw">cols</span>(
-                             <span class="dt">CHROM =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">POS =</span> <span class="kw">col_integer</span>(),
-                             <span class="dt">REF =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">ALT =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">VEP_ensembl_Gene_ID =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">VEP_ensembl_Consequence =</span> <span class="kw">col_character</span>(),
-                             <span class="dt">CADD_phred =</span> <span class="kw">col_double</span>()
-                           ))</code></pre></div>
-<p>And since that’s fine, go ahead and put them together for subsequent analysis:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">combined_annotation &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(snv_annotation, indel_annotation)</code></pre></div>
-</div>
-</div>
-<div id="aggregating-and-filtering-variants-using-annotation" class="section level3">
-<h3><span class="header-section-number">6.5.2</span> Aggregating and filtering variants using annotation</h3>
-<p>With the now-tidy variant annotation, the process of aggregating and filtering variants for association testing is almost trivial. For example, an analyst could remove variants that are not associated with a Gene, group the variants by gene, and filter the variants for intron_variants with a CADD_phred score greater than 3 in just a few lines of code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">combined_annotation <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">filter</span>(VEP_ensembl_Gene_ID <span class="op">!=</span><span class="st"> &quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove variants not annotated with a Gene_ID</span>
-<span class="st">  </span><span class="kw">group_by</span>(VEP_ensembl_Gene_ID) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># aggregate by gene</span>
-<span class="st">  </span><span class="kw">filter</span>(CADD_phred <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># filter variants to keep only CADD_phred greater than 3</span>
-<span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(VEP_ensembl_Consequence, <span class="st">&quot;intron_variant&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># keep intron variants</span>
-<span class="st">  </span><span class="kw">glimpse</span>() <span class="co"># view the result - 592 variants</span></code></pre></div>
-<pre><code>## Observations: 592
-## Variables: 7
-## $ CHROM                   &lt;chr&gt; &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;2...
-## $ POS                     &lt;int&gt; 15699830, 15699830, 16437047, 16445862...
-## $ REF                     &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;C&quot;, &quot;C&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;...
-## $ ALT                     &lt;chr&gt; &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;T&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;...
-## $ VEP_ensembl_Gene_ID     &lt;chr&gt; &quot;ENSG00000198062&quot;, &quot;ENSG00000198062&quot;, ...
-## $ VEP_ensembl_Consequence &lt;chr&gt; &quot;intron_variant,NMD_transcript_variant...
-## $ CADD_phred              &lt;dbl&gt; 3.612, 3.612, 9.729, 3.895, 7.530, 5.3...</code></pre>
-<p>Now that you’ve got a set of variants that you can aggregate into genic units, the tibble needs to be reformatted for input to the GENESIS analysis pipeline. The input to the GENESIS pipeline is a data frame with variables called <code>group_id</code>, <code>chr</code>, <code>pos</code>, <code>ref</code>, and <code>alt</code>. Prepare this data frame and save it for testing (You do not need to filter the variants for this exercise):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggregates &lt;-
-<span class="st">  </span>combined_annotation <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(VEP_ensembl_Gene_ID <span class="op">!=</span><span class="st"> &quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove variants not annotated with a Gene_ID</span>
-<span class="st">  </span><span class="kw">group_by</span>(VEP_ensembl_Gene_ID) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># aggregate by gene</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="dt">group_id =</span> VEP_ensembl_Gene_ID,
-         <span class="dt">chr =</span> CHROM,
-         <span class="dt">pos =</span> POS,
-         <span class="dt">ref =</span> REF,
-         <span class="dt">alt =</span> ALT) <span class="op">%&gt;%</span>
-<span class="st">  </span>glimpse <span class="co"># inspect the tibble</span></code></pre></div>
-<pre><code>## Observations: 2,603
-## Variables: 5
-## $ group_id &lt;chr&gt; &quot;ENSG00000230643&quot;, &quot;ENSG00000226474&quot;, &quot;ENSG0000023156...
-## $ chr      &lt;chr&gt; &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;, &quot;22&quot;,...
-## $ pos      &lt;int&gt; 15589963, 15613723, 15613723, 15628559, 15699830, 156...
-## $ ref      &lt;chr&gt; &quot;G&quot;, &quot;A&quot;, &quot;A&quot;, &quot;C&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;...
-## $ alt      &lt;chr&gt; &quot;T&quot;, &quot;G&quot;, &quot;G&quot;, &quot;T&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;T&quot;, &quot;T&quot;, &quot;T&quot;...</code></pre>
-<p>This set can be saved for futher analysis, if you’d like.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(aggregates, <span class="dt">file =</span> <span class="st">&quot;data/chr_22_by_gene.RData&quot;</span>)</code></pre></div>
-<p>You can also compute some summary information about these aggregates, such as counting how many genic units we’re using:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">distinct</span>(<span class="kw">as.tibble</span>(aggregates<span class="op">$</span>group_id))</code></pre></div>
-<pre><code>## # A tibble: 598 x 1
-##    value          
-##    &lt;chr&gt;          
-##  1 ENSG00000230643
-##  2 ENSG00000226474
-##  3 ENSG00000231565
-##  4 ENSG00000224435
-##  5 ENSG00000198062
-##  6 ENSG00000236666
-##  7 ENSG00000212216
-##  8 ENSG00000223875
-##  9 ENSG00000233866
-## 10 ENSG00000229658
-## # ... with 588 more rows</code></pre>
-<p>We can look at the distribution of the number of variants per aggregation unit:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts &lt;-<span class="st"> </span>aggregates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group_id) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>())
-<span class="kw">ggplot</span>(counts, <span class="kw">aes</span>(<span class="dt">x =</span> n)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="_main_files/figure-html/plot_agg_units-1.png" width="672" /></p>
-<p>Feel free to look at other summary statistics and do other exploratory data analysis as you’d like!</p>
-</div>
-<div id="aggregate-unit-for-association-testing-exercise" class="section level3">
-<h3><span class="header-section-number">6.5.3</span> Aggregate unit for association testing exercise</h3>
-<p>Now you can proceed to an assocation testing exercise. You will be using a slightly different gene-based aggregation unit for the assocation testing exercise. As before, this analysis uses a subset of the TOPMed SNP variants that are present in the 1000 Genomes Project. However, in this exercise, the genic units include TOPMed SNP variants from all chromosomes (no indels, and not just chromosome 22 as before), each genic unit is expanded to include the set of TOPMed SNP variants falling within a GENCODE-defined gene along with 20 kb flanking regions upstream and downstream of that range, and the variants will be from TOPMed freeze 4 instead of freeze 5 (so that the annotation positions are consistent with the build used for genotyping data in the workshop). This set of aggregation units is not filtered by CADD score or consequence.</p>
-<p>As before, the aggregation units are defined in an R dataframe. Each row of the dataframe specifies a variant (chr, pos, ref, alt) and the group identifier (group_id) it is a part of. Mutiple rows with different group identifiers can be specified to assign a variant to different groups (a variant can be assigned to mutiple genes).</p>
-<p>Begin by loading the aggregation units using <code>TopmedPipeline::getobj()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">workshop.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/topmed_workshop_2018/raw/master/&quot;</span>
-aggfile &lt;-<span class="st"> &quot;data/variants_by_gene.RData&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(aggfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, aggfile), aggfile)
-aggunit &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(aggfile)
-<span class="kw">names</span>(aggunit)</code></pre></div>
-<pre><code>## [1] &quot;group_id&quot; &quot;chr&quot;      &quot;pos&quot;      &quot;ref&quot;      &quot;alt&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(aggunit)</code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##   group_id           chr        pos ref   alt  
-##   &lt;chr&gt;              &lt;fct&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
-## 1 ENSG00000131591.13 1      1025045 C     T    
-## 2 ENSG00000169962.4  1      1265550 C     T    
-## 3 ENSG00000205090.4  1      1472676 T     C    
-## 4 ENSG00000171603.12 1      9788518 G     A    
-## 5 ENSG00000204624.6  1     11593461 C     T    
-## 6 ENSG00000270914.1  1     12068870 G     A</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># an example of variant that is present in mutiple groups</span>
-mult &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(chr, pos) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)
-<span class="kw">inner_join</span>(aggunit, mult[<span class="dv">2</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</code></pre></div>
-<pre><code>## # A tibble: 2 x 5
-##   group_id          chr        pos ref   alt  
-##   &lt;chr&gt;             &lt;fct&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
-## 1 ENSG00000187952.8 1     21742183 G     A    
-## 2 ENSG00000227001.2 1     21742183 G     A</code></pre>
-</div>
-<div id="association-testing-with-aggregate-units" class="section level3">
-<h3><span class="header-section-number">6.5.4</span> Association testing with aggregate units</h3>
-<p>We can run a burden test or SKAT on each of these units using <code>assocTestAggregate</code>. We define a <code>SeqVarListIterator</code> object where each list element is an aggregate unit. The constructor expects a <code>GRangesList</code>, so we use the TopmedPipeline function <code>aggregateGRangesList</code> to quickly convert our single dataframe to the required format. This function can account for multiallelic variants (the same chromosome, position, and ref, but different alt alleles).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(TopmedPipeline)
-<span class="kw">library</span>(SeqVarTools)
-<span class="cf">if</span> (<span class="kw">exists</span>(<span class="st">&quot;seqData&quot;</span>)) {
-    <span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-} <span class="cf">else</span> {
-    data.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/analysis_pipeline/raw/master/testdata&quot;</span>
-    gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
-    <span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(gdsfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(data.path, <span class="kw">basename</span>(gdsfile)), gdsfile)
-    gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
-    workshop.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/topmed_workshop_2018/raw/master/&quot;</span>
-    annotfile &lt;-<span class="st"> &quot;data/sample_phenotype_annotation.RData&quot;</span>
-    <span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(annotfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, annotfile), annotfile)
-    annot &lt;-<span class="st"> </span><span class="kw">getobj</span>(annotfile)
-    seqData &lt;-<span class="st"> </span><span class="kw">SeqVarData</span>(gds, <span class="dt">sampleData=</span>annot)
-}
-    
-<span class="co"># subset to chromosome 1</span>
-aggunit &lt;-<span class="st"> </span><span class="kw">filter</span>(aggunit, chr <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)
-aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRangesList</span>(aggunit)
-<span class="kw">length</span>(aggVarList)</code></pre></div>
-<pre><code>## [1] 127</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">names</span>(aggVarList))</code></pre></div>
-<pre><code>## [1] &quot;ENSG00000131591.13&quot; &quot;ENSG00000169962.4&quot;  &quot;ENSG00000205090.4&quot; 
-## [4] &quot;ENSG00000171603.12&quot; &quot;ENSG00000204624.6&quot;  &quot;ENSG00000270914.1&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList[[<span class="dv">1</span>]]</code></pre></div>
-<pre><code>## GRanges object with 1 range and 2 metadata columns:
-##       seqnames    ranges strand |         ref         alt
-##          &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;character&gt;
-##   [1]        1   1025045      * |           C           T
-##   -------
-##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iterator &lt;-<span class="st"> </span><span class="kw">SeqVarListIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)</code></pre></div>
-<p>As in the previous section, we must fit the null model before running the association test.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">exists</span>(<span class="st">&quot;nullmod&quot;</span>)) {
-    nmfile &lt;-<span class="st"> &quot;data/null_model.RData&quot;</span>
-    <span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(nmfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, nmfile), nmfile)
-    nullmod &lt;-<span class="st"> </span><span class="kw">getobj</span>(nmfile)
-}
-
-<span class="kw">library</span>(GENESIS)
-assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;Burden&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</code></pre></div>
-<pre><code>## # of selected samples: 1,126</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(assoc)</code></pre></div>
-<pre><code>## [1] &quot;results&quot;     &quot;variantInfo&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##                    n.site n.alt n.sample.alt        Score   Score.SE
-## ENSG00000131591.13      1     1            1 -0.209045039 0.09041046
-## ENSG00000169962.4       1     2            2 -0.099365907 0.09771658
-## ENSG00000205090.4       1    16           16  0.252639054 0.37957076
-## ENSG00000171603.12      1     2            2  0.004883518 0.10009888
-## ENSG00000204624.6       1     1            1 -0.001487364 0.08111483
-## ENSG00000270914.1       1    14           14 -0.834059103 0.33895453
-##                     Score.Stat Score.pval
-## ENSG00000131591.13 -2.31217757 0.02076790
-## ENSG00000169962.4  -1.01687864 0.30921116
-## ENSG00000205090.4   0.66559145 0.50567227
-## ENSG00000171603.12  0.04878694 0.96108909
-## ENSG00000204624.6  -0.01833652 0.98537039
-## ENSG00000270914.1  -2.46068139 0.01386735</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">names</span>(assoc<span class="op">$</span>variantInfo))</code></pre></div>
-<pre><code>## [1] &quot;ENSG00000131591.13&quot; &quot;ENSG00000169962.4&quot;  &quot;ENSG00000205090.4&quot; 
-## [4] &quot;ENSG00000171603.12&quot; &quot;ENSG00000204624.6&quot;  &quot;ENSG00000270914.1&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>variantInfo[[<span class="dv">1</span>]])</code></pre></div>
-<pre><code>##   variant.id chr     pos ref alt allele.index n.obs         freq weight
-## 1          3   1 1025045   C   T            1  1126 0.0004440497      1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqPlot</span>(assoc<span class="op">$</span>results<span class="op">$</span>Score.pval)</code></pre></div>
-<p><img src="_main_files/figure-html/assoc_aggregate-1.png" width="672" /></p>
-</div>
-<div id="exercise-2" class="section level3">
-<h3><span class="header-section-number">6.5.5</span> Exercise</h3>
-<p>Since we are working with a subset of the data, many of the genes listed in <code>group_id</code> have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function <code>aggregateGRanges</code>. Then run SKAT using those units and a <code>SeqVarRangeIterator</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">agg2 &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">chr=</span><span class="kw">factor</span>(chr, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">22</span>, <span class="st">&quot;X&quot;</span>))) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(chr, pos) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(chr) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">min=</span><span class="kw">min</span>(pos), <span class="dt">max=</span><span class="kw">max</span>(pos))
-<span class="kw">head</span>(agg2)</code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   chr       min       max
-##   &lt;fct&gt;   &lt;dbl&gt;     &lt;dbl&gt;
-## 1 1     1025045 248761613</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggByPos &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(agg2), <span class="cf">function</span>(i) {
-    <span class="kw">data.frame</span>(<span class="dt">chr=</span>agg2<span class="op">$</span>chr[i],
-               <span class="dt">start=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i], agg2<span class="op">$</span>max[i]<span class="op">-</span><span class="fl">1e6</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
-               <span class="dt">end=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i]<span class="op">+</span><span class="fl">1e6</span>, agg2<span class="op">$</span>max[i], <span class="dt">length.out=</span><span class="dv">10</span>))
-})) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">group_id=</span><span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())
-<span class="kw">head</span>(aggByPos)</code></pre></div>
-<pre><code>##   chr     start       end group_id
-## 1   1   1025045   2025045        1
-## 2   1  28440219  29440219        2
-## 3   1  55855393  56855393        3
-## 4   1  83270568  84270568        4
-## 5   1 110685742 111685742        5
-## 6   1 138100916 139100916        6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRanges</span>(aggByPos)
-aggVarList[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
-<pre><code>## GRanges object with 2 ranges and 0 metadata columns:
-##     seqnames            ranges strand
-##        &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt;
-##   1        1   1025045-2025045      *
-##   2        1 28440219-29440219      *
-##   -------
-##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-iterator &lt;-<span class="st"> </span><span class="kw">SeqVarRangeIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
-<pre><code>## # of selected samples: 1,126</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##   n.site n.alt n.sample.alt       Q_0    pval_0 err_0
-## 1      4    24           24  67.20875 0.4664646     0
-## 2      4   152          137  41.61442 0.6590382     0
-## 3      2    32           32  18.32963 0.6299791     0
-## 4      5    80           76 167.66663 0.3346761     0
-## 5      0     0            0        NA        NA    NA
-## 6      0     0            0        NA        NA    NA</code></pre>
+<pre><code>##   chr   start     end n.site n.alt n.sample.alt        Q_0      pval_0
+## 1   1  966001  971000      1     9            9   7.318094 0.643988703
+## 2   1  982001  987000      1   111          107 154.178280 0.058811539
+## 3   1 1022001 1027000      1     1            1  47.823916 0.005504472
+## 4   1 1262001 1267000      1     2            2   7.319239 0.308472754
+## 5   1 1468001 1473000      1    16           16  58.518662 0.293504072
+## 6   1 1732001 1737000      1     5            5   9.499539 0.509868791
+##   err_0
+## 1     0
+## 2     0
+## 3     0
+## 4     0
+## 5     0
+## 6     0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqClose</span>(gds)</code></pre></div>
 
 </div>
@@ -1388,8 +480,8 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(i
           </div>
         </div>
       </div>
-<a href="phenotype-harmonization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="analysis-pipeline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gds-format.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="computing-a-grm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1409,7 +501,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1419,6 +511,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },

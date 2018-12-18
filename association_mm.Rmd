@@ -1,0 +1,81 @@
+# Association tests with related subjects
+
+These exercises introduce relatedness to association testing with mixed models.
+
+## Null model
+
+The first step in an association test is to fit the null model. In addition to the `AnnotatedDataFrame` with phenotypes we used previously, we will need the principal components and kinship. We will use the first five PCs to adjust for ancestry.
+
+```{r null_model_mm}
+# sample annotation
+sampfile <- "data/sample_phenotype_annotation.RData"
+annot <- TopmedPipeline::getobj(sampfile)
+library(Biobase)
+head(pData(annot))
+
+# load the PCs
+pcfile <- "data/pcs.RData"
+pcs <- TopmedPipeline::getobj(pcfile)
+pcs <- pcs[,c("sample.id", "PC1", "PC2", "PC3", "PC4", "PC5")]
+head(pcs)
+
+# add PCs to the sample annotation
+dat <- left_join(pData(annot), pcs, by="sample.id")
+pData(annot) <- dat
+save(annot, file="sample_phenotype_pcs.RData")
+```
+
+We create a kinship matrix from the output of `pcrelate`. We multiply the kinship values by 2 to get values equivalent to a GRM. This matrix is represented in R as a symmetric matrix object from the Matrix package.
+
+```{r load_kinship}
+kinfile <- "data/pcrelate_kinship.RData"
+pcrel <- TopmedPipeline::getobj(kinfile)
+kinship <- pcrelateToMatrix(pcrel, scaleKin=2, verbose=FALSE)
+dim(kinship)
+kinship[1:5,1:5]
+```
+
+We fit the null model, adding the PCs to the list of covariates, and specifying the kinship as the covariance matrix with the `cov.mat` argument. As before, we use `study` as a grouping variable.
+
+```{r null_model_fit_mm}
+library(GENESIS)
+nullmod <- fitNullModel(annot, outcome="height", 
+                        covars=c("sex", "age", "study", paste0("PC", 1:5)), 
+                        cov.mat=kinship, group.var="study", verbose=FALSE)
+save(nullmod, file="null_mixed_model.RData")
+```
+
+## Single-variant tests
+
+Now we can run a single-variant test, accounting for relatedness between the subjects.
+
+```{r assoc_single_mm}
+library(SeqVarTools)
+gdsfile <- "data/1KG_phase3_subset_chr1.gds"
+gds <- seqOpen(gdsfile)
+seqData <- SeqVarData(gds, sampleData=annot)
+iterator <- SeqVarBlockIterator(seqData, verbose=FALSE)
+assoc <- assocTestSingle(iterator, nullmod)
+head(assoc)
+
+qqPlot(assoc$Score.pval)
+```
+
+
+## Exercise
+
+Run a sliding window test using the mixed model and make a QQ plot.
+
+```{r exercise_mm}
+seqResetFilter(seqData, verbose=FALSE)
+iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
+assoc <- assocTestAggregate(iterator, nullmod, test="Burden", AF.max=0.1, weight.beta=c(1,1))
+head(assoc$results)
+head(assoc$variantInfo)
+```
+
+
+
+```{r assoc_mm_close}
+seqClose(gds)
+```
