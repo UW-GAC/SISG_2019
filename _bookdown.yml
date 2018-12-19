@@ -1,5 +1,7 @@
-rmd_files: ["index.Rmd", "gds_intro.Rmd", 
+rmd_files: ["index.Rmd", 
+    "gds_intro.Rmd", 
     "association.Rmd", 
     "kinship.Rmd",
-    "association_mm.Rmd"]
+    "mixed_models.Rmd",
+    "annotation.Rmd"]
 output_dir: "docs"

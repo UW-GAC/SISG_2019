@@ -1,4 +1,4 @@
-# Association tests with related subjects
+# Mixed models
 
 These exercises introduce relatedness to association testing with mixed models.
 

@@ -100,7 +100,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.1</b> Resources</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#software-requirements"><i class="fa fa-check"></i><b>1.1</b> Software requirements</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.2</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="gds-format.html"><a href="gds-format.html"><i class="fa fa-check"></i><b>2</b> GDS format</a><ul>
 <li class="chapter" data-level="2.1" data-path="gds-format.html"><a href="gds-format.html#exploring-a-gds-file"><i class="fa fa-check"></i><b>2.1</b> Exploring a GDS file</a></li>
@@ -122,10 +123,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4" data-path="pc-relate.html"><a href="pc-relate.html#comparison-with-pedigree"><i class="fa fa-check"></i><b>5.4</b> Comparison with pedigree</a></li>
 <li class="chapter" data-level="5.5" data-path="pc-relate.html"><a href="pc-relate.html#exercise-1"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html"><i class="fa fa-check"></i><b>6</b> Association tests with related subjects</a><ul>
-<li class="chapter" data-level="6.1" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html#null-model-1"><i class="fa fa-check"></i><b>6.1</b> Null model</a></li>
-<li class="chapter" data-level="6.2" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html#single-variant-tests-1"><i class="fa fa-check"></i><b>6.2</b> Single-variant tests</a></li>
-<li class="chapter" data-level="6.3" data-path="association-tests-with-related-subjects.html"><a href="association-tests-with-related-subjects.html#exercise-2"><i class="fa fa-check"></i><b>6.3</b> Exercise</a></li>
+<li class="chapter" data-level="6" data-path="mixed-models.html"><a href="mixed-models.html"><i class="fa fa-check"></i><b>6</b> Mixed models</a><ul>
+<li class="chapter" data-level="6.1" data-path="mixed-models.html"><a href="mixed-models.html#null-model-1"><i class="fa fa-check"></i><b>6.1</b> Null model</a></li>
+<li class="chapter" data-level="6.2" data-path="mixed-models.html"><a href="mixed-models.html#single-variant-tests-1"><i class="fa fa-check"></i><b>6.2</b> Single-variant tests</a></li>
+<li class="chapter" data-level="6.3" data-path="mixed-models.html"><a href="mixed-models.html#exercise-2"><i class="fa fa-check"></i><b>6.3</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="variant-annotation.html"><a href="variant-annotation.html"><i class="fa fa-check"></i><b>7</b> Variant annotation</a><ul>
+<li class="chapter" data-level="7.1" data-path="variant-annotation.html"><a href="variant-annotation.html#using-bioconductor-annotation-resources"><i class="fa fa-check"></i><b>7.1</b> Using Bioconductor annotation resources</a></li>
+<li class="chapter" data-level="7.2" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregating-and-filtering-variants-using-annotation"><i class="fa fa-check"></i><b>7.2</b> Aggregating and filtering variants using annotation</a></li>
+<li class="chapter" data-level="7.3" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregate-unit-for-association-testing-exercise"><i class="fa fa-check"></i><b>7.3</b> Aggregate unit for association testing exercise</a></li>
+<li class="chapter" data-level="7.4" data-path="variant-annotation.html"><a href="variant-annotation.html#association-testing-with-aggregate-units"><i class="fa fa-check"></i><b>7.4</b> Association testing with aggregate units</a></li>
+<li class="chapter" data-level="7.5" data-path="variant-annotation.html"><a href="variant-annotation.html#exercise-3"><i class="fa fa-check"></i><b>7.5</b> Exercise</a></li>
 </ul></li>
 </ul>
 
@@ -151,8 +159,36 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
 <p>This site contains course materials for WISG Module 4: Computational Pipeline for WGS Data, January 23-24, 2019. Data used is located in the <a href="https://github.com/UW-GAC/WISG_2019">github repository</a> from which the site is built, as well as in the <a href="https://github.com/UW-GAC/analysis_pipeline">TOPMed analysis pipeline</a>.</p>
+<div id="software-requirements" class="section level2">
+<h2><span class="header-section-number">1.1</span> Software requirements</h2>
+<ul>
+<li><a href="https://cran.r-project.org/">R 3.5.1</a></li>
+<li>R packages
+<ul>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/SeqArray.html">SeqArray</a></li>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/SeqVarTools.html">SeqVarTools</a></li>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/GENESIS.html">GENESIS</a></li>
+<li><a href="http://bioconductor.org/packages/release/bioc/html/SNPRelate.html">SNPRelate</a></li>
+<li><a href="https://github.com/UW-GAC/analysis_pipeline/tree/master/TopmedPipeline">TopmedPipeline</a></li>
+<li>dplyr</li>
+<li>ggplot2</li>
+<li>GGally</li>
+<li>survey</li>
+<li>CompQuadForm</li>
+<li>TxDb.Hsapiens.UCSC.hg19.knownGene</li>
+</ul></li>
+</ul>
+<p>Installation instructions</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;BiocManager&quot;</span>, <span class="st">&quot;remotes&quot;</span>), <span class="dt">repos=</span><span class="st">&quot;https://cloud.r-project.org&quot;</span>)
+
+BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="kw">c</span>(<span class="st">&quot;SeqArray&quot;</span>, <span class="st">&quot;SeqVarTools&quot;</span>, <span class="st">&quot;SNPRelate&quot;</span>, <span class="st">&quot;GENESIS&quot;</span>, 
+                       <span class="st">&quot;survey&quot;</span>, <span class="st">&quot;CompQuadForm&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;GGally&quot;</span>,
+                       <span class="st">&quot;TxDb.Hsapiens.UCSC.hg19.knownGene&quot;</span>))
+
+remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;UW-GAC/analysis_pipeline/TopmedPipeline&quot;</span>)</code></pre></div>
+</div>
 <div id="resources" class="section level2">
-<h2><span class="header-section-number">1.1</span> Resources</h2>
+<h2><span class="header-section-number">1.2</span> Resources</h2>
 <p>If you are new to R, you might find the following material helpful:</p>
 <ul>
 <li><a href="http://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html">Graphics with ggplot2</a> tutorial</li>

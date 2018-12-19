@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>7 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data</title>
+  <meta name="description" content="Course materials for WISG Module 4">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="7 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course materials for WISG Module 4" />
+  <meta name="github-repo" content="UW-GAC/WISG_2019" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data />
+  
+  <meta name="twitter:description" content="Course materials for WISG Module 4" />
+  
+
+
+
+<meta name="date" content="2018-12-18">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="mixed-models.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#software-requirements"><i class="fa fa-check"></i><b>1.1</b> Software requirements</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.2</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gds-format.html"><a href="gds-format.html"><i class="fa fa-check"></i><b>2</b> GDS format</a><ul>
+<li class="chapter" data-level="2.1" data-path="gds-format.html"><a href="gds-format.html#exploring-a-gds-file"><i class="fa fa-check"></i><b>2.1</b> Exploring a GDS file</a></li>
+<li class="chapter" data-level="2.2" data-path="gds-format.html"><a href="gds-format.html#exercises"><i class="fa fa-check"></i><b>2.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="association-tests.html"><a href="association-tests.html"><i class="fa fa-check"></i><b>3</b> Association tests</a><ul>
+<li class="chapter" data-level="3.1" data-path="association-tests.html"><a href="association-tests.html#null-model"><i class="fa fa-check"></i><b>3.1</b> Null model</a></li>
+<li class="chapter" data-level="3.2" data-path="association-tests.html"><a href="association-tests.html#single-variant-tests"><i class="fa fa-check"></i><b>3.2</b> Single-variant tests</a></li>
+<li class="chapter" data-level="3.3" data-path="association-tests.html"><a href="association-tests.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
+<li class="chapter" data-level="3.4" data-path="association-tests.html"><a href="association-tests.html#sliding-window-tests"><i class="fa fa-check"></i><b>3.4</b> Sliding window tests</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="association-tests.html"><a href="association-tests.html#exercise"><i class="fa fa-check"></i><b>3.4.1</b> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="computing-a-grm.html"><a href="computing-a-grm.html"><i class="fa fa-check"></i><b>4</b> Computing a GRM</a></li>
+<li class="chapter" data-level="5" data-path="pc-relate.html"><a href="pc-relate.html"><i class="fa fa-check"></i><b>5</b> PC-Relate</a><ul>
+<li class="chapter" data-level="5.1" data-path="pc-relate.html"><a href="pc-relate.html#king"><i class="fa fa-check"></i><b>5.1</b> KING</a></li>
+<li class="chapter" data-level="5.2" data-path="pc-relate.html"><a href="pc-relate.html#pc-air"><i class="fa fa-check"></i><b>5.2</b> PC-AiR</a></li>
+<li class="chapter" data-level="5.3" data-path="pc-relate.html"><a href="pc-relate.html#pc-relate-1"><i class="fa fa-check"></i><b>5.3</b> PC-Relate</a></li>
+<li class="chapter" data-level="5.4" data-path="pc-relate.html"><a href="pc-relate.html#comparison-with-pedigree"><i class="fa fa-check"></i><b>5.4</b> Comparison with pedigree</a></li>
+<li class="chapter" data-level="5.5" data-path="pc-relate.html"><a href="pc-relate.html#exercise-1"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mixed-models.html"><a href="mixed-models.html"><i class="fa fa-check"></i><b>6</b> Mixed models</a><ul>
+<li class="chapter" data-level="6.1" data-path="mixed-models.html"><a href="mixed-models.html#null-model-1"><i class="fa fa-check"></i><b>6.1</b> Null model</a></li>
+<li class="chapter" data-level="6.2" data-path="mixed-models.html"><a href="mixed-models.html#single-variant-tests-1"><i class="fa fa-check"></i><b>6.2</b> Single-variant tests</a></li>
+<li class="chapter" data-level="6.3" data-path="mixed-models.html"><a href="mixed-models.html#exercise-2"><i class="fa fa-check"></i><b>6.3</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="variant-annotation.html"><a href="variant-annotation.html"><i class="fa fa-check"></i><b>7</b> Variant annotation</a><ul>
+<li class="chapter" data-level="7.1" data-path="variant-annotation.html"><a href="variant-annotation.html#using-bioconductor-annotation-resources"><i class="fa fa-check"></i><b>7.1</b> Using Bioconductor annotation resources</a></li>
+<li class="chapter" data-level="7.2" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregating-and-filtering-variants-using-annotation"><i class="fa fa-check"></i><b>7.2</b> Aggregating and filtering variants using annotation</a></li>
+<li class="chapter" data-level="7.3" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregate-unit-for-association-testing-exercise"><i class="fa fa-check"></i><b>7.3</b> Aggregate unit for association testing exercise</a></li>
+<li class="chapter" data-level="7.4" data-path="variant-annotation.html"><a href="variant-annotation.html#association-testing-with-aggregate-units"><i class="fa fa-check"></i><b>7.4</b> Association testing with aggregate units</a></li>
+<li class="chapter" data-level="7.5" data-path="variant-annotation.html"><a href="variant-annotation.html#exercise-3"><i class="fa fa-check"></i><b>7.5</b> Exercise</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">WISG Module 4: Computational Pipeline for WGS Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variant-annotation" class="section level1">
+<h1><span class="header-section-number">7</span> Variant annotation</h1>
+<div id="using-bioconductor-annotation-resources" class="section level2">
+<h2><span class="header-section-number">7.1</span> Using Bioconductor annotation resources</h2>
+<p>In this example, we illustrate defining aggregate units based on known genes.</p>
+<p>First, we load the null mixed model and open the GDS file.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modfile &lt;-<span class="st"> &quot;data/null_mixed_model.RData&quot;</span>
+nullmod &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(modfile)
+
+sampfile &lt;-<span class="st"> &quot;data/sample_phenotype_annotation.RData&quot;</span>
+annot &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(sampfile)
+
+gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
+<span class="kw">library</span>(SeqVarTools)
+gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
+seqData &lt;-<span class="st"> </span><span class="kw">SeqVarData</span>(gds, <span class="dt">sampleData=</span>annot)</code></pre></div>
+<p>We use the human genome annotation from Bioconductor to identify genes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GenomicRanges)
+<span class="kw">library</span>(TxDb.Hsapiens.UCSC.hg19.knownGene)
+
+<span class="co"># return the variants in seqData as a GRanges object</span>
+gr &lt;-<span class="st"> </span><span class="kw">granges</span>(gds)
+gr</code></pre></div>
+<pre><code>## GRanges object with 1120 ranges and 0 metadata columns:
+##        seqnames              ranges strand
+##           &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt;
+##      1        1              970546      *
+##      2        1              985900      *
+##      3        1             1025045      *
+##      4        1             1265550      *
+##      5        1             1472676      *
+##    ...      ...                 ...    ...
+##   1116        1           248715186      *
+##   1117        1 248715606-248715610      *
+##   1118        1           248761613      *
+##   1119        1           248894546      *
+##   1120        1           249149558      *
+##   -------
+##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># find variants that overlap with each gene</span>
+txdb &lt;-<span class="st"> </span>TxDb.Hsapiens.UCSC.hg19.knownGene
+gr &lt;-<span class="st"> </span><span class="kw">renameSeqlevels</span>(gr, <span class="kw">paste0</span>(<span class="st">&quot;chr&quot;</span>, <span class="kw">seqlevels</span>(gr)))
+ts &lt;-<span class="st"> </span><span class="kw">transcriptsByOverlaps</span>(txdb, gr, <span class="dt">columns=</span><span class="st">&quot;GENEID&quot;</span>)
+<span class="co"># simplistic example - define genes as overlapping transcripts</span>
+genes &lt;-<span class="st"> </span><span class="kw">reduce</span>(ts)
+genes &lt;-<span class="st"> </span><span class="kw">renameSeqlevels</span>(genes, <span class="kw">sub</span>(<span class="st">&quot;chr&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">seqlevels</span>(genes)))
+genes</code></pre></div>
+<pre><code>## GRanges object with 384 ranges and 0 metadata columns:
+##         seqnames              ranges strand
+##            &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt;
+##     [1]        1       955503-991499      +
+##     [2]        1     2160134-2241652      +
+##     [3]        1     2985742-3355185      +
+##     [4]        1     6484848-6521004      +
+##     [5]        1     6845384-7829766      +
+##     ...      ...                 ...    ...
+##   [380]        1 245912642-246670644      -
+##   [381]        1 246703863-246729565      -
+##   [382]        1 247108849-247242115      -
+##   [383]        1 247463622-247495045      -
+##   [384]        1 249144203-249153315      -
+##   -------
+##   seqinfo: 93 sequences (1 circular) from hg19 genome</code></pre>
+<p>We run a burden test, setting a maximum alternate allele frequency to exclude common variants.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create an iterator where each successive unit is a different gene</span>
+iterator &lt;-<span class="st"> </span><span class="kw">SeqVarRangeIterator</span>(seqData, <span class="dt">variantRanges=</span>genes, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+
+<span class="co"># do a burden test on the rare variants in each gene</span>
+assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">AF.max=</span><span class="fl">0.05</span>, <span class="dt">test=</span><span class="st">&quot;Burden&quot;</span>)</code></pre></div>
+<pre><code>## # of selected samples: 100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
+<pre><code>##   n.site n.alt n.sample.alt        Score   Score.SE  Score.Stat Score.pval
+## 1      2    12           12 -0.311130943 0.26363332 -1.18016548 0.23793441
+## 2      1     1            1  0.025421814 0.07341585  0.34627148 0.72913870
+## 3      1     2            2  0.201648520 0.11806291  1.70797520 0.08764094
+## 4      2     4            4 -0.004437774 0.16591324 -0.02674756 0.97866108
+## 5      1     8            8  0.028460319 0.21098460  0.13489287 0.89269657
+## 6      0     0            0           NA         NA          NA         NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>variantInfo)</code></pre></div>
+<pre><code>## [[1]]
+##   variant.id chr    pos allele.index n.obs  freq weight
+## 1          1   1 970546            1   100 0.015      1
+## 2          2   1 985900            1   100 0.045      1
+## 
+## [[2]]
+##   variant.id chr     pos allele.index n.obs  freq weight
+## 1          7   1 2185887            1   100 0.005      1
+## 
+## [[3]]
+##   variant.id chr     pos allele.index n.obs freq weight
+## 2         15   1 3293503            1   100 0.01      1
+## 
+## [[4]]
+##   variant.id chr     pos allele.index n.obs freq weight
+## 1         36   1 6489967            1   100 0.01      1
+## 2         37   1 6503405            1   100 0.01      1
+## 
+## [[5]]
+##   variant.id chr     pos allele.index n.obs freq weight
+## 2         39   1 7056029            1   100 0.04      1
+## 
+## [[6]]
+## [1] variant.id   chr          pos          allele.index n.obs       
+## [6] freq         weight      
+## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+<div id="aggregating-and-filtering-variants-using-annotation" class="section level2">
+<h2><span class="header-section-number">7.2</span> Aggregating and filtering variants using annotation</h2>
+<p>Alternatively, we may want to import annotation from other software, such as ANNOVAR or WGSA. The output formats of variant annotation software can be quite complex, but for this exercise we use fairly simple tab-separated text files.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+snv_annotation &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/snv_parsed.tsv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">na.strings=</span><span class="st">&quot;.&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
+indel_annotation &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/indel_parsed.tsv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">na.strings=</span><span class="st">&quot;.&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
+combined_annotation &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(snv_annotation, indel_annotation)</code></pre></div>
+<p>Here we remove variants that are not associated with a gene, group the variants by gene, and filter the variants for intron_variants with a CADD_phred score greater than 3 in just a few lines of code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">combined_annotation <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(VEP_ensembl_Gene_ID <span class="op">!=</span><span class="st"> &quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove variants not annotated with a Gene_ID</span>
+<span class="st">  </span><span class="kw">group_by</span>(VEP_ensembl_Gene_ID) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># aggregate by gene</span>
+<span class="st">  </span><span class="kw">filter</span>(CADD_phred <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># filter variants to keep only CADD_phred greater than 3</span>
+<span class="st">  </span><span class="kw">filter</span>(stringr<span class="op">::</span><span class="kw">str_detect</span>(VEP_ensembl_Consequence, <span class="st">&quot;intron_variant&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># keep intron variants</span>
+<span class="st">  </span><span class="kw">glimpse</span>() <span class="co"># view the result - 592 variants</span></code></pre></div>
+<pre><code>## Observations: 592
+## Variables: 7
+## $ CHROM                   &lt;int&gt; 22, 22, 22, 22, 22, 22, 22, 22, 22, 22...
+## $ POS                     &lt;int&gt; 15699830, 15699830, 16437047, 16445862...
+## $ REF                     &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;C&quot;, &quot;C&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;...
+## $ ALT                     &lt;chr&gt; &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;T&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;...
+## $ VEP_ensembl_Gene_ID     &lt;chr&gt; &quot;ENSG00000198062&quot;, &quot;ENSG00000198062&quot;, ...
+## $ VEP_ensembl_Consequence &lt;chr&gt; &quot;intron_variant,NMD_transcript_variant...
+## $ CADD_phred              &lt;dbl&gt; 3.612, 3.612, 9.729, 3.895, 7.530, 5.3...</code></pre>
+<p>Now that you’ve got a set of variants that you can aggregate into genic units, the data needs to be reformatted for input to the GENESIS analysis pipeline. The input to the GENESIS pipeline is a data frame with variables called <code>group_id</code>, <code>chr</code>, <code>pos</code>, <code>ref</code>, and <code>alt</code>. Prepare this data frame and save it for testing (You do not need to filter the variants for this exercise):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggregates &lt;-
+<span class="st">  </span>combined_annotation <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(VEP_ensembl_Gene_ID <span class="op">!=</span><span class="st"> &quot;.&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove variants not annotated with a Gene_ID</span>
+<span class="st">  </span><span class="kw">group_by</span>(VEP_ensembl_Gene_ID) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># aggregate by gene</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="dt">group_id =</span> VEP_ensembl_Gene_ID,
+         <span class="dt">chr =</span> CHROM,
+         <span class="dt">pos =</span> POS,
+         <span class="dt">ref =</span> REF,
+         <span class="dt">alt =</span> ALT) <span class="op">%&gt;%</span>
+<span class="st">  </span>glimpse <span class="co"># inspect the tibble</span></code></pre></div>
+<pre><code>## Observations: 2,603
+## Variables: 5
+## $ group_id &lt;chr&gt; &quot;ENSG00000230643&quot;, &quot;ENSG00000226474&quot;, &quot;ENSG0000023156...
+## $ chr      &lt;int&gt; 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 2...
+## $ pos      &lt;int&gt; 15589963, 15613723, 15613723, 15628559, 15699830, 156...
+## $ ref      &lt;chr&gt; &quot;G&quot;, &quot;A&quot;, &quot;A&quot;, &quot;C&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;...
+## $ alt      &lt;chr&gt; &quot;T&quot;, &quot;G&quot;, &quot;G&quot;, &quot;T&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;T&quot;, &quot;T&quot;, &quot;T&quot;...</code></pre>
+<p>You can also compute some summary information about these aggregates, such as counting how many genic units we’re using:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">unique</span>(aggregates<span class="op">$</span>group_id))</code></pre></div>
+<pre><code>## [1] 598</code></pre>
+<p>We can look at the distribution of the number of variants per aggregation unit:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counts &lt;-<span class="st"> </span>aggregates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group_id) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>())
+<span class="kw">ggplot</span>(counts, <span class="kw">aes</span>(<span class="dt">x =</span> n)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="_main_files/figure-html/plot_agg_units-1.png" width="672" /></p>
+</div>
+<div id="aggregate-unit-for-association-testing-exercise" class="section level2">
+<h2><span class="header-section-number">7.3</span> Aggregate unit for association testing exercise</h2>
+<p>Now you can proceed to an assocation testing exercise. You will be using a slightly different gene-based aggregation unit for the assocation testing exercise. In this exercise, the genic units include SNP variants from all chromosomes (no indels, and not just chromosome 22 as before), each genic unit is expanded to include the set of SNPs falling within a GENCODE-defined gene along with 20 kb flanking regions upstream and downstream of that range, and the positions are in genome build hg19 (so that the annotation positions are consistent with the build used for genotyping data in the workshop). This set of aggregation units is not filtered by CADD score or consequence.</p>
+<p>As before, the aggregation units are defined in an R dataframe. Each row of the dataframe specifies a variant (chr, pos, ref, alt) and the group identifier (group_id) it is a part of. Mutiple rows with different group identifiers can be specified to assign a variant to different groups (a variant can be assigned to mutiple genes).</p>
+<p>Begin by loading the aggregation units using <code>TopmedPipeline::getobj()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggfile &lt;-<span class="st"> &quot;data/variants_by_gene.RData&quot;</span>
+aggunit &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(aggfile)
+<span class="kw">names</span>(aggunit)</code></pre></div>
+<pre><code>## [1] &quot;group_id&quot; &quot;chr&quot;      &quot;pos&quot;      &quot;ref&quot;      &quot;alt&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(aggunit)</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   group_id           chr        pos ref   alt  
+##   &lt;chr&gt;              &lt;fct&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 ENSG00000131591.13 1      1025045 C     T    
+## 2 ENSG00000169962.4  1      1265550 C     T    
+## 3 ENSG00000205090.4  1      1472676 T     C    
+## 4 ENSG00000171603.12 1      9788518 G     A    
+## 5 ENSG00000204624.6  1     11593461 C     T    
+## 6 ENSG00000270914.1  1     12068870 G     A</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># an example of variant that is present in mutiple groups</span>
+mult &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(chr, pos) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)
+<span class="kw">inner_join</span>(aggunit, mult[<span class="dv">2</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])</code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   group_id          chr        pos ref   alt  
+##   &lt;chr&gt;             &lt;fct&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 ENSG00000187952.8 1     21742183 G     A    
+## 2 ENSG00000227001.2 1     21742183 G     A</code></pre>
+</div>
+<div id="association-testing-with-aggregate-units" class="section level2">
+<h2><span class="header-section-number">7.4</span> Association testing with aggregate units</h2>
+<p>We can run a burden test or SKAT on each of these units using <code>assocTestAggregate</code>. We define a <code>SeqVarListIterator</code> object where each list element is an aggregate unit. The constructor expects a <code>GRangesList</code>, so we use the TopmedPipeline function <code>aggregateGRangesList</code> to quickly convert our single dataframe to the required format. This function can account for multiallelic variants (the same chromosome, position, and ref, but different alt alleles).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(TopmedPipeline)
+<span class="kw">library</span>(SeqVarTools)
+<span class="cf">if</span> (<span class="kw">exists</span>(<span class="st">&quot;seqData&quot;</span>)) {
+    <span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+} <span class="cf">else</span> {
+    gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
+    gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
+    annotfile &lt;-<span class="st"> &quot;data/sample_phenotype_pcs.RData&quot;</span>
+    annot &lt;-<span class="st"> </span><span class="kw">getobj</span>(annotfile)
+    seqData &lt;-<span class="st"> </span><span class="kw">SeqVarData</span>(gds, <span class="dt">sampleData=</span>annot)
+}
+    
+<span class="co"># subset to chromosome 1</span>
+aggunit &lt;-<span class="st"> </span><span class="kw">filter</span>(aggunit, chr <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)
+aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRangesList</span>(aggunit)
+<span class="kw">length</span>(aggVarList)</code></pre></div>
+<pre><code>## [1] 127</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">names</span>(aggVarList))</code></pre></div>
+<pre><code>## [1] &quot;ENSG00000131591.13&quot; &quot;ENSG00000169962.4&quot;  &quot;ENSG00000205090.4&quot; 
+## [4] &quot;ENSG00000171603.12&quot; &quot;ENSG00000204624.6&quot;  &quot;ENSG00000270914.1&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList[[<span class="dv">1</span>]]</code></pre></div>
+<pre><code>## GRanges object with 1 range and 2 metadata columns:
+##       seqnames    ranges strand |         ref         alt
+##          &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;character&gt;
+##   [1]        1   1025045      * |           C           T
+##   -------
+##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iterator &lt;-<span class="st"> </span><span class="kw">SeqVarListIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)</code></pre></div>
+<p>As in the previous section, we must load the null model before running the association test.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="kw">exists</span>(<span class="st">&quot;nullmod&quot;</span>)) {
+    nmfile &lt;-<span class="st"> &quot;data/null_mixed_model.RData&quot;</span>
+    nullmod &lt;-<span class="st"> </span><span class="kw">getobj</span>(nmfile)
+}
+
+assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;Burden&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</code></pre></div>
+<pre><code>## # of selected samples: 100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(assoc)</code></pre></div>
+<pre><code>## [1] &quot;results&quot;     &quot;variantInfo&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
+<pre><code>##                    n.site n.alt n.sample.alt       Score   Score.SE
+## ENSG00000131591.13      0     0            0          NA         NA
+## ENSG00000169962.4       0     0            0          NA         NA
+## ENSG00000205090.4       1     1            1 -0.08044594 0.08674420
+## ENSG00000171603.12      0     0            0          NA         NA
+## ENSG00000204624.6       0     0            0          NA         NA
+## ENSG00000270914.1       1     1            1 -0.05332431 0.08057418
+##                    Score.Stat Score.pval
+## ENSG00000131591.13         NA         NA
+## ENSG00000169962.4          NA         NA
+## ENSG00000205090.4  -0.9273927  0.3537227
+## ENSG00000171603.12         NA         NA
+## ENSG00000204624.6          NA         NA
+## ENSG00000270914.1  -0.6618040  0.5080969</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">names</span>(assoc<span class="op">$</span>variantInfo))</code></pre></div>
+<pre><code>## [1] &quot;ENSG00000131591.13&quot; &quot;ENSG00000169962.4&quot;  &quot;ENSG00000205090.4&quot; 
+## [4] &quot;ENSG00000171603.12&quot; &quot;ENSG00000204624.6&quot;  &quot;ENSG00000270914.1&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>variantInfo[[<span class="dv">1</span>]])</code></pre></div>
+<pre><code>## [1] variant.id   chr          pos          ref          alt         
+## [6] allele.index n.obs        freq         weight      
+## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqPlot</span>(assoc<span class="op">$</span>results<span class="op">$</span>Score.pval)</code></pre></div>
+<p><img src="_main_files/figure-html/assoc_aggregate-1.png" width="672" /></p>
+</div>
+<div id="exercise-3" class="section level2">
+<h2><span class="header-section-number">7.5</span> Exercise</h2>
+<p>Since we are working with a subset of the data, many of the genes listed in <code>group_id</code> have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function <code>aggregateGRanges</code>. Then run SKAT using those units and a <code>SeqVarRangeIterator</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">agg2 &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">chr=</span><span class="kw">factor</span>(chr, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">22</span>, <span class="st">&quot;X&quot;</span>))) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">distinct</span>(chr, pos) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(chr) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">min=</span><span class="kw">min</span>(pos), <span class="dt">max=</span><span class="kw">max</span>(pos))
+<span class="kw">head</span>(agg2)</code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   chr       min       max
+##   &lt;fct&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+## 1 1     1025045 248761613</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggByPos &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(agg2), <span class="cf">function</span>(i) {
+    <span class="kw">data.frame</span>(<span class="dt">chr=</span>agg2<span class="op">$</span>chr[i],
+               <span class="dt">start=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i], agg2<span class="op">$</span>max[i]<span class="op">-</span><span class="fl">1e6</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
+               <span class="dt">end=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i]<span class="op">+</span><span class="fl">1e6</span>, agg2<span class="op">$</span>max[i], <span class="dt">length.out=</span><span class="dv">10</span>))
+})) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">group_id=</span><span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())
+<span class="kw">head</span>(aggByPos)</code></pre></div>
+<pre><code>##   chr     start       end group_id
+## 1   1   1025045   2025045        1
+## 2   1  28440219  29440219        2
+## 3   1  55855393  56855393        3
+## 4   1  83270568  84270568        4
+## 5   1 110685742 111685742        5
+## 6   1 138100916 139100916        6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRanges</span>(aggByPos)
+aggVarList[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
+<pre><code>## GRanges object with 2 ranges and 0 metadata columns:
+##     seqnames            ranges strand
+##        &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt;
+##   1        1   1025045-2025045      *
+##   2        1 28440219-29440219      *
+##   -------
+##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+iterator &lt;-<span class="st"> </span><span class="kw">SeqVarRangeIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
+assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
+<pre><code>## # of selected samples: 100</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
+<pre><code>##   n.site n.alt n.sample.alt       Q_0    pval_0 err_0
+## 1      1     1            1 3.1797730 0.3537227     0
+## 2      3    11           10 4.0159256 0.8066574     0
+## 3      1     5            5 1.5950777 0.5908120     0
+## 4      2     3            3 0.8873271 0.8919105     0
+## 5      0     0            0        NA        NA    NA
+## 6      0     0            0        NA        NA    NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqClose</span>(gds)</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mixed-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

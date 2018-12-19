@@ -1,17 +1,32 @@
 
-# Annotation-based aggregate tests
+# Variant annotation
 
-## Aggregating and filtering variants using annotation
+## Using Bioconductor annotation resources
 
+In this example, we illustrate defining aggregate units based on known genes. 
 
-In this example, we illustrate defining ranges based on known genes. We run a burden test, setting a maximum alternate allele frequency to exclude common variants.
+First, we load the null mixed model and open the GDS file.
+
+```{r}
+modfile <- "data/null_mixed_model.RData"
+nullmod <- TopmedPipeline::getobj(modfile)
+
+sampfile <- "data/sample_phenotype_annotation.RData"
+annot <- TopmedPipeline::getobj(sampfile)
+
+gdsfile <- "data/1KG_phase3_subset_chr1.gds"
+library(SeqVarTools)
+gds <- seqOpen(gdsfile)
+seqData <- SeqVarData(gds, sampleData=annot)
+```
+
+We use the human genome annotation from Bioconductor to identify genes.
 
 ```{r}
 library(GenomicRanges)
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
 
-# return the variants as a GRanges object
-seqResetFilter(seqData, verbose=FALSE)
+# return the variants in seqData as a GRanges object
 gr <- granges(gds)
 gr
 
@@ -22,21 +37,73 @@ ts <- transcriptsByOverlaps(txdb, gr, columns="GENEID")
 # simplistic example - define genes as overlapping transcripts
 genes <- reduce(ts)
 genes <- renameSeqlevels(genes, sub("chr", "", seqlevels(genes)))
+genes
+```
 
+We run a burden test, setting a maximum alternate allele frequency to exclude common variants.
+
+```{r}
 # create an iterator where each successive unit is a different gene
 iterator <- SeqVarRangeIterator(seqData, variantRanges=genes, verbose=FALSE)
 
 # do a burden test on the rare variants in each gene
-assoc <- assocTestAggregate(iterator, nullmod, AF.max=0.05, test="Burden", verbose=FALSE)
+assoc <- assocTestAggregate(iterator, nullmod, AF.max=0.05, test="Burden")
+head(assoc$results)
+head(assoc$variantInfo)
 ```
 
 
 
+## Aggregating and filtering variants using annotation
+
+Alternatively, we may want to import annotation from other software, such as ANNOVAR or WGSA. The output formats of variant annotation software can be quite complex, but for this exercise we use fairly simple tab-separated text files.
+
+```{r}
+library(dplyr)
+snv_annotation <- read.table("data/snv_parsed.tsv", sep="\t", na.strings=".", header=TRUE, as.is=TRUE)
+indel_annotation <- read.table("data/indel_parsed.tsv", sep="\t", na.strings=".", header=TRUE, as.is=TRUE)
+combined_annotation <- bind_rows(snv_annotation, indel_annotation)
+```
+
+Here we remove variants that are not associated with a gene, group the variants by gene, and filter the variants for intron_variants with a CADD_phred score greater than 3 in just a few lines of code:
+```{r}
+combined_annotation %>% 
+  filter(VEP_ensembl_Gene_ID != ".") %>% # remove variants not annotated with a Gene_ID
+  group_by(VEP_ensembl_Gene_ID) %>% # aggregate by gene
+  filter(CADD_phred > 3) %>% # filter variants to keep only CADD_phred greater than 3
+  filter(stringr::str_detect(VEP_ensembl_Consequence, "intron_variant")) %>% # keep intron variants
+  glimpse() # view the result - 592 variants
+```
+
+Now that you've got a set of variants that you can aggregate into genic units, the data needs to be reformatted for input to the GENESIS analysis pipeline. The input to the GENESIS pipeline is a data frame with variables called `group_id`, `chr`, `pos`, `ref`, and `alt`. Prepare this data frame and save it for testing (You do not need to filter the variants for this exercise):
+```{r}
+aggregates <-
+  combined_annotation %>%
+  filter(VEP_ensembl_Gene_ID != ".") %>% # remove variants not annotated with a Gene_ID
+  group_by(VEP_ensembl_Gene_ID) %>% # aggregate by gene
+  dplyr::select(group_id = VEP_ensembl_Gene_ID,
+         chr = CHROM,
+         pos = POS,
+         ref = REF,
+         alt = ALT) %>%
+  glimpse # inspect the tibble
+```
+
+You can also compute some summary information about these aggregates, such as counting how many genic units we're using:
+```{r}
+length(unique(aggregates$group_id))
+```
+
+We can look at the distribution of the number of variants per aggregation unit:
+```{r plot_agg_units}
+counts <- aggregates %>% group_by(group_id) %>% summarize(n = n())
+ggplot(counts, aes(x = n)) + geom_bar()
+```
+
+
 ## Aggregate unit for association testing exercise
 
-FIXME test to describe input file
-
-Now you can proceed to an assocation testing exercise. You will be using a slightly different gene-based aggregation unit for the assocation testing exercise. As before, this analysis uses a subset of the TOPMed SNP variants that are present in the 1000 Genomes Project. However, in this exercise, the genic units include TOPMed SNP variants from all chromosomes (no indels, and not just chromosome 22 as before), each genic unit is expanded to include the set of TOPMed SNP variants falling within a GENCODE-defined gene along with 20 kb flanking regions upstream and downstream of that range, and the variants will be from TOPMed freeze 4 instead of freeze 5 (so that the annotation positions are consistent with the build used for genotyping data in the workshop). This set of aggregation units is not filtered by CADD score or consequence.
+Now you can proceed to an assocation testing exercise. You will be using a slightly different gene-based aggregation unit for the assocation testing exercise. In this exercise, the genic units include SNP variants from all chromosomes (no indels, and not just chromosome 22 as before), each genic unit is expanded to include the set of SNPs falling within a GENCODE-defined gene along with 20 kb flanking regions upstream and downstream of that range, and the positions are in genome build hg19 (so that the annotation positions are consistent with the build used for genotyping data in the workshop). This set of aggregation units is not filtered by CADD score or consequence.
 
 As before, the aggregation units are defined in an R dataframe. Each row of the dataframe specifies a variant (chr, pos, ref, alt) and the group identifier (group_id) it is a part of. Mutiple rows with different group identifiers can be specified to assign a variant to different groups (a variant can be assigned to mutiple genes).
 
@@ -67,7 +134,7 @@ if (exists("seqData")) {
 } else {
     gdsfile <- "data/1KG_phase3_subset_chr1.gds"
     gds <- seqOpen(gdsfile)
-    annotfile <- "data/sample_phenotype_annotation.RData"
+    annotfile <- "data/sample_phenotype_pcs.RData"
     annot <- getobj(annotfile)
     seqData <- SeqVarData(gds, sampleData=annot)
 }
@@ -82,15 +149,14 @@ aggVarList[[1]]
 iterator <- SeqVarListIterator(seqData, variantRanges=aggVarList, verbose=FALSE)
 ```
 
-As in the previous section, we must fit the null model before running the association test.
+As in the previous section, we must load the null model before running the association test.
 
 ```{r assoc_aggregate}
 if (!exists("nullmod")) {
-    nmfile <- "data/null_model.RData"
+    nmfile <- "data/null_mixed_model.RData"
     nullmod <- getobj(nmfile)
 }
 
-library(GENESIS)
 assoc <- assocTestAggregate(iterator, nullmod, test="Burden", AF.max=0.1, weight.beta=c(1,1))
 names(assoc)
 head(assoc$results)
@@ -101,7 +167,7 @@ qqPlot(assoc$results$Score.pval)
 ```
 
 
-### Exercise
+## Exercise
 
 Since we are working with a subset of the data, many of the genes listed in `group_id` have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function `aggregateGRanges`. Then run SKAT using those units and a `SeqVarRangeIterator`.
 
