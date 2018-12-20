@@ -18,6 +18,37 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE)
 This site contains course materials for WISG Module 4: Computational Pipeline for WGS Data, January 23-24, 2019.
 Data used is located in the [github repository](https://github.com/UW-GAC/WISG_2019) from which the site is built, as well as in the [TOPMed analysis pipeline](https://github.com/UW-GAC/analysis_pipeline).
 
+## Schedule
+
+[Lecture slides](https://drive.google.com/drive/folders/1-sp3l6qumvFjohAqMy8WC513PXeHqeiJ?usp=sharing)
+
+**Wednesday, January 23**
+
+- Introduction
+- Sequencing and data formats
+    - Sequencing overview
+    - Sequencing data formats
+    - Intro to Genomic Data Storage
+- Association tests
+    - Methods and motivation
+    - GENESIS for association tests
+
+
+**Thursday, January 24**
+
+- Population structure and relatedness
+    - Population structure inference
+    - Relatedness inference
+    - R packages for PCA and relatedness
+    - Using GENESIS with mixed models
+- Variant annotation
+- Pipeline design and examples
+    - Cloud computing introduction
+    - Analysis pipeline design
+    - Analysis pipeline on the cloud
+- Cloud platforms
+
+
 ## Software requirements
 
 - [R 3.5.1](https://cran.r-project.org/)
