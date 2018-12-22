@@ -62,7 +62,13 @@ qqPlot(assoc$Score.pval)
 ```
 
 
+
 ## Exercise
+
+Run a sliding window test using the mixed model and make a QQ plot.
+
+
+# Mixed models - Solutions
 
 Run a sliding window test using the mixed model and make a QQ plot.
 
@@ -72,9 +78,9 @@ iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, ver
 assoc <- assocTestAggregate(iterator, nullmod, test="Burden", AF.max=0.1, weight.beta=c(1,1))
 head(assoc$results)
 head(assoc$variantInfo)
+
+qqPlot(assoc$results$Score.pval)
 ```
-
-
 
 ```{r assoc_mm_close}
 seqClose(gds)

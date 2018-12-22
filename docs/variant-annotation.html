@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>7 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data</title>
+  <title>10 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data</title>
   <meta name="description" content="Course materials for WISG Module 4">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="7 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data />
+  <meta property="og:title" content="10 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data />
   <meta property="og:type" content="book" />
   
   
@@ -17,22 +17,22 @@
   <meta name="github-repo" content="UW-GAC/WISG_2019" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data />
+  <meta name="twitter:title" content="10 Variant annotation | WISG Module 4: Computational Pipeline for WGS Data />
   
   <meta name="twitter:description" content="Course materials for WISG Module 4" />
   
 
 
 
-<meta name="date" content="2018-12-18">
+<meta name="date" content="2018-12-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="mixed-models.html">
-
+<link rel="prev" href="mixed-models-solutions.html">
+<link rel="next" href="annotation-solutions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -100,41 +100,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#software-requirements"><i class="fa fa-check"></i><b>1.1</b> Software requirements</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.2</b> Resources</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i><b>1.1</b> Schedule</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#software-requirements"><i class="fa fa-check"></i><b>1.2</b> Software requirements</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i><b>1.3</b> Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="gds-format.html"><a href="gds-format.html"><i class="fa fa-check"></i><b>2</b> GDS format</a><ul>
 <li class="chapter" data-level="2.1" data-path="gds-format.html"><a href="gds-format.html#exploring-a-gds-file"><i class="fa fa-check"></i><b>2.1</b> Exploring a GDS file</a></li>
 <li class="chapter" data-level="2.2" data-path="gds-format.html"><a href="gds-format.html#exercises"><i class="fa fa-check"></i><b>2.2</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="association-tests.html"><a href="association-tests.html"><i class="fa fa-check"></i><b>3</b> Association tests</a><ul>
-<li class="chapter" data-level="3.1" data-path="association-tests.html"><a href="association-tests.html#null-model"><i class="fa fa-check"></i><b>3.1</b> Null model</a></li>
-<li class="chapter" data-level="3.2" data-path="association-tests.html"><a href="association-tests.html#single-variant-tests"><i class="fa fa-check"></i><b>3.2</b> Single-variant tests</a></li>
-<li class="chapter" data-level="3.3" data-path="association-tests.html"><a href="association-tests.html#exercises-1"><i class="fa fa-check"></i><b>3.3</b> Exercises</a></li>
-<li class="chapter" data-level="3.4" data-path="association-tests.html"><a href="association-tests.html#sliding-window-tests"><i class="fa fa-check"></i><b>3.4</b> Sliding window tests</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="association-tests.html"><a href="association-tests.html#exercise"><i class="fa fa-check"></i><b>3.4.1</b> Exercise</a></li>
+<li class="chapter" data-level="3" data-path="gds-solutions.html"><a href="gds-solutions.html"><i class="fa fa-check"></i><b>3</b> GDS - Solutions</a></li>
+<li class="chapter" data-level="4" data-path="association-tests.html"><a href="association-tests.html"><i class="fa fa-check"></i><b>4</b> Association tests</a><ul>
+<li class="chapter" data-level="4.1" data-path="association-tests.html"><a href="association-tests.html#null-model"><i class="fa fa-check"></i><b>4.1</b> Null model</a></li>
+<li class="chapter" data-level="4.2" data-path="association-tests.html"><a href="association-tests.html#single-variant-tests"><i class="fa fa-check"></i><b>4.2</b> Single-variant tests</a></li>
+<li class="chapter" data-level="4.3" data-path="association-tests.html"><a href="association-tests.html#exercises-1"><i class="fa fa-check"></i><b>4.3</b> Exercises</a></li>
+<li class="chapter" data-level="4.4" data-path="association-tests.html"><a href="association-tests.html#sliding-window-tests"><i class="fa fa-check"></i><b>4.4</b> Sliding window tests</a></li>
+<li class="chapter" data-level="4.5" data-path="association-tests.html"><a href="association-tests.html#exercise"><i class="fa fa-check"></i><b>4.5</b> Exercise</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="association-tests-solutions.html"><a href="association-tests-solutions.html"><i class="fa fa-check"></i><b>5</b> Association tests - Solutions</a></li>
+<li class="chapter" data-level="6" data-path="computing-a-grm.html"><a href="computing-a-grm.html"><i class="fa fa-check"></i><b>6</b> Computing a GRM</a></li>
+<li class="chapter" data-level="7" data-path="pc-relate.html"><a href="pc-relate.html"><i class="fa fa-check"></i><b>7</b> PC-Relate</a><ul>
+<li class="chapter" data-level="7.1" data-path="pc-relate.html"><a href="pc-relate.html#king"><i class="fa fa-check"></i><b>7.1</b> KING</a></li>
+<li class="chapter" data-level="7.2" data-path="pc-relate.html"><a href="pc-relate.html#pc-air"><i class="fa fa-check"></i><b>7.2</b> PC-AiR</a></li>
+<li class="chapter" data-level="7.3" data-path="pc-relate.html"><a href="pc-relate.html#pc-relate-1"><i class="fa fa-check"></i><b>7.3</b> PC-Relate</a></li>
+<li class="chapter" data-level="7.4" data-path="pc-relate.html"><a href="pc-relate.html#comparison-with-pedigree"><i class="fa fa-check"></i><b>7.4</b> Comparison with pedigree</a></li>
+<li class="chapter" data-level="7.5" data-path="pc-relate.html"><a href="pc-relate.html#exercise-1"><i class="fa fa-check"></i><b>7.5</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="computing-a-grm.html"><a href="computing-a-grm.html"><i class="fa fa-check"></i><b>4</b> Computing a GRM</a></li>
-<li class="chapter" data-level="5" data-path="pc-relate.html"><a href="pc-relate.html"><i class="fa fa-check"></i><b>5</b> PC-Relate</a><ul>
-<li class="chapter" data-level="5.1" data-path="pc-relate.html"><a href="pc-relate.html#king"><i class="fa fa-check"></i><b>5.1</b> KING</a></li>
-<li class="chapter" data-level="5.2" data-path="pc-relate.html"><a href="pc-relate.html#pc-air"><i class="fa fa-check"></i><b>5.2</b> PC-AiR</a></li>
-<li class="chapter" data-level="5.3" data-path="pc-relate.html"><a href="pc-relate.html#pc-relate-1"><i class="fa fa-check"></i><b>5.3</b> PC-Relate</a></li>
-<li class="chapter" data-level="5.4" data-path="pc-relate.html"><a href="pc-relate.html#comparison-with-pedigree"><i class="fa fa-check"></i><b>5.4</b> Comparison with pedigree</a></li>
-<li class="chapter" data-level="5.5" data-path="pc-relate.html"><a href="pc-relate.html#exercise-1"><i class="fa fa-check"></i><b>5.5</b> Exercise</a></li>
+<li class="chapter" data-level="8" data-path="mixed-models.html"><a href="mixed-models.html"><i class="fa fa-check"></i><b>8</b> Mixed models</a><ul>
+<li class="chapter" data-level="8.1" data-path="mixed-models.html"><a href="mixed-models.html#null-model-1"><i class="fa fa-check"></i><b>8.1</b> Null model</a></li>
+<li class="chapter" data-level="8.2" data-path="mixed-models.html"><a href="mixed-models.html#single-variant-tests-1"><i class="fa fa-check"></i><b>8.2</b> Single-variant tests</a></li>
+<li class="chapter" data-level="8.3" data-path="mixed-models.html"><a href="mixed-models.html#exercise-2"><i class="fa fa-check"></i><b>8.3</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="mixed-models.html"><a href="mixed-models.html"><i class="fa fa-check"></i><b>6</b> Mixed models</a><ul>
-<li class="chapter" data-level="6.1" data-path="mixed-models.html"><a href="mixed-models.html#null-model-1"><i class="fa fa-check"></i><b>6.1</b> Null model</a></li>
-<li class="chapter" data-level="6.2" data-path="mixed-models.html"><a href="mixed-models.html#single-variant-tests-1"><i class="fa fa-check"></i><b>6.2</b> Single-variant tests</a></li>
-<li class="chapter" data-level="6.3" data-path="mixed-models.html"><a href="mixed-models.html#exercise-2"><i class="fa fa-check"></i><b>6.3</b> Exercise</a></li>
+<li class="chapter" data-level="9" data-path="mixed-models-solutions.html"><a href="mixed-models-solutions.html"><i class="fa fa-check"></i><b>9</b> Mixed models - Solutions</a></li>
+<li class="chapter" data-level="10" data-path="variant-annotation.html"><a href="variant-annotation.html"><i class="fa fa-check"></i><b>10</b> Variant annotation</a><ul>
+<li class="chapter" data-level="10.1" data-path="variant-annotation.html"><a href="variant-annotation.html#using-bioconductor-annotation-resources"><i class="fa fa-check"></i><b>10.1</b> Using Bioconductor annotation resources</a></li>
+<li class="chapter" data-level="10.2" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregating-and-filtering-variants-using-annotation"><i class="fa fa-check"></i><b>10.2</b> Aggregating and filtering variants using annotation</a></li>
+<li class="chapter" data-level="10.3" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregate-unit-for-association-testing-exercise"><i class="fa fa-check"></i><b>10.3</b> Aggregate unit for association testing exercise</a></li>
+<li class="chapter" data-level="10.4" data-path="variant-annotation.html"><a href="variant-annotation.html#association-testing-with-aggregate-units"><i class="fa fa-check"></i><b>10.4</b> Association testing with aggregate units</a></li>
+<li class="chapter" data-level="10.5" data-path="variant-annotation.html"><a href="variant-annotation.html#exercise-3"><i class="fa fa-check"></i><b>10.5</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="variant-annotation.html"><a href="variant-annotation.html"><i class="fa fa-check"></i><b>7</b> Variant annotation</a><ul>
-<li class="chapter" data-level="7.1" data-path="variant-annotation.html"><a href="variant-annotation.html#using-bioconductor-annotation-resources"><i class="fa fa-check"></i><b>7.1</b> Using Bioconductor annotation resources</a></li>
-<li class="chapter" data-level="7.2" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregating-and-filtering-variants-using-annotation"><i class="fa fa-check"></i><b>7.2</b> Aggregating and filtering variants using annotation</a></li>
-<li class="chapter" data-level="7.3" data-path="variant-annotation.html"><a href="variant-annotation.html#aggregate-unit-for-association-testing-exercise"><i class="fa fa-check"></i><b>7.3</b> Aggregate unit for association testing exercise</a></li>
-<li class="chapter" data-level="7.4" data-path="variant-annotation.html"><a href="variant-annotation.html#association-testing-with-aggregate-units"><i class="fa fa-check"></i><b>7.4</b> Association testing with aggregate units</a></li>
-<li class="chapter" data-level="7.5" data-path="variant-annotation.html"><a href="variant-annotation.html#exercise-3"><i class="fa fa-check"></i><b>7.5</b> Exercise</a></li>
-</ul></li>
+<li class="chapter" data-level="11" data-path="annotation-solutions.html"><a href="annotation-solutions.html"><i class="fa fa-check"></i><b>11</b> Annotation - Solutions</a></li>
 </ul>
 
       </nav>
@@ -153,9 +157,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="variant-annotation" class="section level1">
-<h1><span class="header-section-number">7</span> Variant annotation</h1>
+<h1><span class="header-section-number">10</span> Variant annotation</h1>
 <div id="using-bioconductor-annotation-resources" class="section level2">
-<h2><span class="header-section-number">7.1</span> Using Bioconductor annotation resources</h2>
+<h2><span class="header-section-number">10.1</span> Using Bioconductor annotation resources</h2>
 <p>In this example, we illustrate defining aggregate units based on known genes.</p>
 <p>First, we load the null mixed model and open the GDS file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modfile &lt;-<span class="st"> &quot;data/null_mixed_model.RData&quot;</span>
@@ -259,7 +263,7 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(i
 ## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 </div>
 <div id="aggregating-and-filtering-variants-using-annotation" class="section level2">
-<h2><span class="header-section-number">7.2</span> Aggregating and filtering variants using annotation</h2>
+<h2><span class="header-section-number">10.2</span> Aggregating and filtering variants using annotation</h2>
 <p>Alternatively, we may want to import annotation from other software, such as ANNOVAR or WGSA. The output formats of variant annotation software can be quite complex, but for this exercise we use fairly simple tab-separated text files.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 snv_annotation &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/snv_parsed.tsv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">na.strings=</span><span class="st">&quot;.&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
@@ -308,7 +312,7 @@ combined_annotation &lt;-<span class="st"> </span><span class="kw">bind_rows</sp
 <p><img src="_main_files/figure-html/plot_agg_units-1.png" width="672" /></p>
 </div>
 <div id="aggregate-unit-for-association-testing-exercise" class="section level2">
-<h2><span class="header-section-number">7.3</span> Aggregate unit for association testing exercise</h2>
+<h2><span class="header-section-number">10.3</span> Aggregate unit for association testing exercise</h2>
 <p>Now you can proceed to an assocation testing exercise. You will be using a slightly different gene-based aggregation unit for the assocation testing exercise. In this exercise, the genic units include SNP variants from all chromosomes (no indels, and not just chromosome 22 as before), each genic unit is expanded to include the set of SNPs falling within a GENCODE-defined gene along with 20 kb flanking regions upstream and downstream of that range, and the positions are in genome build hg19 (so that the annotation positions are consistent with the build used for genotyping data in the workshop). This set of aggregation units is not filtered by CADD score or consequence.</p>
 <p>As before, the aggregation units are defined in an R dataframe. Each row of the dataframe specifies a variant (chr, pos, ref, alt) and the group identifier (group_id) it is a part of. Mutiple rows with different group identifiers can be specified to assign a variant to different groups (a variant can be assigned to mutiple genes).</p>
 <p>Begin by loading the aggregation units using <code>TopmedPipeline::getobj()</code>:</p>
@@ -339,7 +343,7 @@ mult &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
 ## 2 ENSG00000227001.2 1     21742183 G     A</code></pre>
 </div>
 <div id="association-testing-with-aggregate-units" class="section level2">
-<h2><span class="header-section-number">7.4</span> Association testing with aggregate units</h2>
+<h2><span class="header-section-number">10.4</span> Association testing with aggregate units</h2>
 <p>We can run a burden test or SKAT on each of these units using <code>assocTestAggregate</code>. We define a <code>SeqVarListIterator</code> object where each list element is an aggregate unit. The constructor expects a <code>GRangesList</code>, so we use the TopmedPipeline function <code>aggregateGRangesList</code> to quickly convert our single dataframe to the required format. This function can account for multiallelic variants (the same chromosome, position, and ref, but different alt alleles).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(TopmedPipeline)
 <span class="kw">library</span>(SeqVarTools)
@@ -405,55 +409,8 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(i
 <p><img src="_main_files/figure-html/assoc_aggregate-1.png" width="672" /></p>
 </div>
 <div id="exercise-3" class="section level2">
-<h2><span class="header-section-number">7.5</span> Exercise</h2>
+<h2><span class="header-section-number">10.5</span> Exercise</h2>
 <p>Since we are working with a subset of the data, many of the genes listed in <code>group_id</code> have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function <code>aggregateGRanges</code>. Then run SKAT using those units and a <code>SeqVarRangeIterator</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">agg2 &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">chr=</span><span class="kw">factor</span>(chr, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">22</span>, <span class="st">&quot;X&quot;</span>))) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">distinct</span>(chr, pos) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(chr) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">min=</span><span class="kw">min</span>(pos), <span class="dt">max=</span><span class="kw">max</span>(pos))
-<span class="kw">head</span>(agg2)</code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   chr       min       max
-##   &lt;fct&gt;   &lt;dbl&gt;     &lt;dbl&gt;
-## 1 1     1025045 248761613</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggByPos &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(agg2), <span class="cf">function</span>(i) {
-    <span class="kw">data.frame</span>(<span class="dt">chr=</span>agg2<span class="op">$</span>chr[i],
-               <span class="dt">start=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i], agg2<span class="op">$</span>max[i]<span class="op">-</span><span class="fl">1e6</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
-               <span class="dt">end=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i]<span class="op">+</span><span class="fl">1e6</span>, agg2<span class="op">$</span>max[i], <span class="dt">length.out=</span><span class="dv">10</span>))
-})) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">group_id=</span><span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())
-<span class="kw">head</span>(aggByPos)</code></pre></div>
-<pre><code>##   chr     start       end group_id
-## 1   1   1025045   2025045        1
-## 2   1  28440219  29440219        2
-## 3   1  55855393  56855393        3
-## 4   1  83270568  84270568        4
-## 5   1 110685742 111685742        5
-## 6   1 138100916 139100916        6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRanges</span>(aggByPos)
-aggVarList[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
-<pre><code>## GRanges object with 2 ranges and 0 metadata columns:
-##     seqnames            ranges strand
-##        &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt;
-##   1        1   1025045-2025045      *
-##   2        1 28440219-29440219      *
-##   -------
-##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-iterator &lt;-<span class="st"> </span><span class="kw">SeqVarRangeIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
-<pre><code>## # of selected samples: 100</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##   n.site n.alt n.sample.alt       Q_0    pval_0 err_0
-## 1      1     1            1 3.1797730 0.3537227     0
-## 2      3    11           10 4.0159256 0.8066574     0
-## 3      1     5            5 1.5950777 0.5908120     0
-## 4      2     3            3 0.8873271 0.8919105     0
-## 5      0     0            0        NA        NA    NA
-## 6      0     0            0        NA        NA    NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqClose</span>(gds)</code></pre></div>
-
 </div>
 </div>
             </section>
@@ -461,8 +418,8 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(i
           </div>
         </div>
       </div>
-<a href="mixed-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="mixed-models-solutions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="annotation-solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

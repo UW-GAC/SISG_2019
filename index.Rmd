@@ -32,7 +32,7 @@ Data used is located in the [github repository](https://github.com/UW-GAC/WISG_2
 - Association tests
     - Methods and motivation
     - GENESIS for association tests
-
+    - Aggregate tests
 
 **Thursday, January 24**
 
@@ -40,13 +40,9 @@ Data used is located in the [github repository](https://github.com/UW-GAC/WISG_2
     - Population structure inference
     - Relatedness inference
     - R packages for PCA and relatedness
-    - Using GENESIS with mixed models
+- Mixed model association testing
 - Variant annotation
-- Pipeline design and examples
-    - Cloud computing introduction
-    - Analysis pipeline design
-    - Analysis pipeline on the cloud
-- Cloud platforms
+- Analysis pipeline on the cloud
 
 
 ## Software requirements
@@ -76,6 +72,8 @@ BiocManager::install(c("SeqArray", "SeqVarTools", "SNPRelate", "GENESIS",
 
 remotes::install_github("UW-GAC/analysis_pipeline/TopmedPipeline")
 ```
+
+Download the workshop data and exercises: https://github.com/UW-GAC/WISG_2019/archive/master.zip
 
 ## Resources
 

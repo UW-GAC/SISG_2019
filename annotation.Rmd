@@ -171,6 +171,10 @@ qqPlot(assoc$results$Score.pval)
 
 Since we are working with a subset of the data, many of the genes listed in `group_id` have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function `aggregateGRanges`. Then run SKAT using those units and a `SeqVarRangeIterator`.
 
+# Annotation - Solutions
+
+Since we are working with a subset of the data, many of the genes listed in `group_id` have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function `aggregateGRanges`. Then run SKAT using those units and a `SeqVarRangeIterator`.
+
 ```{r exercise_aggregate}
 agg2 <- aggunit %>%
     mutate(chr=factor(chr, levels=c(1:22, "X"))) %>%
