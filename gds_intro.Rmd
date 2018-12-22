@@ -63,6 +63,9 @@ altDosage(gds)
 refChar(gds)
 altChar(gds)
 
+# data.frame of variant information
+variantInfo(gds)
+
 # reset the filter to all variants and samples
 seqResetFilter(gds)
 
@@ -85,6 +88,14 @@ table(isSNV(gds, biallelic=TRUE))
 table(isSNV(gds, biallelic=FALSE))
 # 11 SNVs are multi-allelic
 ```
+
+We can also return variant information as a `GRanges` object from the GenomicRanges package. This format for representing sequence data is common across many Bioconductor packages. Chromosome is stored in the `seqnames` column. The `ranges` column has variant position, which can be a single base pair or a range.
+
+```{r granges}
+gr <- granges(gds)
+gr
+```
+
 
 ## Exercises 
 
