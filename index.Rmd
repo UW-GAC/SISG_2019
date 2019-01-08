@@ -24,25 +24,31 @@ Data used is located in the [github repository](https://github.com/UW-GAC/WISG_2
 
 **Wednesday, January 23**
 
-- Introduction
+- [Introduction](https://drive.google.com/file/d/1TR5QLiKxi5RaXZv-MNGMm-rHS4cMoTHV/view)
 - Sequencing and data formats
-    - Sequencing overview
-    - Sequencing data formats
-    - Intro to Genomic Data Storage
+    - [Sequencing overview](https://drive.google.com/file/d/11lJ3scUzjzdVZCqdP5nXEafZTro6ijIb/view)
+    - [Sequencing data formats](https://drive.google.com/file/d/1uz0yS10TWVS1e-8agAqIG6XFtwkU8JVo/view)
+    - [Intro to Genomic Data Storage](https://drive.google.com/file/d/1cPAYzGIrd9lPZNhcoiZtFoGEZZO_bqk_/view)
+    - [Exercises](https://uw-gac.github.io/WISG_2019/gds-format.html)
 - Association tests
-    - Methods and motivation
-    - GENESIS for association tests
-    - Aggregate tests
+    - [Methods and motivation](https://drive.google.com/file/d/1ENC_DeSSr-BHX3aQHlU_3HdW7jk58_Yk/view) (Parts 1-2)
+    - [GENESIS for association tests](https://drive.google.com/file/d/1K3BdDMZ75zZPWetOrdt7vMFE7cubFObr/view)
+    - [Exercises](https://uw-gac.github.io/WISG_2019/association-tests.html)
+    - [Aggregate tests](https://drive.google.com/file/d/1ENC_DeSSr-BHX3aQHlU_3HdW7jk58_Yk/view) (Part 3)
+    - [Exercises](https://uw-gac.github.io/WISG_2019/association-tests.html#sliding-window-tests)
 
 **Thursday, January 24**
 
 - Population structure and relatedness
-    - Population structure inference
-    - Relatedness inference
-    - R packages for PCA and relatedness
-- Mixed model association testing
-- Variant annotation
-- Analysis pipeline on the cloud
+    - [Population structure inference](https://drive.google.com/file/d/1pEbcL6EjGnlzKsrASoP1vOaQnF_dOBFa/view)
+    - [Relatedness inference](https://drive.google.com/file/d/1UHNZ72Rk8dDtR2Xp0B8gs7yGCu-rpPxR/view)
+    - [R packages for PCA and relatedness](https://drive.google.com/file/d/1VPmkZAZXY-VlIl8GRz28WiBWJfcoSZEZ/view)
+    - [Exercises](https://uw-gac.github.io/WISG_2019/computing-a-grm.html)
+- [Mixed model association testing](https://drive.google.com/file/d/1dPfsN7lSFJiqzM4bpD5t8zyrYoEW4rtY/view)
+    - [Exercises](https://uw-gac.github.io/WISG_2019/mixed-models.html)
+- [Variant annotation](https://drive.google.com/file/d/1_gAUYoe2leqJt2ywoNx9caMzMje7YsYp/view)
+    - [Exercises](https://uw-gac.github.io/WISG_2019/variant-annotation.html)
+- [Analysis pipeline on the cloud](https://drive.google.com/file/d/1HEaa7GRcMYuEmo0yfwp9tTBT6ndQ-sLm/view)
 
 
 ## Software requirements
