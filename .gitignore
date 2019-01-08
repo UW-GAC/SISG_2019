@@ -6,7 +6,5 @@
 1KG_phase3_subset*
 *.RData
 _bookdown_files
-packrat/
-packrat/lib*/
 .Rprofile
 libs/
