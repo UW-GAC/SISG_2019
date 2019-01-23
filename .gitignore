@@ -3,7 +3,6 @@
 .Rhistory
 .Rproj.user
 *.Rproj
-1KG_phase3_subset*
 *.RData
 _bookdown_files
 .Rprofile
