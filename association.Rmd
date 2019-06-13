@@ -98,7 +98,7 @@ qqPlot(assoc$Score.pval)
 
 1. Logistic regression: `fitNullModel` can use a binary phenotype as the outcome variable by specifying the argument `family=binomial`. Use the `status` column in the sample annotation to fit a null model for simulated case/control status, with `sex` and `Population` as covariates. Then run a single-variant test using this model.
 
-2. Inverse normal transform: use the function `nullModelInvNorm` to perform an inverse normal transform on the `height` variable. For each study separately, compute a null model and do the inverse normal transform using just the values for that study. Compare these residuals with the initial residuals you obtained for that study by transforming all studies together.
+2. Inverse normal transform: use the function `nullModelInvNorm` to perform an inverse normal transform on the `height` variable. Compare these residuals with the residuals from the original null model.
 
 
 ## Sliding window tests
@@ -147,24 +147,13 @@ assoc <- assocTestSingle(iterator, nullmod.status, test="Score")
 head(assoc)
 ```
 
-2. Inverse normal transform: use the function `nullModelInvNorm` to perform an inverse normal transform on the `height` variable. For each study separately, compute a null model and do the inverse normal transform using just the values for that study. Compare these residuals with the initial residuals you obtained for that study by transforming all studies together.
+2. Inverse normal transform: use the function `nullModelInvNorm` to perform an inverse normal transform on the `height` variable. Compare these residuals with the residuals from the original null model.
 
 ```{r exercise_invnorm}
-nullmod.norm.all <- nullModelInvNorm(nullmod, norm.option="all")
-dat.all <- data.frame(sample.id=nullmod.norm.all$sample.id, 
-                      resid.norm=nullmod.norm.all$resid.marginal,
-                      study=annot$study,
-                      run="combined")
+nullmod.norm <- nullModelInvNorm(nullmod, verbose=FALSE)
 
-nullmod.norm.group <- nullModelInvNorm(nullmod, norm.option="by.group")
-dat.group <- data.frame(sample.id=nullmod.norm.group$sample.id, 
-                        resid.norm=nullmod.norm.group$resid.marginal,
-                        study=annot$study,
-                        run="separate")
-
-dat <- rbind(dat.all, dat.group)
-
-ggplot(dat, aes(study, resid.norm, fill=run)) + geom_boxplot()
+summary(nullmod$resid.marginal)
+summary(nullmod.norm$resid.marginal)
 ```
 
 
