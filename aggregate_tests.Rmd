@@ -8,7 +8,10 @@ As before, the aggregation units are defined in an R dataframe. Each row of the 
 
 Begin by loading the aggregation units using `TopmedPipeline::getobj()`:
 ```{r agg_unit}
+repo_path <- "https://github.com/UW-GAC/SISG_2019/raw/master"
+if (!dir.exists("data")) dir.create("data")
 aggfile <- "data/variants_by_gene.RData"
+if (!file.exists(aggfile)) download.file(file.path(repo_path, aggfile), aggfile)
 aggunit <- TopmedPipeline::getobj(aggfile)
 names(aggunit)
 head(aggunit)
@@ -29,8 +32,11 @@ We can run a burden test or SKAT on each of these units using `assocTestAggregat
 library(TopmedPipeline)
 library(SeqVarTools)
 gdsfile <- "data/1KG_phase3_subset_chr1.gds"
+if (!file.exists(gdsfile)) download.file(file.path(repo_path, gdsfile), gdsfile)
+gdsfmt::showfile.gds(closeall=TRUE) # make sure file is not already open
 gds <- seqOpen(gdsfile)
 annotfile <- "data/sample_phenotype_pcs.RData"
+if (!file.exists(annotfile)) download.file(file.path(repo_path, annotfile), aggfile)
 annot <- getobj(annotfile)
 seqData <- SeqVarData(gds, sampleData=annot)
     
@@ -49,6 +55,7 @@ As in the previous section, we must load the null model before running the assoc
 ```{r assoc_aggregate}
 if (!exists("nullmod")) {
     nmfile <- "data/null_mixed_model.RData"
+    if (!file.exists(nmfile)) download.file(file.path(repo_path, nmfile), nmfile)
     nullmod <- getobj(nmfile)
 }
 

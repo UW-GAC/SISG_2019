@@ -8,8 +8,11 @@ To use the R packages developed at the University of Washington for sequence dat
 
 ```{r vcf2gds}
 library(SeqArray)
+repo_path <- "https://github.com/UW-GAC/SISG_2019/raw/master"
+if (!dir.exists("data")) dir.create("data")
 vcffile <- "data/1KG_phase3_subset_chr1.vcf.gz"
-gdsfile <- "1KG_phase3_subset_chr1.gds"
+if (!file.exists(vcffile)) download.file(file.path(repo_path, vcffile), vcffile)
+gdsfile <- "data/1KG_phase3_subset_chr1.gds"
 seqVCF2GDS(vcffile, gdsfile, fmt.import="GT", storage.option="LZMA_RA", verbose=FALSE)
 ```
 

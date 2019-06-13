@@ -10,17 +10,17 @@ We have a sample annotation with a `sample.id` column matched to the GDS file, a
 
 ```{r null_model}
 # sample annotation
-workshop.path <- "https://github.com/UW-GAC/topmed_workshop_2018/raw/master"
-sampfile <- "data/sample_annotation.RData"
+repo_path <- "https://github.com/UW-GAC/SISG_2019/raw/master"
 if (!dir.exists("data")) dir.create("data")
-if (!file.exists(sampfile)) download.file(file.path(workshop.path, sampfile), sampfile)
+sampfile <- "data/sample_annotation.RData"
+if (!file.exists(sampfile)) download.file(file.path(repo_path, sampfile), sampfile)
 annot <- TopmedPipeline::getobj(sampfile)
 library(Biobase)
 head(pData(annot))
 
 # phenotypes by subject ID
 phenfile <- "data/phenotype_annotation.RData"
-if (!file.exists(phenfile)) download.file(file.path(workshop.path, phenfile), phenfile)
+if (!file.exists(phenfile)) download.file(file.path(repo_path, phenfile), phenfile)
 phen <- TopmedPipeline::getobj(phenfile)
 
 # access the data with the pData() function
@@ -59,7 +59,8 @@ Single-variant tests are the same as in GWAS. We use the `assocTestSingle` funct
 ```{r assoc_single}
 library(SeqVarTools)
 gdsfile <- "data/1KG_phase3_subset_chr1.gds"
-if (!file.exists(gdsfile)) download.file(file.path(data.path, basename(gdsfile)), gdsfile)
+if (!file.exists(gdsfile)) download.file(file.path(repo_path, gdsfile), gdsfile)
+gdsfmt::showfile.gds(closeall=TRUE) # make sure file is not already open
 gds <- seqOpen(gdsfile)
 seqData <- SeqVarData(gds, sampleData=annot)
 iterator <- SeqVarBlockIterator(seqData, verbose=FALSE)
