@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13 Annotation - Solutions | SISG Module 17: Computational Pipeline for WGS Data</title>
+  <title>14 Analysis Pipeline | SISG Module 17: Computational Pipeline for WGS Data</title>
   <meta name="description" content="Course materials for SISG Module 17" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13 Annotation - Solutions | SISG Module 17: Computational Pipeline for WGS Data" />
+  <meta property="og:title" content="14 Analysis Pipeline | SISG Module 17: Computational Pipeline for WGS Data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="UW-GAC/SISG_2019" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13 Annotation - Solutions | SISG Module 17: Computational Pipeline for WGS Data" />
+  <meta name="twitter:title" content="14 Analysis Pipeline | SISG Module 17: Computational Pipeline for WGS Data" />
   
   <meta name="twitter:description" content="Course materials for SISG Module 17" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="aggregate-tests.html">
-<link rel="next" href="analysis-pipeline.html">
+<link rel="prev" href="annotation-solutions.html">
+<link rel="next" href="analysis-commons.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -190,64 +190,56 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="annotation---solutions" class="section level1">
-<h1><span class="header-section-number">13</span> Annotation - Solutions</h1>
-<p>Since we are working with a subset of the data, many of the genes listed in <code>group_id</code> have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function <code>aggregateGRanges</code>. Then run SKAT using those units and a <code>SeqVarRangeIterator</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">agg2 &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">chr=</span><span class="kw">factor</span>(chr, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">22</span>, <span class="st">&quot;X&quot;</span>))) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">distinct</span>(chr, pos) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(chr) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">min=</span><span class="kw">min</span>(pos), <span class="dt">max=</span><span class="kw">max</span>(pos))
-<span class="kw">head</span>(agg2)</code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   chr       min       max
-##   &lt;fct&gt;   &lt;int&gt;     &lt;int&gt;
-## 1 1     1025045 248761613</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggByPos &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(agg2), <span class="cf">function</span>(i) {
-    <span class="kw">data.frame</span>(<span class="dt">chr=</span>agg2<span class="op">$</span>chr[i],
-               <span class="dt">start=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i], agg2<span class="op">$</span>max[i]<span class="op">-</span><span class="fl">1e6</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
-               <span class="dt">end=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i]<span class="op">+</span><span class="fl">1e6</span>, agg2<span class="op">$</span>max[i], <span class="dt">length.out=</span><span class="dv">10</span>))
-})) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">group_id=</span><span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())
-<span class="kw">head</span>(aggByPos)</code></pre></div>
-<pre><code>##   chr     start       end group_id
-## 1   1   1025045   2025045        1
-## 2   1  28440219  29440219        2
-## 3   1  55855393  56855393        3
-## 4   1  83270568  84270568        4
-## 5   1 110685742 111685742        5
-## 6   1 138100916 139100916        6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRanges</span>(aggByPos)
-aggVarList[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
-<pre><code>## GRanges object with 2 ranges and 0 metadata columns:
-##     seqnames            ranges strand
-##        &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt;
-##   1        1   1025045-2025045      *
-##   2        1 28440219-29440219      *
-##   -------
-##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-iterator &lt;-<span class="st"> </span><span class="kw">SeqVarRangeIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
-<pre><code>## # of selected samples: 100</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##   n.site n.alt n.sample.alt       Q_0    pval_0 err_0
-## 1      1     1            1 3.1746130 0.3545554     0
-## 2      3    11           10 4.0726476 0.8026375     0
-## 3      1     5            5 1.6067817 0.5885020     0
-## 4      2     3            3 0.8778105 0.8930184     0
-## 5      0     0            0        NA        NA    NA
-## 6      0     0            0        NA        NA    NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqClose</span>(gds)</code></pre></div>
+<div id="analysis-pipeline" class="section level1">
+<h1><span class="header-section-number">14</span> Analysis Pipeline</h1>
+<p>The DCC’s analysis pipeline is hosted on github: <a href="https://github.com/UW-GAC/analysis_pipeline" class="uri">https://github.com/UW-GAC/analysis_pipeline</a></p>
+<div id="running-on-a-local-cluster" class="section level2">
+<h2><span class="header-section-number">14.1</span> Running on a local cluster</h2>
+<p>To run a burden test on our local SGE cluster, first we create a config file and call it <code>assoc_window_burden.config</code>:</p>
+<pre><code>out_prefix &quot;test&quot;
+gds_file &quot;testdata/1KG_phase3_subset_chr .gds&quot;
+phenotype_file &quot;testdata/1KG_phase3_subset_annot.RData&quot;
+pcrelate_file &quot;testdata/round2_pcrelate.gds&quot;
+pca_file &quot;testdata/round2_pcair.RData&quot;
+sample_include_file &quot;testdata/sample_include.RData&quot;
+variant_include_file &quot;testdata/variant_include_chr .RData&quot;
+outcome outcome
+covars &quot;sex&quot;
+n_pcs 4
+alt_freq_max &quot;0.1&quot;
+test &quot;burden&quot;
+test_type &quot;score&quot;</code></pre>
+<p>We will use the python script <code>assoc.py</code> to submit all jobs. First we look at the available options:</p>
+<pre><code>setenv PIPELINE /projects/topmed/working_code/analysis_pipeline
+$PIPELINE/assoc.py --help</code></pre>
+<p>Let’s run a sliding window test on chromosomes 1-10. We will also specify the cluster type, although UW_Cluster is actually the default. The cluster file is a JSON file that can override default values for the cluster configuration. In this case, we are changing the memory requirements for each job to only reserve a small amount of memory on each cluster node. The last argument is our config file.</p>
+<p>First, we print the commands that will be be run without actually submitting jobs:</p>
+<pre><code>$PIPELINE/assoc.py \
+    --chromosomes 1-10 \
+    --cluster_type UW_Cluster \
+    --cluster_file test_cluster_cfg.json \
+    --print_only \
+    window \
+    testdata/assoc_window_burden.config</code></pre>
+<p>The default segment length is 10,000 kb, but we can change that to 50,000 kb when we submit:</p>
+<pre><code>$PIPELINE/assoc.py \
+    --chromosomes 1-10 \
+    --cluster_type UW_Cluster \
+    --cluster_file test_cluster_cfg.json \
+    --segment_length 50000 \
+    window \
+    testdata/assoc_window_burden.config</code></pre>
+<p>We can use the <code>qstat</code> command to check the status of our jobs.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="aggregate-tests.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="analysis-pipeline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="annotation-solutions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis-commons.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

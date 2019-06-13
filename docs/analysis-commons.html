@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>13 Annotation - Solutions | SISG Module 17: Computational Pipeline for WGS Data</title>
+  <title>15 Analysis Commons | SISG Module 17: Computational Pipeline for WGS Data</title>
   <meta name="description" content="Course materials for SISG Module 17" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="13 Annotation - Solutions | SISG Module 17: Computational Pipeline for WGS Data" />
+  <meta property="og:title" content="15 Analysis Commons | SISG Module 17: Computational Pipeline for WGS Data" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="UW-GAC/SISG_2019" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="13 Annotation - Solutions | SISG Module 17: Computational Pipeline for WGS Data" />
+  <meta name="twitter:title" content="15 Analysis Commons | SISG Module 17: Computational Pipeline for WGS Data" />
   
   <meta name="twitter:description" content="Course materials for SISG Module 17" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="aggregate-tests.html">
-<link rel="next" href="analysis-pipeline.html">
+<link rel="prev" href="analysis-pipeline.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -190,64 +190,248 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="annotation---solutions" class="section level1">
-<h1><span class="header-section-number">13</span> Annotation - Solutions</h1>
-<p>Since we are working with a subset of the data, many of the genes listed in <code>group_id</code> have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function <code>aggregateGRanges</code>. Then run SKAT using those units and a <code>SeqVarRangeIterator</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">agg2 &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">chr=</span><span class="kw">factor</span>(chr, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">22</span>, <span class="st">&quot;X&quot;</span>))) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">distinct</span>(chr, pos) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(chr) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">min=</span><span class="kw">min</span>(pos), <span class="dt">max=</span><span class="kw">max</span>(pos))
-<span class="kw">head</span>(agg2)</code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   chr       min       max
-##   &lt;fct&gt;   &lt;int&gt;     &lt;int&gt;
-## 1 1     1025045 248761613</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggByPos &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(agg2), <span class="cf">function</span>(i) {
-    <span class="kw">data.frame</span>(<span class="dt">chr=</span>agg2<span class="op">$</span>chr[i],
-               <span class="dt">start=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i], agg2<span class="op">$</span>max[i]<span class="op">-</span><span class="fl">1e6</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
-               <span class="dt">end=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i]<span class="op">+</span><span class="fl">1e6</span>, agg2<span class="op">$</span>max[i], <span class="dt">length.out=</span><span class="dv">10</span>))
-})) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">group_id=</span><span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())
-<span class="kw">head</span>(aggByPos)</code></pre></div>
-<pre><code>##   chr     start       end group_id
-## 1   1   1025045   2025045        1
-## 2   1  28440219  29440219        2
-## 3   1  55855393  56855393        3
-## 4   1  83270568  84270568        4
-## 5   1 110685742 111685742        5
-## 6   1 138100916 139100916        6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRanges</span>(aggByPos)
-aggVarList[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
-<pre><code>## GRanges object with 2 ranges and 0 metadata columns:
-##     seqnames            ranges strand
-##        &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt;
-##   1        1   1025045-2025045      *
-##   2        1 28440219-29440219      *
-##   -------
-##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-iterator &lt;-<span class="st"> </span><span class="kw">SeqVarRangeIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
-<pre><code>## # of selected samples: 100</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>results)</code></pre></div>
-<pre><code>##   n.site n.alt n.sample.alt       Q_0    pval_0 err_0
-## 1      1     1            1 3.1746130 0.3545554     0
-## 2      3    11           10 4.0726476 0.8026375     0
-## 3      1     5            5 1.6067817 0.5885020     0
-## 4      2     3            3 0.8778105 0.8930184     0
-## 5      0     0            0        NA        NA    NA
-## 6      0     0            0        NA        NA    NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqClose</span>(gds)</code></pre></div>
+<div id="analysis-commons" class="section level1">
+<h1><span class="header-section-number">15</span> Analysis Commons</h1>
+<div id="outline" class="section level2">
+<h2><span class="header-section-number">15.1</span> Outline</h2>
+<ul>
+<li>Introduction to web-interface</li>
+<li>Running a single variant analysis</li>
+<li>Workflows and monitoring jobs</li>
+<li>Running aggregate tests (SKAT)</li>
+<li>Run batch jobs from the command line</li>
+<li>Writing your own Apps</li>
+</ul>
+</div>
+<div id="web-interface-and-running-an-analysis-application" class="section level2">
+<h2><span class="header-section-number">15.2</span> Web Interface and Running an Analysis Application</h2>
+<div id="exercise-1-run-a-single-variant-analysis." class="section level3">
+<h3><span class="header-section-number">15.2.1</span> Exercise 1) Run a single variant analysis.</h3>
+<p>Log into <a href="http://dnanexus.com" class="uri">http://dnanexus.com</a> using the Analysis Commons user name and password listed on the website.<br />
+Should be in the form of Username:<strong>topmed_#</strong> and Password:<strong>TOPMed_#</strong>. <em>Ignore warning about default billing account.</em></p>
+<div id="part-1-run-null-model" class="section level4">
+<h4><span class="header-section-number">15.2.1.1</span> Part 1: Run null model</h4>
+<p>Navigate to and select <strong>(wgs:tools/genesis_nullmodel)</strong></p>
+<p>File inputs:<br />
+* phenofile -&gt; phenotype/1KG_pheno.csv<br />
+* kinship -&gt; kinship/1KG_kins.Rda</p>
+<p>Parameter inputs:<br />
+* output folder: /output/YOURFOLDERNAME<br />
+* outcome <em>(Column name of the outcome variable)</em>: outcome<br />
+* covariates <em>(case sepecific)</em>: Population,sex<br />
+* prefix for output filename: nullmodel_outcome<br />
+* pheno_id: sample.id<br />
+* Note: Other options can be left as their defaults * Note: The job may finish instantaneously if you don’t change the output file name. It knows that you are running the exact same job and will just reuse results from previous analyses.</p>
+</div>
+<div id="part-2-run-association-tests" class="section level4">
+<h4><span class="header-section-number">15.2.1.2</span> Part 2: Run association tests</h4>
+<p>Navigate to and select <strong>(wgs:tools/genesis_tests)</strong></p>
+<p>File inputs:<br />
+* null_model -&gt; /output/YOURFOLDERNAME/nullmodel_outcome.Rda <strong>(output from part1. If yours has not completed, you can select output/DEMO/nullmodel_outcome.Rda)</strong> * genotypes -&gt; genotypes/GDS/1KG_phase3_subset_chr1.gds</p>
+<p>Parameter inputs:<br />
+* output folder: output/YOURFOLDERNAME<br />
+* prefix for output filename: chr1_single<br />
+* test_type: Single<br />
+* Note: Other options can be left as their defaults</p>
+</div>
+</div>
+<div id="exercise-2-run-skat-test-grouping-variants-into-gene-transcript-regions-and-limit-the-variants-to-those-with-a-cadd-phred-score-2-and-maf-5." class="section level3">
+<h3><span class="header-section-number">15.2.2</span> Exercise 2) Run SKAT test grouping variants into gene transcript regions and limit the variants to those with a CADD phred score &gt; 2 and MAF &lt;= 5%.</h3>
+<p>File inputs:<br />
+* null_model -&gt; /output/YOURFOLDERNAME/nullmodel_outcome.Rda <strong>(output from part1. If yours has not completed, you can select output/DEMO/nullmodel_outcome.Rda)</strong> * genotypefile -&gt; genotypes/1KG_phase3_subset_chr1.gds<br />
+* annotation -&gt; annotation/1KG_annotation_CHR1.txt<br />
+* genefile -&gt; aggregation/AggUnit_CHR1_ucscgene.csv</p>
+<p>Parameter inputs:<br />
+* output folder: output/YOURFOLDERNAME<br />
+* outputfilename: skat_chr1_geneBased_CADDgt2<br />
+* test_type: SKAT<br />
+* snp_filter: CADD_phred&gt;2<br />
+* min_mac:0<br />
+* top_maf: 0.05<br />
+* weights: c(1,25)</p>
+</div>
+</div>
+<div id="command-line-interface" class="section level2">
+<h2><span class="header-section-number">15.3</span> Command line interface</h2>
+<p>References:<br />
+* Command Line Interface <a href="https://wiki.dnanexus.com/Command-Line-Client/Quickstart">Quickstart</a><br />
+* Index of <a href="https://wiki.dnanexus.com/Command-Line-Client/Index%20of%20dx%20Commands">dx commands</a></p>
+<div id="log-in-to-awi" class="section level3">
+<h3><span class="header-section-number">15.3.1</span> Log in to AWI</h3>
+<p><strong>Replace topmed_## with the user ID from your handout</strong></p>
+<pre><code>$ ssh topmed_##@34.208.147.133
+You will be prompted for your password, e.g. TOPMed_## (Note capitalization)
+_Please ignore login warnings
 
+$ source /usr/local/dx-toolkit/environment</code></pre>
+<pre><code>$ dx login  --timeout 2h
+    Enter the following at the prompts
+        username: topmed_##
+        password: TOPMed_##
+        project:wgs ( type 0 to select wgs )
+
+You can select or change project once you are logged in
+$ dx select wgs</code></pre>
+</div>
+<div id="exercise-3-navigate-directories-make-output-directory-examine-files" class="section level3">
+<h3><span class="header-section-number">15.3.2</span> Exercise 3) Navigate directories, make output directory, examine files</h3>
+<ul>
+<li>File paths: &lt;project&gt;:/path/to/file.txt</li>
+<li>Example: wgs:/phenotypes/1KG_pheno.csv</li>
+</ul>
+<p>List directory contents:</p>
+<pre><code>$ dx select wgs
+$ dx ls
+$ dx ls /tools
+$ dx ls wgs:/tools</code></pre>
+<p>Get results from project</p>
+<pre><code>$ dx download wgs:/phenotype/1KG_pheno.csv
+$ ls
+$ head 1KG_pheno.csv</code></pre>
+</div>
+<div id="exercise-4-run-single-variant-analysis-from-command-line-using-bash-script" class="section level3">
+<h3><span class="header-section-number">15.3.3</span> Exercise 4) Run single variant analysis from command line using bash script</h3>
+<p>Open the single_multichrom.sh bash script and edit to replace the output directory “YOURNAME” to your folder</p>
+<pre><code>$ dx describe tools/genesis_tests</code></pre>
+<p>Either edit using nano</p>
+<pre><code>$ nano single_multichrom.sh 
+
+Run the App.  Will loop over 2 chromosomes running the single variant analyses
+$ ./single_multichrom.sh</code></pre>
+</div>
+</div>
+<div id="writing-your-own-apps" class="section level2">
+<h2><span class="header-section-number">15.4</span> Writing your own Apps</h2>
+<div id="exercise-5-write-an-app-that-creates-phenotype-residuals-and-performs-an-inverse-normal-transform" class="section level3">
+<h3><span class="header-section-number">15.4.1</span> Exercise 5) Write an App that creates phenotype residuals and performs an inverse normal transform</h3>
+<p>Use app wizard to create template</p>
+<pre><code>$ dx-app-wizard
+
+App Name: make_residuals
+Title []: Create inverse normal transformed residuals
+
+1st input name (&lt;ENTER&gt; to finish): phenofile
+Label (optional human-readable name) []: CSV phenotype file
+Choose a class (&lt;TAB&gt; twice for choices): file
+This is an optional parameter [y/n]: n
+
+2nd input name (&lt;ENTER&gt; to finish): model
+Label (optional human-readable name) []: model for creating residuals (e.g. outcome~sex+Population )
+Choose a class (&lt;TAB&gt; twice for choices): string
+This is an optional parameter [y/n]: n
+
+3rd input name (&lt;ENTER&gt; to finish): prefix
+Label (optional human-readable name) []: Output filename prefix
+Choose a class (&lt;TAB&gt; twice for choices): string
+This is an optional parameter [y/n]: n
+
+4th input name (&lt;ENTER&gt; to finish): &lt;ENTER&gt;
+
+1st output name (&lt;ENTER&gt; to finish): output
+Label (optional human-readable name) []: 
+Choose a class (&lt;TAB&gt; twice for choices): file
+
+Timeout policy [48h]: 1h
+Programming language: bash
+
+*Use defaults for other options*</code></pre>
+<p>Look at the files created by the wizard</p>
+<pre><code>cd make_residuals/
+ls
+more dxapp.json </code></pre>
+<p>Edit App executable to run an R script</p>
+<pre><code>$ vi src/make_residuals.sh
+main() {
+
+    echo &quot;Value of phenofile: &#39;$phenofile&#39;&quot;
+    echo &quot;Value of model: &#39;$model&#39;&quot;
+    echo &quot;Value of prefix: &#39;$prefix&#39;&quot;
+
+    dx download &quot;$phenofile&quot; -o phenofile
+
+    ## ADD THIS LINE ##
+    Rscript /make_resid.R $model
+
+    output=$(dx upload output --brief)
+
+    ## ADD THIS LINE ##
+    dx mv ${output} ${prefix}.csv
+    
+    dx-jobutil-add-output output &quot;$output&quot; --class=file
+    
+}
+</code></pre>
+<p>Create an R script that does the ‘work’ <code>$ vi resources/make_resid.R</code></p>
+<pre><code>args&lt;-commandArgs(TRUE)
+model &lt;- as.formula(args[1])
+print(model)
+pheno = read.csv(&quot;phenofile&quot;,as.is=T)
+pheno$resid = residuals(lm(model,data=pheno))
+pheno$invnt_resid =  with(pheno,qnorm((rank(resid,na.last=&quot;keep&quot;)-0.5)/sum(!is.na(resid))))
+
+write.csv(pheno,file=&quot;output&quot;,row.names=F)</code></pre>
+<p>Build the App</p>
+<pre><code>$ dx build -f make_residuals --destination=output/YOURNAME/make_residuals</code></pre>
+<p>Run the App</p>
+<pre><code>$ dx run output/YOURNAME/make_residuals -iphenofile=phenotype/1KG_pheno.csv \
+-imodel=outcome~sex+Population -iprefix=1kg_pheno_invnt \
+--destination=output/YOURNAME --yes</code></pre>
+<p>Monitor Progress</p>
+<pre><code>$ dx watch jobid</code></pre>
+</div>
+<div id="optional-exercise-6-make-qq-plot" class="section level3">
+<h3><span class="header-section-number">15.4.2</span> Optional Exercise 6) Make QQ plot</h3>
+<p>Make QQ plot of your single variant results.<br />
+Select results from the multiple chromosome run (chr21 and chr22).</p>
+<p>You will need to identify the p-value column name. To view the results file try these options:</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://wiki.dnanexus.com/Command-Line-Client/Index-of-dx-Commands#download">dx download</a> to download the results for viewing.</p></li>
+<li><p>View file through web interface using Visualize ( next to Monitor near top of the page ) and select <a href="https://platform.dnanexus.com/projects/F5jVpJ80JXGQV51P8GqVxPPQ/visualize#"><em>Gzipped File Previewer</em></a></p></li>
+<li><p>Pipe zipped file though regular linux commands <a href="https://wiki.dnanexus.com/Command-Line-Client/Index-of-dx-Commands#head--">dx cat</a> to view column names</p></li>
+</ol>
+<pre><code>$ dx cat output/folder/file | gunzip | head</code></pre>
+<p>Once you know the name of the p-value column, run qqplot first through web interface and then try running interactivly from the web interface then from the command line.</p>
+<pre><code>$ dx run tools/qqplot</code></pre>
+<p><em>Note: the plot label must not contain spaces.</em></p>
+</div>
+<div id="optional-exercise-8-create-a-regional-association-plot-using-ld-extracted-from-your-data-set" class="section level3">
+<h3><span class="header-section-number">15.4.3</span> Optional Exercise 8) Create a regional association plot using LD extracted from your data set</h3>
+<p>This process requires two steps, one to extract the LD for all variants in the region and one to create the plot. Sequencing data sets often contain variants not in external refernce panels, so it is helpful to create your own LD reference.</p>
+<p><strong>Step 1</strong>: Run GILD (<strong>G</strong>DS <strong>I</strong>nto <strong>LD</strong>) App (tools/gild_v1)</p>
+<p>File inputs: * gds_file -&gt; genotypes/1KG_phase3_subset_chr22.gds</p>
+<p>Parameter inputs:</p>
+<ul>
+<li>lead_snp -&gt; 22:17105517</li>
+<li>start_pos -&gt; 1</li>
+<li>stop_pos -&gt; 51237069</li>
+<li>label for results file -&gt; “LD_chr22” <em>output_LD_filename</em></li>
+<li>output/YOURNAME</li>
+</ul>
+<p><em>Note: this can take 10-15 mins to complete</em></p>
+<p><strong>Step 2</strong>: Run AssocPlot (tools/assocplot)</p>
+<p>File inputs:</p>
+<ul>
+<li>datafile -&gt; single variant association results output for chr22</li>
+<li>ldfile -&gt; Output file from Step 1 with .ld suffix</li>
+</ul>
+<p>Parameter inputs (Minimum required to have the App run successfully with GENESIS output):</p>
+<ul>
+<li>Output folder -&gt; output/YOURNAME</li>
+<li>Marker Column Name -&gt; snpID</li>
+<li>P value Column Name -&gt; Score.pval</li>
+<li>Index SNP -&gt; 22:17105517</li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="aggregate-tests.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="analysis-pipeline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analysis-pipeline.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
