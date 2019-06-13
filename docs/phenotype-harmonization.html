@@ -200,9 +200,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="inspect-individual-study-data-in-r" class="section level2">
 <h2><span class="header-section-number">4.1</span> Inspect individual study data in R</h2>
 <p>The first step is to read the files into R for processing. Before we begin, you need to download the data from github so you have access to it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/topmed_workshop_2018/raw/master&quot;</span>
-pheno_files &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;data/pheno_data_study_1.txt&quot;</span>, <span class="st">&quot;data/pheno_data_study_2.txt&quot;</span>, <span class="st">&quot;data/pheno_data_study_3.txt&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
 <span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
+pheno_files &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;data/pheno_data_study_1.txt&quot;</span>, <span class="st">&quot;data/pheno_data_study_2.txt&quot;</span>, <span class="st">&quot;data/pheno_data_study_3.txt&quot;</span>)
 <span class="cf">for</span> (pheno_file <span class="cf">in</span> pheno_files) {
   <span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(pheno_file)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, pheno_file), pheno_file)
 }</code></pre></div>

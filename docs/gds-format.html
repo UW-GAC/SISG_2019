@@ -197,14 +197,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">2.1</span> Exploring a GDS file</h2>
 <p>To use the R packages developed at the University of Washington for sequence data, we first need to convert a VCF file to GDS. (If the file is BCF, use <a href="bcftools">https://samtools.github.io/bcftools/bcftools.html</a> to convert to VCF.)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SeqArray)
+repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
 vcffile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.vcf.gz&quot;</span>
-gdsfile &lt;-<span class="st"> &quot;1KG_phase3_subset_chr1.gds&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(vcffile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, vcffile), vcffile)
+gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
 <span class="kw">seqVCF2GDS</span>(vcffile, gdsfile, <span class="dt">fmt.import=</span><span class="st">&quot;GT&quot;</span>, <span class="dt">storage.option=</span><span class="st">&quot;LZMA_RA&quot;</span>, <span class="dt">verbose=</span><span class="ot">FALSE</span>)</code></pre></div>
 <p>We can interact with the GDS file using the SeqArray package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
 gds</code></pre></div>
 <pre><code>## Object of class &quot;SeqVarGDSClass&quot;
-## File: /Users/stephanie/SISG/SISG_2019/SISG_2019/1KG_phase3_subset_chr1.gds (70.6K)
+## File: /Users/stephanie/SISG/SISG_2019/SISG_2019/data/1KG_phase3_subset_chr1.gds (70.6K)
 ## +    [  ] *
 ## |--+ description   [  ] *
 ## |--+ sample.id   { Str8 1126 LZMA_ra(9.66%), 877B } *

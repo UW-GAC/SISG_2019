@@ -15,8 +15,7 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE)
 
 # Introduction
 
-This site contains course materials for Course materials for SISG Module 17: Computational Pipeline for WGS Data, July 24-26, 2019
-.
+This site contains course materials for Course materials for SISG Module 17: Computational Pipeline for WGS Data, July 24-26, 2019.
 Data used is located in the [github repository](https://github.com/UW-GAC/SISG_2019) from which the site is built, as well as in the [TOPMed analysis pipeline](https://github.com/UW-GAC/analysis_pipeline).
 
 ## Schedule

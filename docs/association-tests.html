@@ -197,10 +197,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">5.1</span> Null model</h2>
 <p>The first step in an association test is to fit the null model. We will need an <code>AnnotatedDataFrame</code> with phenotypes. We have a sample annotation with a <code>sample.id</code> column matched to the GDS file, and a phenotype file with <code>subject_id</code>. (In this example, we use the 1000 Genomes IDs for both sample and subject ID.) For TOPMed data, it is also important to match by study, as subject IDs are not unique across studies.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample annotation</span>
-workshop.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/topmed_workshop_2018/raw/master&quot;</span>
-sampfile &lt;-<span class="st"> &quot;data/sample_annotation.RData&quot;</span>
+repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
 <span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(sampfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, sampfile), sampfile)
+sampfile &lt;-<span class="st"> &quot;data/sample_annotation.RData&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(sampfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, sampfile), sampfile)
 annot &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(sampfile)
 <span class="kw">library</span>(Biobase)
 <span class="kw">head</span>(<span class="kw">pData</span>(annot))</code></pre></div>
@@ -220,7 +220,7 @@ annot &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><spa
 ## 6      0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># phenotypes by subject ID</span>
 phenfile &lt;-<span class="st"> &quot;data/phenotype_annotation.RData&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(phenfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, phenfile), phenfile)
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(phenfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, phenfile), phenfile)
 phen &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(phenfile)
 
 <span class="co"># access the data with the pData() function</span>
@@ -261,7 +261,8 @@ nullmod &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot
 <p>Single-variant tests are the same as in GWAS. We use the <code>assocTestSingle</code> function in GENESIS. First, we have to create a <code>SeqVarData</code> object including both the GDS file and the sample annotation containing phenotypes. We then create a <code>SeqVarBlockIterator</code> object to iterate over blocks of variants.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SeqVarTools)
 gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(gdsfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(data.path, <span class="kw">basename</span>(gdsfile)), gdsfile)
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(gdsfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, gdsfile), gdsfile)
+gdsfmt<span class="op">::</span><span class="kw">showfile.gds</span>(<span class="dt">closeall=</span><span class="ot">TRUE</span>) <span class="co"># make sure file is not already open</span>
 gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
 seqData &lt;-<span class="st"> </span><span class="kw">SeqVarData</span>(gds, <span class="dt">sampleData=</span>annot)
 iterator &lt;-<span class="st"> </span><span class="kw">SeqVarBlockIterator</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
@@ -310,7 +311,7 @@ qqPlot &lt;-<span class="st"> </span><span class="cf">function</span>(pval) {
 <h2><span class="header-section-number">5.3</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>Logistic regression: <code>fitNullModel</code> can use a binary phenotype as the outcome variable by specifying the argument <code>family=binomial</code>. Use the <code>status</code> column in the sample annotation to fit a null model for simulated case/control status, with <code>sex</code> and <code>Population</code> as covariates. Then run a single-variant test using this model.</p></li>
-<li><p>Inverse normal transform: use the function <code>nullModelInvNorm</code> to perform an inverse normal transform on the <code>height</code> variable. For each study separately, compute a null model and do the inverse normal transform using just the values for that study. Compare these residuals with the initial residuals you obtained for that study by transforming all studies together.</p></li>
+<li><p>Inverse normal transform: use the function <code>nullModelInvNorm</code> to perform an inverse normal transform on the <code>height</code> variable. Compare these residuals with the residuals from the original null model.</p></li>
 </ol>
 </div>
 <div id="sliding-window-tests" class="section level2">

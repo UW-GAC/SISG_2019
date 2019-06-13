@@ -216,44 +216,16 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestSingle</span>(iter
 ## 5 1.0778277  0.5976685 0.55006117
 ## 6 0.6396675 -0.7241134 0.46899613</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Inverse normal transform: use the function <code>nullModelInvNorm</code> to perform an inverse normal transform on the <code>height</code> variable. For each study separately, compute a null model and do the inverse normal transform using just the values for that study. Compare these residuals with the initial residuals you obtained for that study by transforming all studies together.</li>
+<li>Inverse normal transform: use the function <code>nullModelInvNorm</code> to perform an inverse normal transform on the <code>height</code> variable. Compare these residuals with the residuals from the original null model.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod.norm.all &lt;-<span class="st"> </span><span class="kw">nullModelInvNorm</span>(nullmod, <span class="dt">norm.option=</span><span class="st">&quot;all&quot;</span>)</code></pre></div>
-<pre><code>## [1]  9.820192e+01  1.688205e+02  1.557072e+02 -1.594449e+03  7.121886e-03
-## [1]  6.589593e+01  1.133736e+02  1.041592e+02 -1.594448e+03  1.062165e-02
-## [1]  1.803149e+01  3.074952e+01  2.833099e+01 -1.594449e+03  3.900962e-02
-## [1]     4.1049491     7.1379995     6.5358236 -1594.4570600     0.1694962
-## [1]     1.6142560     2.7337514     2.5244988 -1594.4552547     0.4374396
-## [1]     0.5632642     0.9931480     0.9053847 -1594.4853681     1.2257174
-## [1]     0.674084     1.166026     1.069539 -1594.451312     1.035168
-## [1]     0.7001643     1.2013683     1.1047080 -1594.4476450     1.0011670
-## [1]     0.7012065     1.2024767     1.1059074 -1594.4476292     1.0000014
-## [1]     0.7012077     1.2024780     1.1059090 -1594.4476292     1.0000000</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat.all &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sample.id=</span>nullmod.norm.all<span class="op">$</span>sample.id, 
-                      <span class="dt">resid.norm=</span>nullmod.norm.all<span class="op">$</span>resid.marginal,
-                      <span class="dt">study=</span>annot<span class="op">$</span>study,
-                      <span class="dt">run=</span><span class="st">&quot;combined&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod.norm &lt;-<span class="st"> </span><span class="kw">nullModelInvNorm</span>(nullmod, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 
-nullmod.norm.group &lt;-<span class="st"> </span><span class="kw">nullModelInvNorm</span>(nullmod, <span class="dt">norm.option=</span><span class="st">&quot;by.group&quot;</span>)</code></pre></div>
-<pre><code>## [1]  9.820192e+01  1.688205e+02  1.557072e+02 -1.624686e+03  7.516645e-03
-## [1]  6.599547e+01  1.133069e+02  1.041241e+02 -1.624502e+03  1.120455e-02
-## [1]  3.254107e+01  1.394878e+01  2.030342e+01 -1.640619e+03  5.058311e-02
-## [1]     0.4823649     8.3127679     8.0728042 -2113.8412464     0.7725567
-## [1]     0.5136907     0.7135928     0.9316405 -1624.7322739     1.4746195
-## [1]     0.7639307     0.9183081     0.9959743 -1611.5285780     1.1349499
-## [1]     0.9450453     0.9939501     1.0009186 -1608.2035095     1.0221048
-## [1]     0.9979798     1.0007589     1.0010808 -1608.0188191     1.0010636
-## [1]     1.001052     1.000829     1.001116 -1608.018248     1.000003
-## [1]     1.001058     1.000831     1.001118 -1608.018248     1.000000</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat.group &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sample.id=</span>nullmod.norm.group<span class="op">$</span>sample.id, 
-                        <span class="dt">resid.norm=</span>nullmod.norm.group<span class="op">$</span>resid.marginal,
-                        <span class="dt">study=</span>annot<span class="op">$</span>study,
-                        <span class="dt">run=</span><span class="st">&quot;separate&quot;</span>)
-
-dat &lt;-<span class="st"> </span><span class="kw">rbind</span>(dat.all, dat.group)
-
-<span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(study, resid.norm, <span class="dt">fill=</span>run)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="_main_files/figure-html/exercise_invnorm-1.png" width="672" /></p>
+<span class="kw">summary</span>(nullmod<span class="op">$</span>resid.marginal)</code></pre></div>
+<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -38.9394  -7.6295  -0.1089   0.0000   8.0824  44.6166</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(nullmod.norm<span class="op">$</span>resid.marginal)</code></pre></div>
+<pre><code>##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -3.0075251 -0.6717166 -0.0000291  0.0000000  0.6751482  3.0032466</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Repeat the previous exercise on logistic regression, this time running a sliding-window test.</li>
 </ol>

@@ -200,15 +200,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">11.1</span> Working with variant annotation</h2>
 <p>Variants called from the TOPMed data set are annotated using the <a href="https://sites.google.com/site/jpopgen/wgsa">Whole Genome Sequence Annotator (WGSA)</a>. Output files from WGSA version 0.7 include 366 annotation fields annotating indel variants, and 438 annotation fields annotating snv variants. In each case, some annotation fields are themselves lists of annotation values. Thus, individual variants may be annotated with more than 1000 individual fields. Not all of these fields will be useful for a particular analysis, and some may be incompatible, so analysts need to parse the WGSA output prior to filtering and aggregation.</p>
 <p>The WGSA-annotated variant annotation files we will use for this exercise are available via github:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">workshop.path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/topmed_workshop_2018/raw/master/&quot;</span>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
 <span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
 
 snvfile &lt;-<span class="st"> &quot;data/snv.tsv.gz&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(snvfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, snvfile), snvfile)
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(snvfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, snvfile), snvfile)
 
 indelfile &lt;-<span class="st"> &quot;data/indel.tsv.gz&quot;</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(indelfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(workshop.path, indelfile), indelfile)</code></pre></div>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(indelfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, indelfile), indelfile)</code></pre></div>
 <p>Also, you’ll be using functions from the <code>tidyverse</code> package, so load that library as well:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
 <p>WGSA output files are tab-separated text files, with one line per annotated variant. Since there are many annotation fields, these files can be unwieldy to work with directly. As an example, the first two lines of the SNP variant annotation file can be previewed within R:</p>

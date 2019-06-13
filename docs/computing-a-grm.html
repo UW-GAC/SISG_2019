@@ -194,7 +194,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">7</span> Computing a GRM</h1>
 <p>We can use the <a href="https://github.com/zhengxwen/SNPRelate">SNPRelate package</a> to compute a Genetic Relationship matrix (GRM). This method combines relatedness due to more distant ancestry and recent kinship into a single matrix.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SeqArray)
+repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
 gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(gdsfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, gdsfile), gdsfile)
+gdsfmt<span class="op">::</span><span class="kw">showfile.gds</span>(<span class="dt">closeall=</span><span class="ot">TRUE</span>) <span class="co"># make sure file is not already open</span>
 gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
 
 <span class="kw">library</span>(SNPRelate)
@@ -208,11 +212,11 @@ grm &lt;-<span class="st"> </span><span class="kw">snpgdsGRM</span>(gds, <span c
 ## Working space: 1,126 samples, 1,107 SNVs
 ##     using 1 (CPU) core
 ## CPU capabilities: Double-Precision SSE2
-## Thu Jun 13 15:19:24 2019    (internal increment: 664)
+## Thu Jun 13 16:45:03 2019    (internal increment: 664)
 ## 
 [..................................................]  0%, ETC: ---        
 [==================================================] 100%, completed in 0s
-## Thu Jun 13 15:19:24 2019    Done.</code></pre>
+## Thu Jun 13 16:45:03 2019    Done.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(grm)</code></pre></div>
 <pre><code>## [1] &quot;sample.id&quot; &quot;snp.id&quot;    &quot;method&quot;    &quot;grm&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(grm<span class="op">$</span>grm)</code></pre></div>

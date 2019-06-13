@@ -197,7 +197,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">9.1</span> Null model</h2>
 <p>The first step in an association test is to fit the null model. In addition to the <code>AnnotatedDataFrame</code> with phenotypes we used previously, we will need the principal components and kinship. We will use the first five PCs to adjust for ancestry.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample annotation</span>
+repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
 sampfile &lt;-<span class="st"> &quot;data/sample_phenotype_annotation.RData&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(sampfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, sampfile), sampfile)
 annot &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(sampfile)
 <span class="kw">library</span>(Biobase)
 <span class="kw">head</span>(<span class="kw">pData</span>(annot))</code></pre></div>
@@ -217,6 +220,7 @@ annot &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><spa
 ## 6      0  49 169.100 study_1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load the PCs</span>
 pcfile &lt;-<span class="st"> &quot;data/pcs.RData&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(pcfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, pcfile), pcfile)
 pcs &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(pcfile)
 pcs &lt;-<span class="st"> </span>pcs[,<span class="kw">c</span>(<span class="st">&quot;sample.id&quot;</span>, <span class="st">&quot;PC1&quot;</span>, <span class="st">&quot;PC2&quot;</span>, <span class="st">&quot;PC3&quot;</span>, <span class="st">&quot;PC4&quot;</span>, <span class="st">&quot;PC5&quot;</span>)]
 <span class="kw">head</span>(pcs)</code></pre></div>
@@ -230,10 +234,12 @@ pcs &lt;-<span class="st"> </span>pcs[,<span class="kw">c</span>(<span class="st
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># add PCs to the sample annotation</span>
 dat &lt;-<span class="st"> </span><span class="kw">left_join</span>(<span class="kw">pData</span>(annot), pcs, <span class="dt">by=</span><span class="st">&quot;sample.id&quot;</span>)
 <span class="kw">pData</span>(annot) &lt;-<span class="st"> </span>dat
-<span class="kw">save</span>(annot, <span class="dt">file=</span><span class="st">&quot;sample_phenotype_pcs.RData&quot;</span>)</code></pre></div>
+<span class="kw">save</span>(annot, <span class="dt">file=</span><span class="st">&quot;data/sample_phenotype_pcs.RData&quot;</span>)</code></pre></div>
 <p>We create a kinship matrix from the output of <code>pcrelate</code>. We multiply the kinship values by 2 to get values equivalent to a GRM. This matrix is represented in R as a symmetric matrix object from the Matrix package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">kinfile &lt;-<span class="st"> &quot;data/pcrelate_kinship.RData&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(kinfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, kinfile), kinfile)
 pcrel &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(kinfile)
+<span class="kw">library</span>(GENESIS)
 kinship &lt;-<span class="st"> </span><span class="kw">pcrelateToMatrix</span>(pcrel, <span class="dt">scaleKin=</span><span class="dv">2</span>, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 <span class="kw">dim</span>(kinship)</code></pre></div>
 <pre><code>## [1] 100 100</code></pre>
@@ -246,17 +252,18 @@ kinship &lt;-<span class="st"> </span><span class="kw">pcrelateToMatrix</span>(p
 ## HG00128 -0.006769183  0.01352926 -0.01484971  0.914741469 -0.003540016
 ## HG00136 -0.022907033 -0.01877446 -0.04648211 -0.003540016  1.007541773</code></pre>
 <p>We fit the null model, adding the PCs to the list of covariates, and specifying the kinship as the covariance matrix with the <code>cov.mat</code> argument. As before, we use <code>study</code> as a grouping variable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GENESIS)
-nullmod &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot, <span class="dt">outcome=</span><span class="st">&quot;height&quot;</span>, 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nullmod &lt;-<span class="st"> </span><span class="kw">fitNullModel</span>(annot, <span class="dt">outcome=</span><span class="st">&quot;height&quot;</span>, 
                         <span class="dt">covars=</span><span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;study&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;PC&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)), 
                         <span class="dt">cov.mat=</span>kinship, <span class="dt">group.var=</span><span class="st">&quot;study&quot;</span>, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
-<span class="kw">save</span>(nullmod, <span class="dt">file=</span><span class="st">&quot;null_mixed_model.RData&quot;</span>)</code></pre></div>
+<span class="kw">save</span>(nullmod, <span class="dt">file=</span><span class="st">&quot;data/null_mixed_model.RData&quot;</span>)</code></pre></div>
 </div>
 <div id="single-variant-tests-1" class="section level2">
 <h2><span class="header-section-number">9.2</span> Single-variant tests</h2>
 <p>Now we can run a single-variant test, accounting for relatedness between the subjects.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SeqVarTools)
 gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset_chr1.gds&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(gdsfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, gdsfile), gdsfile)
+gdsfmt<span class="op">::</span><span class="kw">showfile.gds</span>(<span class="dt">closeall=</span><span class="ot">TRUE</span>) <span class="co"># make sure file is not already open</span>
 gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
 seqData &lt;-<span class="st"> </span><span class="kw">SeqVarData</span>(gds, <span class="dt">sampleData=</span>annot)
 iterator &lt;-<span class="st"> </span><span class="kw">SeqVarBlockIterator</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
