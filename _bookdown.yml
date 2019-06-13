@@ -1,7 +1,11 @@
 rmd_files: ["index.Rmd", 
     "gds_intro.Rmd", 
+    "phenotype_harmonization.Rmd",
     "association.Rmd", 
     "kinship.Rmd",
     "mixed_models.Rmd",
-    "annotation.Rmd"]
+    "annotation.Rmd",
+    "aggregate_tests.Rmd",
+    "pipeline.md",
+    "AnalysisCommonsWorksheet.md"]
 output_dir: "docs"

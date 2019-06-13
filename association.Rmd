@@ -5,89 +5,50 @@ These exercises introduce association testing: how to find which genetic variant
 ## Null model
 
 The first step in an association test is to fit the null model. We will need an `AnnotatedDataFrame` with phenotypes. 
-This data structure is provided by the Bioconductor `Biobase` package, and it contains both the data and metadata (descriptions of each column in the data).
+We have a sample annotation with a `sample.id` column matched to the GDS file, and a phenotype file with `subject_id`. (In this example, we use the 1000 Genomes IDs for both sample and subject ID.) For TOPMed data, it is also important to match by study, as subject IDs are not unique across studies.
 
-```{r}
+
+```{r null_model}
 # sample annotation
-sampfile <- "data/sample_phenotype_annotation.RData"
+workshop.path <- "https://github.com/UW-GAC/topmed_workshop_2018/raw/master"
+sampfile <- "data/sample_annotation.RData"
+if (!dir.exists("data")) dir.create("data")
+if (!file.exists(sampfile)) download.file(file.path(workshop.path, sampfile), sampfile)
 annot <- TopmedPipeline::getobj(sampfile)
 library(Biobase)
-# access the data with the pData() function
 head(pData(annot))
+
+# phenotypes by subject ID
+phenfile <- "data/phenotype_annotation.RData"
+if (!file.exists(phenfile)) download.file(file.path(workshop.path, phenfile), phenfile)
+phen <- TopmedPipeline::getobj(phenfile)
+
+# access the data with the pData() function
+head(pData(phen))
 # access the metadata with the varMetadata() function
-varMetadata(annot)
+varMetadata(phen)
+
+# merge sample annotation with phenotypes
+library(dplyr)
+dat <- pData(annot) %>%
+    left_join(pData(phen), by=c("subject.id"="subject_id", "sex"="sex"))
+meta <- bind_rows(varMetadata(annot), varMetadata(phen)[3:5,,drop=FALSE])
+annot <- AnnotatedDataFrame(dat, meta)
+save(annot, file="data/sample_phenotype_annotation.RData")
 ```
 
-We will test for an association between genotype and height, adjusting for sex, age, and study as covariates. First, examine the data to see if the height distribution varies by study.
-
-```{r height_variance}
-library(ggplot2)
-ggplot(pData(annot), aes(study, height)) + geom_boxplot()
-```
-
-From the boxplot, it is clear that the different studies have different mean and variance for height. However, it is possible that this could be the result of different sex and age distributions in each study. To check this, we run a model that adjusts height for age and sex.
-
-```{r}
-library(GENESIS)
-mod_1 <- fitNullModel(annot, outcome="height", covars=c("sex", "age"), 
-                      verbose=FALSE)
-```
-
-The output of `fitNullModel` is a list with a number of named elements
-```{r}
-names(mod_1)
-```
-
-The elements that we will work with in this exercise are:
-
-* `converged`: an indicator of whether the model successfully converged
-* `model.matrix`: The matrix of subject-covariate values used to fit the model
-* `fixef`: The fitted fixed effects
-* `betaCov`: The covariance of the fitted fixed effects
-* `resid.marginal`: The (marginal) residuals from the model, which have been adjusted for the fixed effects but not for the covariance structure
-* `varComp`: The fitted variance component for each input covariance matrix
-
-Make sure the model converged.
-
-```{r}
-mod_1$converged
-```
-
-Now, add the residuals to the phenotype data frame for plotting.
-
-```{r}
-annot$residuals <- mod_1$resid.marginal
-```
-
-We want to check if the different studies have the same mean height after adjustment for other covariates (here, age and sex).
-We will first do this qualitatively by making a boxplot of the residuals by study.
-```{r resid_1}
-ggplot(pData(annot), aes(study, residuals)) + geom_boxplot()
-```
-
-Height still has different variances in each study, even after adjusting for age and sex Therefore, we allow the model to use heterogeneous variance among studies with the parameter `group.var`.
+We will test for an association between genotype and height, adjusting for sex, age, and study as covariates. If the sample set involves multiple distinct groups with different variances for the phenotype, we recommend allowing the model to use heterogeneous variance among groups with the parameter `group.var`. We saw in a previous exercise that the variance differs by study.
 
 ```{r null_model_fit}
+library(GENESIS)
 nullmod <- fitNullModel(annot, outcome="height", covars=c("sex", "age", "study"), 
                         group.var="study", verbose=FALSE)
-save(nullmod, file="null_model.RData")
+save(nullmod, file="data/null_model.RData")
 ```
 
-The `fixef` element now includes effects for study:
-```{r}
-nullmod$fixef
-```
 
-We can also check the variance components (`varComp`) in the model, which are different for each study:
-```{r}
-nullmod$varComp
-```
-
-The fitted values of the variance components are different for the different studies, indicating that the distributions of height in the three studies have different variance even after accounting for the other covariates.
-
-
-We also recommend taking an inverse normal transform of the residuals and refitting the model. This is done separately for each group, and the transformed residuals are rescaled. See the full procedure in the  
-[pipeline documenation](https://github.com/UW-GAC/analysis_pipeline#association-testing).
+We also recommend taking an inverse normal transform of the residuals and refitting the model. See the full procedure in the  
+[pipeline documentation](https://github.com/UW-GAC/analysis_pipeline#association-testing).
 
 ## Single-variant tests
 
@@ -98,6 +59,7 @@ Single-variant tests are the same as in GWAS. We use the `assocTestSingle` funct
 ```{r assoc_single}
 library(SeqVarTools)
 gdsfile <- "data/1KG_phase3_subset_chr1.gds"
+if (!file.exists(gdsfile)) download.file(file.path(data.path, basename(gdsfile)), gdsfile)
 gds <- seqOpen(gdsfile)
 seqData <- SeqVarData(gds, sampleData=annot)
 iterator <- SeqVarBlockIterator(seqData, verbose=FALSE)
@@ -144,6 +106,7 @@ For rare variants, we can do burden tests or SKAT using the GENESIS function `as
 
 ```{r assoc_window_burden}
 seqResetFilter(seqData, verbose=FALSE)
+seqSetFilter(seqData, variant.sel=1:100) # temporary for build speed
 iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
 assoc <- assocTestAggregate(iterator, nullmod, test="Burden", AF.max=0.1, weight.beta=c(1,1))
 names(assoc)
@@ -157,12 +120,13 @@ For SKAT, we use the Wu weights.
 
 ```{r assoc_window_skat}
 seqResetFilter(seqData, verbose=FALSE)
+seqSetFilter(seqData, variant.sel=1:100) # temporary for build speed
 iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
 assoc <- assocTestAggregate(iterator, nullmod, test="SKAT", AF.max=0.1, weight.beta=c(1,25))
 head(assoc$results)
 head(assoc$variantInfo)
 
-qqPlot(assoc$results$pval_0)
+qqPlot(assoc$results$pval)
 ```
 
 ## Exercise
@@ -209,6 +173,7 @@ ggplot(dat, aes(study, resid.norm, fill=run)) + geom_boxplot()
 nullmod.status <- fitNullModel(annot, outcome="status", covars=c("sex", "Population"), 
                                family=binomial, verbose=FALSE)
 seqResetFilter(seqData, verbose=FALSE)
+seqSetFilter(seqData, variant.sel=1:100) # temporary for build speed
 iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
 assoc <- assocTestAggregate(iterator, nullmod, test="SKAT", AF.max=0.1, weight.beta=c(1,25))
 head(assoc$results)

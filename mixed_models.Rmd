@@ -74,6 +74,7 @@ Run a sliding window test using the mixed model and make a QQ plot.
 
 ```{r exercise_mm}
 seqResetFilter(seqData, verbose=FALSE)
+seqSetFilter(seqData, variant.sel=1:100) # temporary for build speed
 iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
 assoc <- assocTestAggregate(iterator, nullmod, test="Burden", AF.max=0.1, weight.beta=c(1,1))
 head(assoc$results)
