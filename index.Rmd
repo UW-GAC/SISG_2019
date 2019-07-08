@@ -25,8 +25,7 @@ Data used is located in the [github repository](https://github.com/UW-GAC/SISG_2
 **Wednesday, July 24**
 
 - [Introduction]()
-- Sequencing and data formats
-    - [Sequencing overview]()
+- Sequencing data formats
     - [Sequencing data formats]()
     - [Intro to Genomic Data Storage]()
     - [Exercises](https://uw-gac.github.io/SISG_2019/gds-format.html)
@@ -50,6 +49,7 @@ Data used is located in the [github repository](https://github.com/UW-GAC/SISG_2
     - [Exercises](https://uw-gac.github.io/SISG_2019/computing-a-grm.html)
 - [Mixed model association testing]()
     - [Exercises](https://uw-gac.github.io/SISG_2019/mixed-models.html)
+- [Variant annotation]()
 
 **Friday, July 26**
 
