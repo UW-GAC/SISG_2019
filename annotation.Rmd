@@ -1,6 +1,6 @@
 # Variant annotation
 
-**Note:** the code and libraries in this section are under active development. This section uses [WGSAParsr v 5.0.8](https://github.com/UW-GAC/wgsaparsr/tree/5.0.8) to parse output from [WGSA version 0.7](https://sites.google.com/site/jpopgen/wgsa). Use this code at your own risk, and be warned that it may break in unexpected ways or be incompatible across different versions of the software. [Github issues and contribution](https://github.com/UW-GAC/wgsaparsr) are welcome!
+**Note:** the code and libraries in this section are under active development. This section uses [WGSAParsr v 6.2.5](https://github.com/UW-GAC/wgsaparsr/tree/6.2.5) to parse output from [WGSA version 0.7](https://sites.google.com/site/jpopgen/wgsa). Use this code at your own risk, and be warned that it may break in unexpected ways or be incompatible across different versions of the software. [Github issues and contribution](https://github.com/UW-GAC/wgsaparsr) are welcome!
 
 This module is provided to give workshop participants an example of some of the kinds of analysis tasks that might be performed with TOPMed annotation data. 
 
@@ -10,7 +10,7 @@ In this workshop, you will aggregate and filter genomic variants using genomic a
 
 ## Working with variant annotation
  
-Variants called from the TOPMed data set are annotated using the [Whole Genome Sequence Annotator (WGSA)](https://sites.google.com/site/jpopgen/wgsa). Output files from WGSA version 0.7 include 366 annotation fields annotating indel variants, and 438 annotation fields annotating snv variants. In each case, some annotation fields are themselves lists of annotation values. Thus, individual variants may be annotated with more than 1000 individual fields. Not all of these fields will be useful for a particular analysis, and some may be incompatible, so analysts need to parse the WGSA output prior to filtering and aggregation.
+Variants called from the TOPMed data set are annotated using the [Whole Genome Sequence Annotator (WGSA)](https://sites.google.com/site/jpopgen/wgsa). Output files from WGSA version 0.8 include more than 350 annotation fields annotating indel variants and 400 annotation fields annotating snv variants. In each case, some annotation fields are themselves lists of annotation values. (For example, a variant may be annotated with having different effects on different transcripts of a gene, or differing effects on different genes). Thus, individual variants may be annotated with more than 1000 fields. Not all of these fields will be useful for a particular analysis, and some may be mutually useful at the same time, so analysts need to choose which annotations they'd like to use, and then parse the WGSA output to select and format the annotation fields prior to filtering and aggregating for aggregate association tests.
 
 The WGSA-annotated variant annotation files we will use for this exercise are available via github:
 ```{r}
@@ -34,14 +34,14 @@ WGSA output files are tab-separated text files, with one line per annotated vari
 readLines(snvfile, n=2)
 ```
 
-The TOPMed DCC uses an R package we developed, *WGSAParsr*, to work with WGSA output files. Briefly, WGSAParsr simplifies the WGSA output files by: 1) selecting a subset of fields; 2) renaming some fields; and 3) simplifying fields that have compound list-entries. The *WGSAParsr* package is under development, and is available on github at [https://github.com/UW-GAC/wgsaparsr](https://github.com/UW-GAC/wgsaparsr). It can be installed using the *devtools* package, like this:
+The TOPMed DCC uses an R package we developed, *WGSAParsr*, to work with WGSA output files. Briefly, WGSAParsr simplifies the WGSA output files by: 1) selecting annotation fields; 2) renaming fields; and 3) simplifying fields that have compound list-entries. The specific details for each of these operations are specified by the user via a configuration file that details the desired operations for *WGSAParsr*.  The *WGSAParsr* package is under development, and is available on github at [https://github.com/UW-GAC/wgsaparsr](https://github.com/UW-GAC/wgsaparsr). It can be installed using the *devtools* package, like this:
 ```{r eval=FALSE}
 # Commented out because you don't need to do this in the workshop - it's already installed on the AMI you're using:
 
-# devtools::install_github("UW-GAC/wgsaparsr", ref = "5.0.8", upgrade_dependencies = FALSE)
+# devtools::install_github("UW-GAC/wgsaparsr", ref = "6.2.4", upgrade_dependencies = FALSE)
 ```
 
-*note*: if you get an error `Installation failed: error in running command` when you're trying to use `install_github()`, that may be related to some assumptions devtools makes in downloading packages from github. The error can be resolved if you set the unzip option in your R session before running `devtools::install_github()`. Here's how: `options(unzip = "internal")`
+*note*: if you get an error `Installation failed: error in running command` when you're trying to use `install_github()`, that may be related to some assumptions devtools makes in downloading packages from github. That error can be resolved if you set the unzip option in your R session before running `devtools::install_github()`. Here's how: `options(unzip = "internal")`
 
 Once the package is installed locally, it can be loaded to the workspace in the usual manner:
 ```{r}
@@ -60,7 +60,7 @@ An additional complication in working with the WGSA output files is that some of
 
 WGSAParsr's `parse_to_file()` addresses this by splitting such list-fields into multiple rows. Other annotation fields for that variant are duplicated, and associated columns are filled with the same value for each transcript that a particular variant falls within. A consequence of this approach is that the processed annotation file has more lines than the WGSA output file. In freeze 4, processing expanded the annotation by a factor of about 5 - the 220 million annotations result in a 1-billion row database for subsequent aggregation.
 
-`parse_to_file()` function arguments include a path to a WGSA annotation file, a user-defined configuration file, and output destinations. It reads the input annotation file in chunks, processes them following the specification provided in the user-defined configuration file, and writes to the output destinations. It produces a tab-separated output file useful for subsequent analysis.
+`parse_to_file()` function arguments include a path to a WGSA annotation file, a user-defined configuration file, output file destinations, along with other optional arguments. `parse_to_file()` reads the specified input annotation file in chunks, processes them following the specification defined in the configuration file, and writes the parsed, simplified annotation to the output destination(s). `parse_to_file()` produces a tab-separated output file useful for subsequent analysis.
 
 The first task, then, is to build the configuration file for `parse_to_file()`.
 
