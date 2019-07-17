@@ -53,7 +53,7 @@ Parameter inputs:
 
 File inputs:  
 * null_model -> /output/YOURFOLDERNAME/nullmodel\_outcome.Rda  **(output from part1.  If yours has not completed, you can select output/DEMO/nullmodel\_outcome.Rda)**
-* genotypefile -> genotypes/1KG\_phase3\_subset\_chr1.gds  
+* genotypefile -> genotypes/GDS/1KG\_phase3\_subset\_chr1.gds  
 * annotation -> annotation/1KG\_annotation\_CHR1.txt  
 * genefile -> aggregation/AggUnit\_CHR1\_ucscgene.csv  
 
