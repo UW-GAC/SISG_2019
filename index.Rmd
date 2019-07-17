@@ -58,7 +58,7 @@ Data used is located in the [github repository](https://github.com/UW-GAC/SISG_2
 - [Analysis pipeline on the cloud]()
 - Cloud platforms
     - [Analysis Commons]()
-    - [Fair4Cures]()
+    - [Seven Bridges]()
     - [Terra]()
 
 Download the workshop data and exercises: https://github.com/UW-GAC/SISG_2019/archive/master.zip
