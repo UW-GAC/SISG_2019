@@ -36,9 +36,7 @@ readLines(snvfile, n=2)
 
 The TOPMed DCC uses an R package we developed, *WGSAParsr*, to work with WGSA output files. Briefly, WGSAParsr simplifies the WGSA output files by: 1) selecting a subset of fields; 2) renaming some fields; and 3) simplifying fields that have compound list-entries. The *WGSAParsr* package is under development, and is available on github at [https://github.com/UW-GAC/wgsaparsr](https://github.com/UW-GAC/wgsaparsr). It can be installed using the *devtools* package, like this:
 ```{r eval=FALSE}
-# Commented out because you don't need to do this in the workshop - it's already installed on the AMI you're using:
-
-# devtools::install_github("UW-GAC/wgsaparsr", ref = "5.0.8", upgrade_dependencies = FALSE)
+devtools::install_github("UW-GAC/wgsaparsr", upgrade_dependencies = FALSE)
 ```
 
 *note*: if you get an error `Installation failed: error in running command` when you're trying to use `install_github()`, that may be related to some assumptions devtools makes in downloading packages from github. The error can be resolved if you set the unzip option in your R session before running `devtools::install_github()`. Here's how: `options(unzip = "internal")`
@@ -127,9 +125,9 @@ parseGroup <- c(rep(as.integer(NA), 7))
 transformation <- c(rep(as.character(NA), 7))
 ```
 
-Finally, add an optional configuration variable: `order`. The `order` variable spcifies the column-order in the output file - this is particularly useful if you're working with many annotations, but want to make sure that `CHROM`, `POS`, `REF`, and `ALT` are at the beginning. Note: when using `order` un-numbered fields will go after numbered fields.
+Finally, add an optional configuration variable: `outputOrder`. The `outputOrder` variable spcifies the column-order in the output file - this is particularly useful if you're working with many annotations, but want to make sure that `CHROM`, `POS`, `REF`, and `ALT` are at the beginning. Note: when using `outputOrder` un-numbered fields will go after numbered fields.
 ```{r}
-order <- seq(1,7)
+outputOrder <- seq(1,7)
 ```
 
 Put the configuration variables together in a tibble for validation and saving (a [tibble](https://tibble.tidyverse.org/) is a particular kind of data frame):
@@ -144,7 +142,7 @@ my_config <-
     pivotChar,
     parseGroup,
     transformation,
-    order
+    outputOrder
   )
 ```
 
@@ -194,7 +192,7 @@ readLines("data/snv_parsed.tsv", n=2)
 But `get_fields()` works as expected on the parsed file:
 ```{r}
 # list all fields in an annotation file: 
-get_fields("data/snv_parsed.tsv")
+t(get_fields("data/snv_parsed.tsv"))
 ```
 
 And in this case, the parsed files are small enough that we can load them into the R session and work with the resulting dataframes for subsequent analysis. (At full scale, the TOPMed DCC imports the parsed files to a database, and uses the annotation data that way):
