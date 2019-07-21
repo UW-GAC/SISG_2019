@@ -2,6 +2,8 @@
 
 We can use the [SNPRelate package](https://github.com/zhengxwen/SNPRelate) to compute a Genetic Relationship matrix (GRM). This method combines relatedness due to more distant ancestry and recent kinship into a single matrix.
 
+SNPRelate offers several algorithms for computing a GRM, including the commonly-used GCTA ![https://www.ncbi.nlm.nih.gov/pubmed/21167468](Yang et al 2011). The most recent algorithm added to the package is "IndivBeta" ![https://www.ncbi.nlm.nih.gov/pubmed/28550018](Weir and Goudet, 2017).
+
 ```{r grm}
 library(SeqArray)
 repo_path <- "https://github.com/UW-GAC/SISG_2019/raw/master"
