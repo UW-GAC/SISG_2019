@@ -11,22 +11,19 @@ To run a burden test on our local SGE cluster, first we create a config file and
 out_prefix "test"
 gds_file "testdata/1KG_phase3_subset_chr .gds"
 phenotype_file "testdata/1KG_phase3_subset_annot.RData"
-pcrelate_file "testdata/round2_pcrelate.gds"
-pca_file "testdata/round2_pcair.RData"
-sample_include_file "testdata/sample_include.RData"
+null_model_file "testdata/null_model.RData"
+null_model_params "testdata/null_model.params"
 variant_include_file "testdata/variant_include_chr .RData"
-outcome outcome
-covars "sex"
-n_pcs 4
 alt_freq_max "0.1"
 test "burden"
 test_type "score"
+genome_build "hg19"
 ```
 
 We will use the python script `assoc.py` to submit all jobs. First we look at the available options:
 
 ```
-setenv PIPELINE /projects/topmed/working_code/analysis_pipeline
+setenv PIPELINE /projects/topmed/working_code/analysis_pipeline_devel
 $PIPELINE/assoc.py --help
 ```
 
