@@ -13,7 +13,7 @@
 ### Exercise 1) Run a single variant analysis.  
 
 Log into http://dnanexus.com using the Analysis Commons user name and password listed on the website.  
-Should be in the form of Username:**topmed\_#** and Password:**TOPMed\_#**.
+You will have recieved an email about setting your password for your account on DNAnexus.
 *Ignore warning about default billing account.*
 
 
