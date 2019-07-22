@@ -6,7 +6,7 @@ This module is provided to give workshop participants an example of some of the 
 
 Analysts generally aggregate rare variants for association testing to decrease multiple testing burden and increase statistical power. They can group variants that fall within arbitrary ranges (such as sliding windows), or they can group variants with intent. For example, an analyst could aggregate variants that that fall between transcription start sites and stop sites, within coding regions, within regulatory regions, or other genomic features selected from sources like published gene models or position- or transcript-based variant annotation. An analyst could also choose to filter the variants prior or subsequent to aggregation using annotation-based criteria such as functional impact or quality scores.
 
-In this workshop, you will aggregate and filter genomic variants using genomic annotation for subsequent association testing. Starting with an annotation file describing 1,922 genomic variants on chromosome 22 from TOPMed's Freeze 5 data release that are also in the 1000 Genomes Project, you will define a configuration file to use the *WGSAParsr* package to select relevant annotation fields, then aggregate the selected variants into genic units and apply filters to restrict the variants in aggreagation units by predicted functional consequence.
+In this workshop, you will aggregate and filter genomic variants using genomic annotation for subsequent association testing. Starting with an annotation file describing 1,922 genomic variants on chromosome 22 from TOPMed's Freeze 5 data release that are also in the 1000 Genomes Project, you will define a configuration file to use the *WGSAParsr* package to select relevant annotation fields, then aggregate the selected variants into genic units and apply filters to restrict the variants in aggregation units by predicted functional consequence.
 
 ## Working with variant annotation
  
@@ -156,7 +156,7 @@ my_config
 validate_config(my_config)
 ```
 
-save my_config
+Save my_config:
 ```{r}
 write_tsv(my_config, "data/my_config.tsv")
 ```
@@ -169,7 +169,7 @@ if (file.exists("data/indel_parsed.tsv"))(file.remove("data/indel_parsed.tsv"))
 
 ### Parsing with WGSAParsr
 
-parse the example files
+Parse the example files:
 ```{r, eval=FALSE}
 parse_to_file(source_file = snvfile, 
               config = "data/my_config.tsv",
@@ -234,7 +234,7 @@ combined_annotation <- bind_rows(snv_annotation, indel_annotation)
 
 ## Aggregating and filtering variants using annotation
 
-With the now-tidy variant annotation, the process of aggregating and filtering variants for association testing is almost trivial. For example, an analyst could remove variants that are not associated with a Gene, group the variants by gene, and filter the variants for intron_variants with a CADD_phred score greater than 3 in just a few lines of code:
+With the now-tidy variant annotation, the process of aggregating and filtering variants for association testing is almost trivial. For example, an analyst could remove variants that are not associated with a gene, group the variants by gene, and filter the variants for intron_variants with a CADD_phred score greater than 3 in just a few lines of code:
 ```{r}
 combined_annotation %>% 
   filter(VEP_ensembl_Gene_ID != ".") %>% # remove variants not annotated with a Gene_ID

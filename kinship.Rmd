@@ -35,10 +35,12 @@ Step 1 is to get initial estimates of kinship using [KING](http://www.ncbi.nlm.n
 library(SeqArray)
 gdsfile <- "data/1KG_phase3_subset.gds"
 if (!file.exists(gdsfile)) download.file(file.path(repo_path, gdsfile), gdsfile)
+gdsfmt::showfile.gds(closeall=TRUE) # make sure file is not already open
 gds <- seqOpen(gdsfile)
 
 # use a subset of 100 samples to make things run faster
 sampfile <- "data/samples_subset100.RData"
+if (!file.exists(sampfile)) download.file(file.path(repo_path, sampfile), sampfile)
 sample.id <- TopmedPipeline::getobj(sampfile)
 
 # LD pruning to get variant set
@@ -138,7 +140,7 @@ ggparcoord(pc.df, columns=1:12, groupColumn="Population", scale="uniminmax") +
 
 ## PC-Relate
 
-The first 2 PCs separate populations, so we use them to compute kinship estimates adjusting for ancestry. The PC-Relate function expects a `SeqVarData` object, which allows linking sample and variant annotation with a GDS file in a single object. We will cover these in more detail later for association testing, but for now we create a bare object with no annotation.
+The first 2 PCs separate populations, so we use them to compute kinship estimates adjusting for ancestry. The PC-Relate function expects a `SeqVarIterator` object.
 
 ```{r pcrelate_1}
 seqResetFilter(gds, verbose=FALSE)
