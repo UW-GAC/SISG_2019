@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-06-13" />
+<meta name="date" content="2019-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,22 +193,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="annotation---solutions" class="section level1">
 <h1><span class="header-section-number">13</span> Annotation - Solutions</h1>
 <p>Since we are working with a subset of the data, many of the genes listed in <code>group_id</code> have a very small number of variants. Create a new set of units based on position rather than gene name, using the TopmedPipeline function <code>aggregateGRanges</code>. Then run SKAT using those units and a <code>SeqVarRangeIterator</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">agg2 &lt;-<span class="st"> </span>aggunit <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">chr=</span><span class="kw">factor</span>(chr, <span class="dt">levels=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">22</span>, <span class="st">&quot;X&quot;</span>))) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">distinct</span>(chr, pos) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(chr) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">min=</span><span class="kw">min</span>(pos), <span class="dt">max=</span><span class="kw">max</span>(pos))
-<span class="kw">head</span>(agg2)</code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   chr       min       max
-##   &lt;fct&gt;   &lt;int&gt;     &lt;int&gt;
-## 1 1     1025045 248761613</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggByPos &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(<span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(agg2), <span class="cf">function</span>(i) {
-    <span class="kw">data.frame</span>(<span class="dt">chr=</span>agg2<span class="op">$</span>chr[i],
-               <span class="dt">start=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i], agg2<span class="op">$</span>max[i]<span class="op">-</span><span class="fl">1e6</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
-               <span class="dt">end=</span><span class="kw">seq</span>(agg2<span class="op">$</span>min[i]<span class="op">+</span><span class="fl">1e6</span>, agg2<span class="op">$</span>max[i], <span class="dt">length.out=</span><span class="dv">10</span>))
-})) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">group_id=</span><span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">minp &lt;-<span class="st"> </span><span class="kw">min</span>(aggunit1<span class="op">$</span>pos)
+maxp &lt;-<span class="st"> </span><span class="kw">max</span>(aggunit1<span class="op">$</span>pos)
+aggByPos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">chr=</span><span class="dv">1</span>,
+               <span class="dt">start=</span><span class="kw">seq</span>(minp, maxp<span class="op">-</span><span class="fl">1e6</span>, <span class="dt">length.out=</span><span class="dv">10</span>),
+               <span class="dt">end=</span><span class="kw">seq</span>(minp<span class="op">+</span><span class="fl">1e6</span>, maxp, <span class="dt">length.out=</span><span class="dv">10</span>))
+aggByPos<span class="op">$</span>group_id &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(aggByPos)
+
 <span class="kw">head</span>(aggByPos)</code></pre></div>
 <pre><code>##   chr     start       end group_id
 ## 1   1   1025045   2025045        1
@@ -218,14 +209,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 5   1 110685742 111685742        5
 ## 6   1 138100916 139100916        6</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aggVarList &lt;-<span class="st"> </span><span class="kw">aggregateGRanges</span>(aggByPos)
-aggVarList[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</code></pre></div>
-<pre><code>## GRanges object with 2 ranges and 0 metadata columns:
-##     seqnames            ranges strand
-##        &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt;
-##   1        1   1025045-2025045      *
-##   2        1 28440219-29440219      *
+aggVarList</code></pre></div>
+<pre><code>## GRanges object with 10 ranges and 0 metadata columns:
+##      seqnames              ranges strand
+##         &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt;
+##    1        1     1025045-2025045      *
+##    2        1   28440219-29440219      *
+##    3        1   55855393-56855393      *
+##    4        1   83270567-84270567      *
+##    5        1 110685741-111685741      *
+##    6        1 138100916-139100916      *
+##    7        1 165516090-166516090      *
+##    8        1 192931264-193931264      *
+##    9        1 220346438-221346438      *
+##   10        1 247761613-248761613      *
 ##   -------
-##   seqinfo: 23 sequences from an unspecified genome; no seqlengths</code></pre>
+##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(seqData, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 iterator &lt;-<span class="st"> </span><span class="kw">SeqVarRangeIterator</span>(seqData, <span class="dt">variantRanges=</span>aggVarList, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(iterator, nullmod, <span class="dt">test=</span><span class="st">&quot;SKAT&quot;</span>, <span class="dt">AF.max=</span><span class="fl">0.1</span>, <span class="dt">weight.beta=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">25</span>))</code></pre></div>
@@ -238,6 +237,33 @@ assoc &lt;-<span class="st"> </span><span class="kw">assocTestAggregate</span>(i
 ## 4      2     3            3 0.8778105 0.8930184     0
 ## 5      0     0            0        NA        NA    NA
 ## 6      0     0            0        NA        NA    NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(assoc<span class="op">$</span>variantInfo)</code></pre></div>
+<pre><code>## $`1`
+##   variant.id chr     pos allele.index n.obs  freq   weight
+## 3          5   1 1472676            1   100 0.005 22.16634
+## 
+## $`2`
+##   variant.id chr      pos allele.index n.obs  freq    weight
+## 1        152   1 28527425            1   100 0.010 19.641954
+## 3        154   1 28844055            1   100 0.005 22.166338
+## 4        155   1 29149880            1   100 0.040  9.385331
+## 
+## $`3`
+##   variant.id chr      pos allele.index n.obs  freq   weight
+## 1        273   1 56084960            1   100 0.025 13.61604
+## 
+## $`4`
+##   variant.id chr      pos allele.index n.obs  freq   weight
+## 3        424   1 83792600            1   100 0.010 19.64195
+## 5        426   1 84152287            1   100 0.005 22.16634
+## 
+## $`5`
+## [1] variant.id chr        pos        n.obs      freq       weight    
+## &lt;0 rows&gt; (or 0-length row.names)
+## 
+## $`6`
+## [1] variant.id chr        pos        n.obs      freq       weight    
+## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqClose</span>(gds)</code></pre></div>
 
 </div>

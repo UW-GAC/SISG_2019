@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-06-13" />
+<meta name="date" content="2019-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,6 +193,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="computing-a-grm" class="section level1">
 <h1><span class="header-section-number">7</span> Computing a GRM</h1>
 <p>We can use the <a href="https://github.com/zhengxwen/SNPRelate">SNPRelate package</a> to compute a Genetic Relationship matrix (GRM). This method combines relatedness due to more distant ancestry and recent kinship into a single matrix.</p>
+<p>SNPRelate offers several algorithms for computing a GRM, including the commonly-used GCTA <img src="Yang%20et%20al%202011" alt="https://www.ncbi.nlm.nih.gov/pubmed/21167468" />. The most recent algorithm added to the package is “IndivBeta” <img src="Weir%20and%20Goudet,%202017" alt="https://www.ncbi.nlm.nih.gov/pubmed/28550018" />.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SeqArray)
 repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
 <span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
@@ -212,11 +213,11 @@ grm &lt;-<span class="st"> </span><span class="kw">snpgdsGRM</span>(gds, <span c
 ## Working space: 1,126 samples, 1,107 SNVs
 ##     using 1 (CPU) core
 ## CPU capabilities: Double-Precision SSE2
-## Thu Jun 13 16:45:03 2019    (internal increment: 664)
+## Tue Jul 23 12:43:56 2019    (internal increment: 664)
 ## 
 [..................................................]  0%, ETC: ---        
 [==================================================] 100%, completed in 0s
-## Thu Jun 13 16:45:03 2019    Done.</code></pre>
+## Tue Jul 23 12:43:56 2019    Done.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(grm)</code></pre></div>
 <pre><code>## [1] &quot;sample.id&quot; &quot;snp.id&quot;    &quot;method&quot;    &quot;grm&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(grm<span class="op">$</span>grm)</code></pre></div>

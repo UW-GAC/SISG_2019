@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-06-13" />
+<meta name="date" content="2019-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -200,10 +200,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">library</span>(SeqArray)
 gdsfile &lt;-<span class="st"> &quot;data/1KG_phase3_subset.gds&quot;</span>
 <span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(gdsfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, gdsfile), gdsfile)
+gdsfmt<span class="op">::</span><span class="kw">showfile.gds</span>(<span class="dt">closeall=</span><span class="ot">TRUE</span>) <span class="co"># make sure file is not already open</span>
 gds &lt;-<span class="st"> </span><span class="kw">seqOpen</span>(gdsfile)
 
 <span class="co"># use a subset of 100 samples to make things run faster</span>
 sampfile &lt;-<span class="st"> &quot;data/samples_subset100.RData&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(sampfile)) <span class="kw">download.file</span>(<span class="kw">file.path</span>(repo_path, sampfile), sampfile)
 sample.id &lt;-<span class="st"> </span>TopmedPipeline<span class="op">::</span><span class="kw">getobj</span>(sampfile)
 
 <span class="co"># LD pruning to get variant set</span>
@@ -265,11 +267,11 @@ king &lt;-<span class="st"> </span><span class="kw">snpgdsIBDKING</span>(gds, <s
 ## No family is specified, and all individuals are treated as singletons.
 ## Relationship inference in the presence of population stratification.
 ## CPU capabilities: Double-Precision SSE2
-## Thu Jun 13 16:45:04 2019    (internal increment: 65536)
+## Tue Jul 23 12:43:58 2019    (internal increment: 65536)
 ## 
 [..................................................]  0%, ETC: ---        
 [==================================================] 100%, completed in 0s
-## Thu Jun 13 16:45:04 2019    Done.</code></pre>
+## Tue Jul 23 12:43:58 2019    Done.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(king)</code></pre></div>
 <pre><code>## [1] &quot;sample.id&quot; &quot;snp.id&quot;    &quot;afreq&quot;     &quot;IBS0&quot;      &quot;kinship&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(king<span class="op">$</span>kinship)</code></pre></div>
@@ -318,33 +320,33 @@ pca.unrel &lt;-<span class="st"> </span><span class="kw">snpgdsPCA</span>(gds, <
 ## Working space: 85 samples, 6,133 SNVs
 ##     using 1 (CPU) core
 ## CPU capabilities: Double-Precision SSE2
-## Thu Jun 13 16:45:05 2019    (internal increment: 8816)
+## Tue Jul 23 12:43:59 2019    (internal increment: 8816)
 ## 
 [..................................................]  0%, ETC: ---        
-[==================================================] 100%, completed in 1s
-## Thu Jun 13 16:45:06 2019    Begin (eigenvalues and eigenvectors)
-## Thu Jun 13 16:45:06 2019    Done.</code></pre>
+[==================================================] 100%, completed in 0s
+## Tue Jul 23 12:43:59 2019    Begin (eigenvalues and eigenvectors)
+## Tue Jul 23 12:43:59 2019    Done.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># project values for relatives</span>
 snp.load &lt;-<span class="st"> </span><span class="kw">snpgdsPCASNPLoading</span>(pca.unrel, <span class="dt">gdsobj=</span>gds)</code></pre></div>
 <pre><code>## SNP loading:
 ## Working space: 85 samples, 6133 SNPs
 ##     using 1 (CPU) core
 ##     using the top 32 eigenvectors
-## Thu Jun 13 16:45:06 2019    (internal increment: 65536)
+## Tue Jul 23 12:43:59 2019    (internal increment: 65536)
 ## 
 [..................................................]  0%, ETC: ---        
 [==================================================] 100%, completed in 0s
-## Thu Jun 13 16:45:06 2019    Done.</code></pre>
+## Tue Jul 23 12:43:59 2019    Done.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samp.load &lt;-<span class="st"> </span><span class="kw">snpgdsPCASampLoading</span>(snp.load, <span class="dt">gdsobj=</span>gds, <span class="dt">sample.id=</span>sampset<span class="op">$</span>rels)</code></pre></div>
 <pre><code>## Sample loading:
 ## Working space: 15 samples, 6133 SNPs
 ##     using 1 (CPU) core
 ##     using the top 32 eigenvectors
-## Thu Jun 13 16:45:06 2019    (internal increment: 65536)
+## Tue Jul 23 12:43:59 2019    (internal increment: 65536)
 ## 
 [..................................................]  0%, ETC: ---        
-[==================================================] 100%, completed in 0s
-## Thu Jun 13 16:45:06 2019    Done.</code></pre>
+[==================================================] 100%, completed in 1s
+## Tue Jul 23 12:44:00 2019    Done.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># combine unrelated and related PCs and order as in GDS file</span>
 pcs &lt;-<span class="st"> </span><span class="kw">rbind</span>(pca.unrel<span class="op">$</span>eigenvect, samp.load<span class="op">$</span>eigenvect)
 <span class="kw">rownames</span>(pcs) &lt;-<span class="st"> </span><span class="kw">c</span>(pca.unrel<span class="op">$</span>sample.id, samp.load<span class="op">$</span>sample.id)
@@ -404,7 +406,7 @@ pop.cols &lt;-<span class="st"> </span><span class="kw">setNames</span>(<span cl
 </div>
 <div id="pc-relate-1" class="section level2">
 <h2><span class="header-section-number">8.3</span> PC-Relate</h2>
-<p>The first 2 PCs separate populations, so we use them to compute kinship estimates adjusting for ancestry. The PC-Relate function expects a <code>SeqVarData</code> object, which allows linking sample and variant annotation with a GDS file in a single object. We will cover these in more detail later for association testing, but for now we create a bare object with no annotation.</p>
+<p>The first 2 PCs separate populations, so we use them to compute kinship estimates adjusting for ancestry. The PC-Relate function expects a <code>SeqVarIterator</code> object.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seqResetFilter</span>(gds, <span class="dt">verbose=</span><span class="ot">FALSE</span>)
 <span class="kw">library</span>(SeqVarTools)
 seqData &lt;-<span class="st"> </span><span class="kw">SeqVarData</span>(gds)

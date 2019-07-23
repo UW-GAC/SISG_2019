@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-06-13" />
+<meta name="date" content="2019-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,7 +208,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="exercise-1-run-a-single-variant-analysis." class="section level3">
 <h3><span class="header-section-number">15.2.1</span> Exercise 1) Run a single variant analysis.</h3>
 <p>Log into <a href="http://dnanexus.com" class="uri">http://dnanexus.com</a> using the Analysis Commons user name and password listed on the website.<br />
-Should be in the form of Username:<strong>topmed_#</strong> and Password:<strong>TOPMed_#</strong>. <em>Ignore warning about default billing account.</em></p>
+You will have recieved an email about setting your password for your account on DNAnexus. <em>Ignore warning about default billing account.</em></p>
 <div id="part-1-run-null-model" class="section level4">
 <h4><span class="header-section-number">15.2.1.1</span> Part 1: Run null model</h4>
 <p>Navigate to and select <strong>(wgs:tools/genesis_nullmodel)</strong></p>
@@ -238,7 +238,7 @@ Should be in the form of Username:<strong>topmed_#</strong> and Password:<strong
 <div id="exercise-2-run-skat-test-grouping-variants-into-gene-transcript-regions-and-limit-the-variants-to-those-with-a-cadd-phred-score-2-and-maf-5." class="section level3">
 <h3><span class="header-section-number">15.2.2</span> Exercise 2) Run SKAT test grouping variants into gene transcript regions and limit the variants to those with a CADD phred score &gt; 2 and MAF &lt;= 5%.</h3>
 <p>File inputs:<br />
-* null_model -&gt; /output/YOURFOLDERNAME/nullmodel_outcome.Rda <strong>(output from part1. If yours has not completed, you can select output/DEMO/nullmodel_outcome.Rda)</strong> * genotypefile -&gt; genotypes/1KG_phase3_subset_chr1.gds<br />
+* null_model -&gt; /output/YOURFOLDERNAME/nullmodel_outcome.Rda <strong>(output from part1. If yours has not completed, you can select output/DEMO/nullmodel_outcome.Rda)</strong> * genotypefile -&gt; genotypes/GDS/1KG_phase3_subset_chr1.gds<br />
 * annotation -&gt; annotation/1KG_annotation_CHR1.txt<br />
 * genefile -&gt; aggregation/AggUnit_CHR1_ucscgene.csv</p>
 <p>Parameter inputs:<br />
@@ -259,7 +259,7 @@ Should be in the form of Username:<strong>topmed_#</strong> and Password:<strong
 <div id="log-in-to-awi" class="section level3">
 <h3><span class="header-section-number">15.3.1</span> Log in to AWI</h3>
 <p><strong>Replace topmed_## with the user ID from your handout</strong></p>
-<pre><code>$ ssh topmed_##@34.208.147.133
+<pre><code>$ ssh topmed_##@54.190.171.178
 You will be prompted for your password, e.g. TOPMed_## (Note capitalization)
 _Please ignore login warnings
 

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-06-13" />
+<meta name="date" content="2019-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,7 +199,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
 <div id="inspect-individual-study-data-in-r" class="section level2">
 <h2><span class="header-section-number">4.1</span> Inspect individual study data in R</h2>
-<p>The first step is to read the files into R for processing. Before we begin, you need to download the data from github so you have access to it.</p>
+<p>The first step is to read the files into R for processing.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">repo_path &lt;-<span class="st"> &quot;https://github.com/UW-GAC/SISG_2019/raw/master&quot;</span>
 <span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
 pheno_files &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;data/pheno_data_study_1.txt&quot;</span>, <span class="st">&quot;data/pheno_data_study_2.txt&quot;</span>, <span class="st">&quot;data/pheno_data_study_3.txt&quot;</span>)
@@ -366,8 +366,8 @@ mod_<span class="dv">1</span> &lt;-<span class="st"> </span>GENESIS<span class="
 <p>Make sure the model converged.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mod_<span class="dv">1</span><span class="op">$</span>converged</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Now, add the residuals to the phenotype data frame for plotting. We need to make sure that we are matching each residual value to the correct subject. In this case, we already ordered the AnnotatedDataFrame to match the genetic relatedness marix, but this may not always be the case (for example, if subjects are excluded due to missing phentoype data). To match the same subject’s values together, we use the row names of the <code>model.matrix</code> element of the output, which are in the same order as the <code>residual</code> matrix, and the <code>subject_id</code> column of the annotated data frame. We then match the row names (and therefore the residuals) to the subject identifier in the phenotype file using the base R function <code>match</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">j &lt;-<span class="st"> </span><span class="kw">match</span>(annot<span class="op">$</span>subject_id, <span class="kw">rownames</span>(mod_<span class="dv">1</span><span class="op">$</span>model.matrix))
+<p>Now, add the residuals to the phenotype data frame for plotting. We need to make sure that we are matching each residual value to the correct subject. In this case, <code>model.matrix</code> is already in the same order as the input AnnotatedDataFrame, but this may not always be the case (for example, if subjects are excluded due to missing phentoype data). To match the same subject’s values together, we use the row names of the <code>model.matrix</code> element of the output, which are in the same order as the <code>residual</code> matrix, and the <code>subject_id</code> column of the annotated data frame. We then match the row names (and therefore the residuals) to the sample identifier in the phenotype file using the base R function <code>match</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">j &lt;-<span class="st"> </span><span class="kw">match</span>(annot<span class="op">$</span>sample.id, <span class="kw">rownames</span>(mod_<span class="dv">1</span><span class="op">$</span>model.matrix))
 annot<span class="op">$</span>residuals &lt;-<span class="st"> </span>mod_<span class="dv">1</span><span class="op">$</span>resid.marginal[j]</code></pre></div>
 <p>Next, we want to check if the different studies have the same mean height after adjustment for other covariates (here, age and sex). We will first do this qualitatively by making a boxplot of the residuals by study.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">pData</span>(annot), <span class="kw">aes</span>(<span class="dt">x =</span> study, <span class="dt">y =</span> residuals)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>

@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2019-06-13" />
+<meta name="date" content="2019-07-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -199,18 +199,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>out_prefix &quot;test&quot;
 gds_file &quot;testdata/1KG_phase3_subset_chr .gds&quot;
 phenotype_file &quot;testdata/1KG_phase3_subset_annot.RData&quot;
-pcrelate_file &quot;testdata/round2_pcrelate.gds&quot;
-pca_file &quot;testdata/round2_pcair.RData&quot;
-sample_include_file &quot;testdata/sample_include.RData&quot;
+null_model_file &quot;testdata/null_model.RData&quot;
+null_model_params &quot;testdata/null_model.params&quot;
 variant_include_file &quot;testdata/variant_include_chr .RData&quot;
-outcome outcome
-covars &quot;sex&quot;
-n_pcs 4
 alt_freq_max &quot;0.1&quot;
 test &quot;burden&quot;
-test_type &quot;score&quot;</code></pre>
+test_type &quot;score&quot;
+genome_build &quot;hg19&quot;</code></pre>
 <p>We will use the python script <code>assoc.py</code> to submit all jobs. First we look at the available options:</p>
-<pre><code>setenv PIPELINE /projects/topmed/working_code/analysis_pipeline
+<pre><code>setenv PIPELINE /projects/topmed/working_code/analysis_pipeline_devel
 $PIPELINE/assoc.py --help</code></pre>
 <p>Let’s run a sliding window test on chromosomes 1-10. We will also specify the cluster type, although UW_Cluster is actually the default. The cluster file is a JSON file that can override default values for the cluster configuration. In this case, we are changing the memory requirements for each job to only reserve a small amount of memory on each cluster node. The last argument is our config file.</p>
 <p>First, we print the commands that will be be run without actually submitting jobs:</p>
