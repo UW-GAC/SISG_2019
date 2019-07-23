@@ -24,7 +24,6 @@ library(dplyr)
 
 
 The first step is to read the files into R for processing.
-Before we begin, you need to download the data from github so you have access to it.
 
 ```{r}
 repo_path <- "https://github.com/UW-GAC/SISG_2019/raw/master"
@@ -224,11 +223,11 @@ mod_1$converged
 
 Now, add the residuals to the phenotype data frame for plotting.
 We need to make sure that we are matching each residual value to the correct subject.
-In this case, we already ordered the AnnotatedDataFrame to match the genetic relatedness marix, but this may not always be the case (for example, if subjects are excluded due to missing phentoype data).
+In this case, `model.matrix` is already in the same order as the input AnnotatedDataFrame, but this may not always be the case (for example, if subjects are excluded due to missing phentoype data).
 To match the same subject's values together, we use the row names of the `model.matrix` element of the output, which are in the same order as the `residual` matrix, and the `subject_id` column of the annotated data frame.
-We then match the row names (and therefore the residuals) to the subject identifier in the phenotype file using the base R function `match`.
+We then match the row names (and therefore the residuals) to the sample identifier in the phenotype file using the base R function `match`.
 ```{r}
-j <- match(annot$subject_id, rownames(mod_1$model.matrix))
+j <- match(annot$sample.id, rownames(mod_1$model.matrix))
 annot$residuals <- mod_1$resid.marginal[j]
 ```
 
