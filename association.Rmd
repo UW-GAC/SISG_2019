@@ -107,7 +107,6 @@ For rare variants, we can do burden tests or SKAT using the GENESIS function `as
 
 ```{r assoc_window_burden}
 seqResetFilter(seqData, verbose=FALSE)
-seqSetFilter(seqData, variant.sel=1:100) # temporary for build speed
 iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
 assoc <- assocTestAggregate(iterator, nullmod, test="Burden", AF.max=0.1, weight.beta=c(1,1))
 names(assoc)
@@ -121,7 +120,6 @@ For SKAT, we use the Wu weights.
 
 ```{r assoc_window_skat}
 seqResetFilter(seqData, verbose=FALSE)
-seqSetFilter(seqData, variant.sel=1:100) # temporary for build speed
 iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
 assoc <- assocTestAggregate(iterator, nullmod, test="SKAT", AF.max=0.1, weight.beta=c(1,25))
 head(assoc$results)
@@ -163,7 +161,6 @@ summary(nullmod.norm$resid.marginal)
 nullmod.status <- fitNullModel(annot, outcome="status", covars=c("sex", "Population"), 
                                family=binomial, verbose=FALSE)
 seqResetFilter(seqData, verbose=FALSE)
-seqSetFilter(seqData, variant.sel=1:100) # temporary for build speed
 iterator <- SeqVarWindowIterator(seqData, windowSize=5000, windowShift=2000, verbose=FALSE)
 assoc <- assocTestAggregate(iterator, nullmod, test="SKAT", AF.max=0.1, weight.beta=c(1,25))
 head(assoc$results)
