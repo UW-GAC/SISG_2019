@@ -18,36 +18,38 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE)
 This site contains course materials for Course materials for SISG Module 17: Computational Pipeline for WGS Data, July 24-26, 2019.
 Data used is located in the [github repository](https://github.com/UW-GAC/SISG_2019) from which the site is built, as well as in the [TOPMed analysis pipeline](https://github.com/UW-GAC/analysis_pipeline).
 
+Join the [Slack channel](https://sisg2019module17.slack.com) ([signup link](https://join.slack.com/t/sisg2019module17/signup)).
+
 ## Schedule
 
-[Lecture slides](http://www.biostat.washington.edu/suminst/sisg2019/modules/SM1917)
+Lecture slides at the [module site](http://www.biostat.washington.edu/suminst/sisg2019/modules/SM1917) (login to see resource listings)
 
 **Wednesday, July 24**
 
-- [Introduction]()
+- [Introduction](https://www.biostat.washington.edu/sites/default/files/modules/SISGmod17Intro_v2.pdf)
 - Sequencing data formats
-    - [Sequencing data formats]()
-    - [Intro to Genomic Data Storage]()
+    - [Sequencing data formats](https://www.biostat.washington.edu/sites/default/files/modules/Sequencing_data_formats.pdf)
+    - [Intro to Genomic Data Storage](https://www.biostat.washington.edu/sites/default/files/modules/GDS_intro_0.pdf)
     - [Exercises](https://uw-gac.github.io/SISG_2019/gds-format.html)
-- [Phenotype harmonization]()
+- [Phenotype harmonization](https://www.biostat.washington.edu/sites/default/files/modules/sisg_2019_m17_pheno_harmonization.pdf)
     - [Exercises](https://uw-gac.github.io/SISG_2019/phenotype-harmonization.html)
 - Association tests
-    - [Methods and motivation]() (Part 1)
+    - [Methods and motivation](https://www.biostat.washington.edu/sites/default/files/modules/SISGAssocTests19WGSmodule.pdf) (Part 1)
 
 **Thursday, July 25**
 
 - Association tests
-    - [Methods and motivation]() (Part 2)
-    - [GENESIS for association tests]()
+    - [Methods and motivation](https://www.biostat.washington.edu/sites/default/files/modules/SISGAssocTests19WGSmodule.pdf) (Part 2)
+    - [GENESIS for association tests](https://www.biostat.washington.edu/sites/default/files/modules/R_assoc_tests_0.pdf)
     - [Exercises](https://uw-gac.github.io/SISG_2019/association-tests.html)
-    - [Aggregate tests]() (Part 3)
+    - [Aggregate tests](https://www.biostat.washington.edu/sites/default/files/modules/SISGAssocTests19WGSmodule.pdf) (Part 3)
     - [Exercises](https://uw-gac.github.io/SISG_2019/association-tests.html#sliding-window-tests)
 - Population structure and relatedness
-    - [Population structure inference]()
-    - [Relatedness inference]()
-    - [R packages for PCA and relatedness]()
+    - [Population structure inference](https://www.biostat.washington.edu/sites/default/files/modules/Population_Structure_Inference_SISG_Module17_2019.pdf)
+    - [Relatedness inference](https://www.biostat.washington.edu/sites/default/files/modules/Relatedness_Inference_SISG_Module17_2019.pdf)
+    - [R packages for PCA and relatedness](https://www.biostat.washington.edu/sites/default/files/modules/R_kinship_pca_0.pdf)
     - [Exercises](https://uw-gac.github.io/SISG_2019/computing-a-grm.html)
-- [Mixed model association testing]()
+- [Mixed model association testing](https://www.biostat.washington.edu/sites/default/files/modules/Mixed_Model_Association_SISG_Module17_2019.pdf)
     - [Exercises](https://uw-gac.github.io/SISG_2019/mixed-models.html)
 - [Variant annotation]()
 
@@ -55,11 +57,11 @@ Data used is located in the [github repository](https://github.com/UW-GAC/SISG_2
 
 - [Variant annotation]()
     - [Exercises](https://uw-gac.github.io/SISG_2019/variant-annotation.html)
-- [Analysis pipeline on the cloud]()
+- [Analysis pipeline on the cloud](https://www.biostat.washington.edu/sites/default/files/modules/Cloud_Computing_0.pdf)
 - Cloud platforms
-    - [Analysis Commons]()
+    - [Analysis Commons](https://www.biostat.washington.edu/sites/default/files/modules/AnalysisCommons_Brody_2019.pdf)
     - [Seven Bridges]()
-    - [Terra]()
+    - [Terra](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Overview_2019-07-02_SISG.pdf) ([Account instructions](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Instructions_SISG.pdf))
 
 Download the workshop data and exercises: https://github.com/UW-GAC/SISG_2019/archive/master.zip
 
