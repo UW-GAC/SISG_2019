@@ -18,15 +18,19 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE)
 This site contains course materials for Course materials for SISG Module 17: Computational Pipeline for WGS Data, July 24-26, 2019.
 Data used is located in the [github repository](https://github.com/UW-GAC/SISG_2019) from which the site is built, as well as in the [TOPMed analysis pipeline](https://github.com/UW-GAC/analysis_pipeline).
 
-Join the [Slack channel](https://sisg2019module17.slack.com) ([signup link](https://join.slack.com/t/sisg2019module17/signup)).
+To work through the exercises, log into http://bit.ly/datastage-sb with your username and password.
+
+Slides for lectures are linked below in the schedule. A detailed description of the course and instructor biographies can be found at https://www.biostat.washington.edu/suminst/SISG2019/modules/SM1917
+
+Join the Slack channel here:
+https://sisg2019module17.slack.com
 
 ## Schedule
-
-Lecture slides at the [module site](http://www.biostat.washington.edu/suminst/sisg2019/modules/SM1917) (login to see resource listings)
 
 **Wednesday, July 24**
 
 - [Introduction](https://www.biostat.washington.edu/sites/default/files/modules/SISGmod17Intro_v2.pdf)
+    - [Setup for interactive exercises](SISG19_Scaling_WGS_Association_Studies_in_the_Cloud_with_Seven_Bridges.pdf) (Part 1)
 - Sequencing data formats
     - [Sequencing data formats](https://www.biostat.washington.edu/sites/default/files/modules/Sequencing_data_formats.pdf)
     - [Intro to Genomic Data Storage](https://www.biostat.washington.edu/sites/default/files/modules/GDS_intro_0.pdf)
@@ -60,7 +64,7 @@ Lecture slides at the [module site](http://www.biostat.washington.edu/suminst/si
 - [Analysis pipeline on the cloud](https://www.biostat.washington.edu/sites/default/files/modules/Cloud_Computing_0.pdf)
 - Cloud platforms
     - [Analysis Commons](https://www.biostat.washington.edu/sites/default/files/modules/AnalysisCommons_Brody_2019.pdf)
-    - [Seven Bridges]()
+    - [Seven Bridges](SISG19_Scaling_WGS_Association_Studies_in_the_Cloud_with_Seven_Bridges.pdf) (Part 2)
     - [Terra](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Overview_2019-07-02_SISG.pdf) ([Account instructions](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Instructions_SISG.pdf))
 
 Download the workshop data and exercises: https://github.com/UW-GAC/SISG_2019/archive/master.zip
