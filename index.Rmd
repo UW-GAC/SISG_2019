@@ -30,7 +30,7 @@ https://sisg2019module17.slack.com
 **Wednesday, July 24**
 
 - [Introduction](https://www.biostat.washington.edu/sites/default/files/modules/SISGmod17Intro_v2.pdf)
-    - [Setup for interactive exercises](SISG19_Scaling_WGS_Association_Studies_in_the_Cloud_with_Seven_Bridges.pdf) (Part 1)
+    - [Setup for interactive exercises](https://www.biostat.washington.edu/sites/default/files/modules/SISG19_Scaling_WGS_Association_Studies_in_the_Cloud_with_Seven_Bridges.pdf) (Part 1)
 - Sequencing data formats
     - [Sequencing data formats](https://www.biostat.washington.edu/sites/default/files/modules/Sequencing_data_formats.pdf)
     - [Intro to Genomic Data Storage](https://www.biostat.washington.edu/sites/default/files/modules/GDS_intro_0.pdf)
@@ -64,7 +64,7 @@ https://sisg2019module17.slack.com
 - [Analysis pipeline on the cloud](https://www.biostat.washington.edu/sites/default/files/modules/Cloud_Computing_0.pdf)
 - Cloud platforms
     - [Analysis Commons](https://www.biostat.washington.edu/sites/default/files/modules/AnalysisCommons_Brody_2019.pdf)
-    - [Seven Bridges](SISG19_Scaling_WGS_Association_Studies_in_the_Cloud_with_Seven_Bridges.pdf) (Part 2)
+    - [Seven Bridges](https://www.biostat.washington.edu/sites/default/files/modules/SISG19_Scaling_WGS_Association_Studies_in_the_Cloud_with_Seven_Bridges.pdf) (Part 2)
     - [Terra](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Overview_2019-07-02_SISG.pdf) ([Account instructions](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Instructions_SISG.pdf))
 
 Download the workshop data and exercises: https://github.com/UW-GAC/SISG_2019/archive/master.zip
