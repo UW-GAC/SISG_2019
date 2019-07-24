@@ -23,7 +23,7 @@ To work through the exercises, log into http://bit.ly/datastage-sb with your use
 Slides for lectures are linked below in the schedule. A detailed description of the course and instructor biographies can be found at https://www.biostat.washington.edu/suminst/SISG2019/modules/SM1917
 
 Join the Slack channel here:
-https://sisg2019module17.slack.com
+https://sisg2019module17.slack.com [link to sign up](https://join.slack.com/t/sisg2019module17/signup)
 
 ## Schedule
 
