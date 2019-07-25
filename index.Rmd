@@ -65,7 +65,7 @@ https://sisg2019module17.slack.com ([link to sign up](https://join.slack.com/t/s
 - Cloud platforms
     - [Analysis Commons](https://www.biostat.washington.edu/sites/default/files/modules/AnalysisCommons_Brody_2019.pdf)
     - [Seven Bridges](https://www.biostat.washington.edu/sites/default/files/modules/SISG19_Scaling_WGS_Association_Studies_in_the_Cloud_with_Seven_Bridges.pdf) (Part 2)
-    - [Terra](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Overview_2019-07-02_SISG.pdf) ([Account instructions](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Instructions_SISG.pdf))
+    - [Terra](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Overview_SISG_Module17_2019-07.pdf) ([Account instructions](https://www.biostat.washington.edu/sites/default/files/modules/Terra_Instructions_SISG.pdf))
 
 Download the workshop data and exercises: https://github.com/UW-GAC/SISG_2019/archive/master.zip
 
