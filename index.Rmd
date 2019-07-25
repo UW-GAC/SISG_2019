@@ -23,7 +23,7 @@ To work through the exercises, log into http://bit.ly/datastage-sb with your use
 Slides for lectures are linked below in the schedule. A detailed description of the course and instructor biographies can be found at https://www.biostat.washington.edu/suminst/SISG2019/modules/SM1917
 
 Join the Slack channel here:
-https://sisg2019module17.slack.com [link to sign up](https://join.slack.com/t/sisg2019module17/signup)
+https://sisg2019module17.slack.com ([link to sign up](https://join.slack.com/t/sisg2019module17/signup))
 
 ## Schedule
 
@@ -55,11 +55,11 @@ https://sisg2019module17.slack.com [link to sign up](https://join.slack.com/t/si
     - [Exercises](https://uw-gac.github.io/SISG_2019/computing-a-grm.html)
 - [Mixed model association testing](https://www.biostat.washington.edu/sites/default/files/modules/Mixed_Model_Association_SISG_Module17_2019.pdf)
     - [Exercises](https://uw-gac.github.io/SISG_2019/mixed-models.html)
-- [Variant annotation]()
+- [Variant annotation](https://www.biostat.washington.edu/sites/default/files/modules/variant_annotaion_m17_2019.pdf)
 
 **Friday, July 26**
 
-- [Variant annotation]()
+- [Variant annotation](https://www.biostat.washington.edu/sites/default/files/modules/variant_annotaion_m17_2019.pdf)
     - [Exercises](https://uw-gac.github.io/SISG_2019/variant-annotation.html)
 - [Analysis pipeline on the cloud](https://www.biostat.washington.edu/sites/default/files/modules/Cloud_Computing_0.pdf)
 - Cloud platforms
