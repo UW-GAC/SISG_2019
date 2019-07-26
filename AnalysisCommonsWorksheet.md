@@ -75,7 +75,7 @@ References:
 ### Log in to AWI
 **Replace topmed_## with the user ID from your handout**
 ```
-$ ssh topmed_##@54.190.171.178
+$ ssh topmed_##@34.219.235.138
 You will be prompted for your password, e.g. TOPMed_## (Note capitalization)
 _Please ignore login warnings
 
@@ -86,8 +86,8 @@ $ source /usr/local/dx-toolkit/environment
 ```
 $ dx login  --timeout 2h
 	Enter the following at the prompts
-		username: topmed_##
-		password: TOPMed_##
+		username: your dnanexus username
+		password: your dnanexus password
 		project:wgs ( type 0 to select wgs )
 
 You can select or change project once you are logged in
